@@ -20,6 +20,7 @@ namespace Group_24_Animated_Algorithms
         {
             InitializeComponent();
             rb_ascending.Checked = true;
+            GenerateArray();
         }
 
 
@@ -38,6 +39,11 @@ namespace Group_24_Animated_Algorithms
 
         private void Bt_GenerateArray_Click(object sender, EventArgs e)
         {
+            GenerateArray();
+        }
+
+        private void GenerateArray()
+        {
             array = new Decimal[int.Parse(tb_arraysize.Text)];
 
             for (int i = 0; i < int.Parse(tb_arraysize.Text); i++)
@@ -45,7 +51,7 @@ namespace Group_24_Animated_Algorithms
                 switch (cb_decimals.Checked)
                 {
                     case true:
-                        array[i] = ((Decimal)r.Next(int.Parse(tb_min.Text)*100, int.Parse(tb_max.Text)*100))/100;
+                        array[i] = ((Decimal)r.Next(int.Parse(tb_min.Text) * 100, int.Parse(tb_max.Text) * 100)) / 100;
                         break;
                     case false:
                         array[i] = r.Next(int.Parse(tb_min.Text), int.Parse(tb_max.Text));

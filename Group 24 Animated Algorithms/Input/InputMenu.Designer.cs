@@ -139,6 +139,7 @@
             this.cb_decimals.TabIndex = 14;
             this.cb_decimals.Text = "Allow decimals";
             this.cb_decimals.UseVisualStyleBackColor = true;
+            this.cb_decimals.CheckedChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
             // 
             // lb_sortby
             // 
@@ -192,6 +193,7 @@
             this.tb_min.Size = new System.Drawing.Size(44, 20);
             this.tb_min.TabIndex = 8;
             this.tb_min.Text = "1";
+            this.tb_min.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
             // 
             // tb_max
             // 
@@ -200,6 +202,7 @@
             this.tb_max.Size = new System.Drawing.Size(44, 20);
             this.tb_max.TabIndex = 7;
             this.tb_max.Text = "100";
+            this.tb_max.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
             // 
             // tb_arraysize
             // 
@@ -208,6 +211,7 @@
             this.tb_arraysize.Size = new System.Drawing.Size(44, 20);
             this.tb_arraysize.TabIndex = 6;
             this.tb_arraysize.Text = "100";
+            this.tb_arraysize.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
             // 
             // rb_descending
             // 
@@ -241,14 +245,14 @@
             this.bt_generatearray.UseVisualStyleBackColor = true;
             this.bt_generatearray.Click += new System.EventHandler(this.Bt_GenerateArray_Click);
             // 
-            // Form1
+            // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 505);
             this.Controls.Add(this.grp_options);
             this.Controls.Add(this.grp_algorithms);
-            this.Name = "Form1";
+            this.Name = "Input";
             this.Text = "Group24 Animated Algorithms";
             this.grp_algorithms.ResumeLayout(false);
             this.grp_algorithms.PerformLayout();
