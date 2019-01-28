@@ -33,7 +33,6 @@ namespace Group_24_Animated_Algorithms
         SolidBrush SelectBrush = new SolidBrush(Color.Red);
         SolidBrush Backbrush;
 
-
         //Editable properties
 
         //Variables hold new scale
@@ -41,11 +40,18 @@ namespace Group_24_Animated_Algorithms
         const int newMax = 400;
         //Variable holds min bar width
         const int minWidth = 5;
+        //how long you want to hover over a highlighted bar 
+        const int miliseconds = 50;
 
         //Constructor
         public OutputScreen(Decimal[] Input)
         {
             InitializeComponent(); //Build in, for GUI
+            this.SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
 
             //Set the width of the bars so that they sill the screen
             barWidth = Input.Count() / this.Width;
@@ -58,18 +64,17 @@ namespace Group_24_Animated_Algorithms
             if (barWidth < minWidth)
             {
                 barWidth = minWidth;
-                this.Width = Input.Count()*minWidth + (barWidth*2);
+                this.Width = Input.Count() * minWidth + (barWidth * 2);
             }
 
             //Create bar objects from array and all them to a list
             bars = ArrayToBarList(Input);
 
-            Backbrush =  new SolidBrush(this.BackColor);
+            Backbrush = new SolidBrush(this.BackColor);
             Graphics = CreateGraphics();
             Graphics.BeginContainer();
             Graphics.ScaleTransform(1.0F, -1.0F);
             Graphics.TranslateTransform(0.0F, -(float)Height);
-            DrawBars();
         }
 
         //Destructor 
@@ -122,7 +127,6 @@ namespace Group_24_Animated_Algorithms
 
         public void DrawBars()
         {
-            Clear();
             foreach (var item in bars)
             {
                 DrawBar(item);
@@ -132,22 +136,35 @@ namespace Group_24_Animated_Algorithms
         private void Clear()
         {
             Graphics.Clear(this.BackColor);
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         private void DrawBar(Bar bar)
         {
             Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         private void ClearBar(int pos)
         {
             Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 0, minWidth, Height));
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         private void CurrentBar(Bar bar)
         {
-            ClearBar(bar.Pos);
             Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
+        }
+
+        public void HighlightBar(int pos)
+        {
+            var bar = bars.Single(x => x.Pos == pos);
+            Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
+            System.Threading.Thread.Sleep(miliseconds);
+            Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         public void SwapBars(int CurrentPos, Decimal Val, int NewPos, Decimal NewVal)
@@ -156,22 +173,26 @@ namespace Group_24_Animated_Algorithms
             var bar1 = bars.Single(x => x.Pos == CurrentPos && x.Value == Val);
             var bar2 = bars.Single(x => x.Pos == NewPos && x.Value == NewVal);
 
+            //if they're the same dont try swap
+            if (bar1.Pos == bar2.Pos && bar1.Value == bar2.Value)
+            {
+                return;
+            }
+
             CurrentBar(bar1);
             CurrentBar(bar2);
 
-            bars.Single(x => x.Pos == CurrentPos && x.Value == Val).Pos = NewPos;
+            //move 1st bar to tmp pos
+            bars.Single(x => x.Pos == CurrentPos && x.Value == Val).Pos = -1;
+            //move over 2nd bar
             bars.Single(x => x.Pos == NewPos && x.Value == NewVal).Pos = CurrentPos;
+            //move over 1st bar
+            bars.Single(x => x.Pos == -1 && x.Value == Val).Pos = NewPos;
 
             ClearBar(bar1.Pos);
             ClearBar(bar2.Pos);
             DrawBar(bar1);
             DrawBar(bar2);
-
-        }
-
-        private void Output_Load(object sender, EventArgs e)
-        {
-
         }
     }
 

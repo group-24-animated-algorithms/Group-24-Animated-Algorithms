@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Group_24_Animated_Algorithms.Sorting_Algorithms.Merge
+namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
-    class Merge
+    class Quick
     {
         internal class Ascending
         {
-            public Ascending(Decimal[] input)
+            public Ascending(Decimal[] input, ref OutputScreen OutputWin)
             {
 
             }
         }
 
+
         internal class Descending
         {
-            public Descending(Decimal[] input)
+            public Descending(Decimal[] input, ref OutputScreen OutputWin)
             {
 
             }

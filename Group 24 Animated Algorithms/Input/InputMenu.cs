@@ -1,4 +1,5 @@
-﻿using Group_24_Animated_Algorithms.Sorting_Algorithms.Bubble;
+﻿using Group_24_Animated_Algorithms.Sorting_Algorithms;
+using Group_24_Animated_Algorithms.Searching_Algorithms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,26 +16,13 @@ namespace Group_24_Animated_Algorithms
     {
         private Decimal[] array;
         private Random r = new Random();
+        int waitbeforeclose = 2000;
 
         public Input()
         {
             InitializeComponent();
             rb_ascending.Checked = true;
             GenerateArray();
-        }
-
-
-        private void Bt_Bubble_Click(object sender, EventArgs e)
-        {
-            if (rb_ascending.Checked)
-            {
-                var BubbleObj = new Bubble.Ascending(array);
-            }
-            else
-            {
-                var BubbleObj = new Bubble.Descending(array);
-            }
-            
         }
 
         private void Bt_GenerateArray_Click(object sender, EventArgs e)
@@ -64,6 +52,74 @@ namespace Group_24_Animated_Algorithms
             tb_array.Text = string.Join(", ", array);
             tb_realmax.Text = array.Max().ToString();
             tb_realmin.Text = array.Min().ToString();
+            tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+        }
+
+        private void Bt_Bubble_ClickAsync(object sender, EventArgs e)
+        {
+            //Create new output window
+            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
+            OutputWin.Show();
+            OutputWin.DrawBars();
+
+            if (rb_ascending.Checked)
+            {
+                var BubbleObj = new Bubble.Ascending(array, ref OutputWin);
+            }
+            else
+            {
+                var BubbleObj = new Bubble.Descending(array, ref OutputWin);
+            }
+            System.Threading.Thread.Sleep(waitbeforeclose);
+            OutputWin.Close();
+        }
+
+        private void Bt_Heap_ClickAsync(object sender, EventArgs e)
+        {
+            //Create new output window
+            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
+            OutputWin.Show();
+            OutputWin.DrawBars();
+
+            if (rb_ascending.Checked)
+            {
+                var HeapObj = new Heap.Ascending(array, ref OutputWin);
+            }
+            else
+            {
+                var HeapObj = new Heap.Descending(array, ref OutputWin);
+            }
+            System.Threading.Thread.Sleep(waitbeforeclose);
+            OutputWin.Close();
+        }
+
+        private void Bt_Interpolation_ClickAsync(object sender, EventArgs e)
+        {
+            Array.Sort(array);
+            tb_array.Text = string.Join(", ", array);
+
+            //Create new output window
+            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
+            OutputWin.Show();
+            OutputWin.DrawBars();
+
+            if (this.tb_searchfor.Text == "")
+            {
+                this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+            }
+            try
+            {
+                decimal.Parse(this.tb_searchfor.Text);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            int c = 0;
+            var search = new Interpolation();
+            this.tb_searchresult.Text = search.ISearch(array, 0, array.Count()-1, decimal.Parse(this.tb_searchfor.Text), ref c, ref OutputWin);
+            System.Threading.Thread.Sleep(waitbeforeclose);
+            OutputWin.Close();
         }
     }
 }

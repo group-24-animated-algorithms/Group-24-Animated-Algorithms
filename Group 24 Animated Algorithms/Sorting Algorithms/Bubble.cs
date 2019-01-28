@@ -5,18 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Group_24_Animated_Algorithms.Sorting_Algorithms.Bubble
+namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
     class Bubble
     {
         internal class Ascending
         {
-            public Ascending(Decimal[] input)
+            public Ascending(Decimal[] input, ref OutputScreen OutputWin)
             {
-                //Create new output window
-                OutputScreen OutputWin = new OutputScreen(input) { Text = "Output Bubble Sort Ascending" };
-                OutputWin.Show();
-
                 //creates counter, length and placeholder
                 int count = 0;
                 decimal tmp;
@@ -49,12 +45,8 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms.Bubble
 
         internal class Descending
         {
-            public Descending(Decimal[] input)
-            {
-                //Create new output window
-                OutputScreen OutputWin = new OutputScreen(input) { Text = "Output Bubble Sort Ascending" };
-                OutputWin.Show();
-                
+            public Descending(Decimal[] input, ref OutputScreen OutputWin)
+            {                
                 //creates counter, length and placeholder
                 int count = 0;
                 decimal tmp;

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.lb_operations = new System.Windows.Forms.Label();
+            this.lb_searchresult = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_operations
@@ -41,16 +42,28 @@
             this.lb_operations.TabIndex = 0;
             this.lb_operations.Text = "Number of operations: ";
             // 
+            // lb_searchresult
+            // 
+            this.lb_searchresult.AutoSize = true;
+            this.lb_searchresult.Location = new System.Drawing.Point(13, 30);
+            this.lb_searchresult.Name = "lb_searchresult";
+            this.lb_searchresult.Size = new System.Drawing.Size(0, 13);
+            this.lb_searchresult.TabIndex = 1;
+            // 
             // OutputScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ControlBox = false;
+            this.Controls.Add(this.lb_searchresult);
             this.Controls.Add(this.lb_operations);
             this.Name = "OutputScreen";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Output";
-            this.Load += new System.EventHandler(this.Output_Load);
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -59,5 +72,6 @@
         #endregion
 
         private System.Windows.Forms.Label lb_operations;
+        private System.Windows.Forms.Label lb_searchresult;
     }
 }
