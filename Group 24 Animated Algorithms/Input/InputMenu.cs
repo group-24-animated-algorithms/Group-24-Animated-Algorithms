@@ -121,5 +121,15 @@ namespace Group_24_Animated_Algorithms
             System.Threading.Thread.Sleep(waitbeforeclose);
             OutputWin.Close();
         }
+
+        private void Bt_quick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Bt_merge_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

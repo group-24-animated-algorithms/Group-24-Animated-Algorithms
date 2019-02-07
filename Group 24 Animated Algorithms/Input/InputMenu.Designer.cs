@@ -38,6 +38,7 @@
             this.tb_array = new System.Windows.Forms.TextBox();
             this.grp_options = new System.Windows.Forms.GroupBox();
             this.grp_searchopt = new System.Windows.Forms.GroupBox();
+            this.tb_searchresult = new System.Windows.Forms.TextBox();
             this.lb_searchfor = new System.Windows.Forms.Label();
             this.tb_searchfor = new System.Windows.Forms.TextBox();
             this.grp_sortopt = new System.Windows.Forms.GroupBox();
@@ -59,7 +60,8 @@
             this.grp_search = new System.Windows.Forms.GroupBox();
             this.bt_interpolation = new System.Windows.Forms.Button();
             this.lb_interpolation = new System.Windows.Forms.Label();
-            this.tb_searchresult = new System.Windows.Forms.TextBox();
+            this.bt_quick = new System.Windows.Forms.Button();
+            this.bt_merge = new System.Windows.Forms.Button();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
             this.grp_searchopt.SuspendLayout();
@@ -70,6 +72,8 @@
             // 
             // grp_sort
             // 
+            this.grp_sort.Controls.Add(this.bt_merge);
+            this.grp_sort.Controls.Add(this.bt_quick);
             this.grp_sort.Controls.Add(this.lb_merge);
             this.grp_sort.Controls.Add(this.lb_heap);
             this.grp_sort.Controls.Add(this.bt_heap);
@@ -171,6 +175,14 @@
             this.grp_searchopt.TabIndex = 20;
             this.grp_searchopt.TabStop = false;
             this.grp_searchopt.Text = "Search";
+            // 
+            // tb_searchresult
+            // 
+            this.tb_searchresult.Location = new System.Drawing.Point(6, 50);
+            this.tb_searchresult.Name = "tb_searchresult";
+            this.tb_searchresult.ReadOnly = true;
+            this.tb_searchresult.Size = new System.Drawing.Size(364, 20);
+            this.tb_searchresult.TabIndex = 2;
             // 
             // lb_searchfor
             // 
@@ -382,13 +394,25 @@
             this.lb_interpolation.TabIndex = 0;
             this.lb_interpolation.Text = "Interpolation";
             // 
-            // tb_searchresult
+            // bt_quick
             // 
-            this.tb_searchresult.Location = new System.Drawing.Point(6, 50);
-            this.tb_searchresult.Name = "tb_searchresult";
-            this.tb_searchresult.ReadOnly = true;
-            this.tb_searchresult.Size = new System.Drawing.Size(364, 20);
-            this.tb_searchresult.TabIndex = 2;
+            this.bt_quick.Location = new System.Drawing.Point(161, 48);
+            this.bt_quick.Name = "bt_quick";
+            this.bt_quick.Size = new System.Drawing.Size(75, 23);
+            this.bt_quick.TabIndex = 8;
+            this.bt_quick.Text = "Go";
+            this.bt_quick.UseVisualStyleBackColor = true;
+            this.bt_quick.Click += new System.EventHandler(this.Bt_quick_Click);
+            // 
+            // bt_merge
+            // 
+            this.bt_merge.Location = new System.Drawing.Point(161, 106);
+            this.bt_merge.Name = "bt_merge";
+            this.bt_merge.Size = new System.Drawing.Size(75, 23);
+            this.bt_merge.TabIndex = 9;
+            this.bt_merge.Text = "Go";
+            this.bt_merge.UseVisualStyleBackColor = true;
+            this.bt_merge.Click += new System.EventHandler(this.Bt_merge_Click);
             // 
             // Input
             // 
@@ -449,6 +473,8 @@
         private System.Windows.Forms.Label lb_interpolation;
         private System.Windows.Forms.Button bt_interpolation;
         private System.Windows.Forms.TextBox tb_searchresult;
+        private System.Windows.Forms.Button bt_merge;
+        private System.Windows.Forms.Button bt_quick;
     }
 }
 
