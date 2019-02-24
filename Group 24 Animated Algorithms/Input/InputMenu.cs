@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Group_24_Animated_Algorithms
 {
@@ -16,6 +17,7 @@ namespace Group_24_Animated_Algorithms
     {
         private Decimal[] array;
         private Random r = new Random();
+        SoundPlayer splayer = new SoundPlayer("button21.wav");
         int waitbeforeclose = 2000;
 
         public Input()
@@ -55,7 +57,7 @@ namespace Group_24_Animated_Algorithms
             tb_searchfor.Text = array[r.Next(array.Count())].ToString();
         }
 
-        private void Bt_Bubble_ClickAsync(object sender, EventArgs e)
+        private void Bt_Bubble_Click(object sender, EventArgs e)
         {
             //Create new output window
             OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
@@ -64,17 +66,19 @@ namespace Group_24_Animated_Algorithms
 
             if (rb_ascending.Checked)
             {
+                splayer.Play();
                 var BubbleObj = new Bubble.Ascending(array, ref OutputWin);
             }
             else
             {
+                splayer.Play();
                 var BubbleObj = new Bubble.Descending(array, ref OutputWin);
             }
             System.Threading.Thread.Sleep(waitbeforeclose);
             OutputWin.Close();
         }
 
-        private void Bt_Heap_ClickAsync(object sender, EventArgs e)
+        private void Bt_Heap_Click(object sender, EventArgs e)
         {
             //Create new output window
             OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
@@ -83,10 +87,12 @@ namespace Group_24_Animated_Algorithms
 
             if (rb_ascending.Checked)
             {
+                splayer.Play();
                 var HeapObj = new Heap.Ascending(array, ref OutputWin);
             }
             else
             {
+                splayer.Play();
                 var HeapObj = new Heap.Descending(array, ref OutputWin);
             }
             System.Threading.Thread.Sleep(waitbeforeclose);
@@ -95,6 +101,7 @@ namespace Group_24_Animated_Algorithms
 
         private void Bt_Interpolation_ClickAsync(object sender, EventArgs e)
         {
+            splayer.Play();
             Array.Sort(array);
             tb_array.Text = string.Join(", ", array);
 
@@ -124,12 +131,28 @@ namespace Group_24_Animated_Algorithms
 
         private void Bt_quick_Click(object sender, EventArgs e)
         {
+            splayer.Play();
 
         }
 
         private void Bt_merge_Click(object sender, EventArgs e)
         {
+            splayer.Play();
 
+        }
+
+        private void bt_insertion_go_Click(object sender, EventArgs e)
+        {
+            if (rb_ascending.Checked)
+            {
+                splayer.Play();
+                var InsertionObj = new Insertion.Ascending(array);
+            }
+            else
+            {
+                splayer.Play();
+                var InsertionObj = new Insertion.Descending(array);
+            }
         }
     }
 }

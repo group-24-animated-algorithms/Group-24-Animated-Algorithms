@@ -66,6 +66,7 @@
     <Compile Include="Searching Algorithms\SearchChecking.cs" />
     <Compile Include="Sorting Algorithms\Bubble.cs" />
     <Compile Include="Sorting Algorithms\Heap.cs" />
+    <Compile Include="Sorting Algorithms\Insertion.cs" />
     <Compile Include="Sorting Algorithms\Merge.cs" />
     <Compile Include="Sorting Algorithms\Quick.cs" />
     <EmbeddedResource Include="Input\InputMenu.resx">
@@ -96,6 +97,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="button21.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
