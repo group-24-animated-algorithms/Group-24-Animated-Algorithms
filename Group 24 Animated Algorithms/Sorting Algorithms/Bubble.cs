@@ -11,6 +11,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
     class Bubble
     {
         private OutputScreen Output;
+
         public Bubble(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
@@ -21,9 +22,9 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             Output.UpdateInfo(info, code);
         }
 
-        public async void Ascending(Decimal[] input)
+        public void Ascending(Decimal[] input)
         {
-            Thread.CurrentThread.IsBackground = true;
+            //Thread.CurrentThread.IsBackground = true;
 
             //creates counter, length and placeholder
             int count = 0;
@@ -61,7 +62,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                 }
             }
         }
-        public async void Descending(Decimal[] input)
+        public void Descending(Decimal[] input)
         {
             //creates counter, length and placeholder
             int count = 0;

@@ -21,7 +21,6 @@ namespace Group_24_Animated_Algorithms
         private Decimal[] array;
         private Random r = new Random();
         SoundPlayer splayer = new SoundPlayer("button21.wav");
-        int waitbeforeclose = 2000;
         Action WorkerThread;
         Action FormThread;
         OutputScreen Form;
@@ -63,27 +62,30 @@ namespace Group_24_Animated_Algorithms
             tb_searchfor.Text = array[r.Next(array.Count())].ToString();
         }
 
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Enabled = true;
+        }
+
         private void BT_Bubble_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array)
+                    Form = new OutputScreen(array, Sorting.Bubble, true)
                     {
                         Text = "Output Bubble Sort Ascending"
                     };
-                    Form.Show();
-                    Form.DrawBars();
+                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
 
                 WorkerThread = delegate
                 {
                     splayer.Play();
-                    var bubble = new Bubble(ref Form);
-                    bubble.Ascending(array);
                 };
                 BeginInvoke(WorkerThread);
             }
@@ -91,20 +93,17 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array)
+                    Form = new OutputScreen(array, Sorting.Bubble, false)
                     {
                         Text = "Output Bubble Sort Descending"
                     };
-                    Form.Show();
-                    Form.DrawBars();
+                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
 
                 WorkerThread = delegate
                 {
                     splayer.Play();
-                    var bubble = new Bubble(ref Form);
-                    bubble.Descending(array);
                 };
                 BeginInvoke(WorkerThread);
             }
@@ -112,79 +111,220 @@ namespace Group_24_Animated_Algorithms
 
         private void BT_Heap_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             //Create new output window
-            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Heap Sort Ascending" };
-            OutputWin.Show();
-            OutputWin.DrawBars();
-
             if (rb_ascending.Checked)
             {
-                splayer.Play();
-                var HeapObj = new Heap.Ascending(array, ref OutputWin);
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Heap, true)
+                    {
+                        Text = "Output Heap Sort Ascending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
             }
             else
             {
-                splayer.Play();
-                var HeapObj = new Heap.Descending(array, ref OutputWin);
-            }
-            System.Threading.Thread.Sleep(waitbeforeclose);
-            OutputWin.Close();
-        }
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Heap, false)
+                    {
+                        Text = "Output Heap Sort Descending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
 
-        private void BT_Interpolation_ClickAsync(object sender, EventArgs e)
-        {
-            splayer.Play();
-            Array.Sort(array);
-            tb_array.Text = string.Join(", ", array);
-
-            //Create new output window
-            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Interpolation Search" };
-            OutputWin.Show();
-            OutputWin.DrawBars();
-
-            if (this.tb_searchfor.Text == "")
-            {
-                this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
             }
-            try
-            {
-                decimal.Parse(this.tb_searchfor.Text);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            int c = 0;
-            var search = new Interpolation();
-            this.tb_searchresult.Text = search.ISearch(array, 0, array.Count() - 1, decimal.Parse(this.tb_searchfor.Text), ref c, ref OutputWin);
-            System.Threading.Thread.Sleep(waitbeforeclose);
-            OutputWin.Close();
         }
 
         private void BT_Quick_Click(object sender, EventArgs e)
         {
-            splayer.Play();
+            this.Enabled = false;
+            //Create new output window
+            if (rb_ascending.Checked)
+            {
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Quick, true)
+                    {
+                        Text = "Output Quick Sort Ascending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
 
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
+            }
+            else
+            {
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Quick, false)
+                    {
+                        Text = "Output Quick Sort Descending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
+            }
         }
 
         private void BT_Merge_Click(object sender, EventArgs e)
         {
-            splayer.Play();
+            this.Enabled = false;
+            //Create new output window
+            if (rb_ascending.Checked)
+            {
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Merge, true)
+                    {
+                        Text = "Output Merge Sort Ascending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
 
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
+            }
+            else
+            {
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Merge, false)
+                    {
+                        Text = "Output Merge Sort Descending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
+            }
         }
 
         private void BT_Insertion_Go_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
+            //Create new output window
             if (rb_ascending.Checked)
             {
-                splayer.Play();
-                var InsertionObj = new Insertion.Ascending(array);
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Insertion, true)
+                    {
+                        Text = "Output Insertion Sort Ascending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
             }
             else
             {
-                splayer.Play();
-                var InsertionObj = new Insertion.Descending(array);
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Insertion, false)
+                    {
+                        Text = "Output Insertion Sort Descending"
+                    };
+                    Form.FormClosed += Form_FormClosed;
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
             }
         }
+
+        private void Bt_interpolation_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            FormThread = delegate
+            {
+                Array.Sort(array);
+
+                tb_array.Text = string.Join(", ", array);
+
+                if (this.tb_searchfor.Text == "")
+                {
+                    this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                }
+
+                try
+                {
+                    decimal.Parse(this.tb_searchfor.Text);
+                }
+                catch (Exception)
+                {
+                    return;
+                }         
+                Form = new OutputScreen(array, Sorting.Insertion, true)
+                {
+                    Text = "Output Interpolation Search"
+                };
+                Form.FormClosed += Form_FormClosed;
+            };
+            BeginInvoke(FormThread);
+
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+        }
+    }
+
+    public enum Sorting
+    {
+        Bubble = 1,
+        Quick = 2,
+        Heap = 3,
+        Merge = 4,
+        Insertion = 5,
+    }
+
+    public enum Searching
+    {
+        Interpolation = 1
     }
 }

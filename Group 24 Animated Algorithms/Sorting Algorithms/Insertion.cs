@@ -9,51 +9,55 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
     class Insertion
     {
-        internal class Ascending
+        private OutputScreen Output;
+
+        public Insertion(ref OutputScreen OutputWin)
         {
-            public Ascending(Decimal[] input)
-            {
-                OutputScreen OutputWin = new OutputScreen(input) { Text = "Output Insertion Sort Ascending" };
-                OutputWin.Show();
-                int its = 0;
-                int Sorted = 1;
-                int index;
-                while (Sorted < input.Length)
-                {
-                    its++;
-
-                    decimal temp = input[Sorted];
-
-                    for (index = Sorted; index > 0; index--)
-                    {
-                        its++;
-                        if (temp < input[index - 1])
-                        {
-                            input[index] = input[index - 1];
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    OutputWin.SwapBars(index, input[index], index + 1, input[index - 1]);
-                    OutputWin.UpdateOperations(its);
-                    input[index] = temp;
-                    Sorted++;
-
-                }
-
-
-
-            }
+            Output = OutputWin;
         }
 
-        internal class Descending
+        private void Update(string info, string code)
         {
-            public Descending(Decimal[] input)
+            Output.UpdateInfo(info, code);
+        }
+
+        public void Ascending(Decimal[] input)
+        {
+            int its = 0;
+            int Sorted = 1;
+            int index;
+            while (Sorted < input.Length)
             {
+                its++;
+
+                decimal temp = input[Sorted];
+
+                for (index = Sorted; index > 0; index--)
+                {
+                    its++;
+                    if (temp < input[index - 1])
+                    {
+                        input[index] = input[index - 1];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                Output.SwapBars(index, input[index], index + 1, input[index - 1]);
+                Output.UpdateOperations(its);
+                input[index] = temp;
+                Sorted++;
 
             }
+
+
+
+        }
+
+        public void Descending(Decimal[] input)
+        {
+
         }
 
     }

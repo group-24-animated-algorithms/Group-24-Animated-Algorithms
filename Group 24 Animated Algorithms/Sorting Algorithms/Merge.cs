@@ -8,20 +8,25 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
     class Merge
     {
-        internal class Ascending
-        {
-            public Ascending(Decimal[] input, ref OutputScreen OutputWin)
-            {
+        private OutputScreen Output;
 
-            }
+        public Merge(ref OutputScreen OutputWin)
+        {
+            Output = OutputWin;
         }
 
-        internal class Descending
+        private void Update(string info, string code)
         {
-            public Descending(Decimal[] input, ref OutputScreen OutputWin)
-            {
+            Output.UpdateInfo(info, code);
+        }
 
-            }
+        public void Ascending(Decimal[] input)
+        {
+
+        }
+        public void Descending(Decimal[] input)
+        {
+
         }
     }
 }

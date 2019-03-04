@@ -8,166 +8,172 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
     class Heap
     {
-        internal class Ascending
+        private OutputScreen Output;
+
+        public Heap(ref OutputScreen OutputWin)
         {
-            public Ascending(decimal[] input, ref OutputScreen OutputWin)
-            {
-                //creates counter
-                int count = 0;
+            Output = OutputWin;
+        }
 
-                //call initial sort
-                Sort(ref input, ref count, ref OutputWin);
+        private void Update(string info, string code)
+        {
+            Output.UpdateInfo(info, code);
+        }
+
+        public void Ascending(decimal[] input)
+        {
+            //creates counter
+            int count = 0;
+
+            //call initial sort
+            AscendingSort(ref input, ref count);
+        }
+
+        private void AscendingSort(ref decimal[] input, ref int count)
+        {
+            //get size
+            int heapSize = input.Length;
+
+            //backwards loop through array
+            for (int i = (heapSize - 1) / 2; i >= 0; i--)
+            {
+                //heapify
+                AscendingHeap(ref input, heapSize, i, ref count);
             }
 
-            private void Sort(ref decimal[] input, ref int count, ref OutputScreen OutputWin)
+            for (int i = input.Length - 1; i > 0; i--)
             {
-                //get size
-                int heapSize = input.Length;
+                //swap
+                Output.SwapBars(i, input[i], 0, input[0]);
+                Output.UpdateOperations(count);
 
-                //backwards loop through array
-                for (int i = (heapSize - 1) / 2; i >= 0; i--)
-                {
-                    //heapify
-                    Heap(ref input, heapSize, i, ref count, ref OutputWin);
-                }
+                decimal temp = input[i];
+                input[i] = input[0];
+                input[0] = temp;
 
-                for (int i = input.Length - 1; i > 0; i--)
-                {
-                    //swap
-                    OutputWin.SwapBars(i, input[i], 0, input[0]);
-                    OutputWin.UpdateOperations(count);
+                //reduce size
+                heapSize--;
 
-                    decimal temp = input[i];
-                    input[i] = input[0];
-                    input[0] = temp;
-
-                    //reduce size
-                    heapSize--;
-
-                    //heapify
-                    Heap(ref input, heapSize, 0, ref count, ref OutputWin);
-                }
-            }
-
-            private void Heap(ref decimal[] input, int size, int current, ref int count, ref OutputScreen OutputWin)
-            {
-                //get variables
-                int left = (current + 1) * 2 - 1;
-                int right = (current + 1) * 2;
-                int max = 0;
-
-                //add counter
-                count++;
-
-                //compare
-                if (left < size && input[left] > input[current])
-                {
-                    max = left;
-                }
-                else
-                {
-                    max = current;
-                }
-
-                if (right < size && input[right] > input[max])
-                {
-                    max = right;
-                }
-
-                if (max != current)
-                {
-                    //swap
-                    OutputWin.SwapBars(current, input[current], max, input[max]);
-                    OutputWin.UpdateOperations(count);
-
-                    decimal temp = input[current];
-                    input[current] = input[max];
-                    input[max] = temp;
-
-                    //heapify
-                    Heap(ref input, size, max, ref count, ref OutputWin);
-                }
+                //heapify
+                AscendingHeap(ref input, heapSize, 0, ref count);
             }
         }
-        internal class Descending
+
+        private void AscendingHeap(ref decimal[] input, int size, int current, ref int count)
         {
-            public Descending(decimal[] input, ref OutputScreen OutputWin)
-            {
-                //creates counter
-                int count = 0;
+            //get variables
+            int left = (current + 1) * 2 - 1;
+            int right = (current + 1) * 2;
+            int max = 0;
 
-                //call initial sort
-                Sort(ref input, ref count, ref OutputWin);
+            //add counter
+            count++;
+
+            //compare
+            if (left < size && input[left] > input[current])
+            {
+                max = left;
+            }
+            else
+            {
+                max = current;
             }
 
-            private void Sort(ref decimal[] input, ref int count, ref OutputScreen OutputWin)
+            if (right < size && input[right] > input[max])
             {
-                //get size
-                int heapSize = input.Length;
-
-                //backwards loop through array
-                for (int i = (heapSize - 1) / 2; i >= 0; i--)
-                {
-                    //heapify
-                    Heap(ref input, heapSize, i, ref count, ref OutputWin);
-                }
-
-                for (int i = input.Length - 1; i > 0; i--)
-                {
-                    //swap
-                    OutputWin.SwapBars(i, input[i], 0, input[0]);
-                    OutputWin.UpdateOperations(count);
-
-                    decimal temp = input[i];
-                    input[i] = input[0];
-                    input[0] = temp;
-
-                    //reduce size
-                    heapSize--;
-
-                    //heapify
-                    Heap(ref input, heapSize, 0, ref count, ref OutputWin);
-                }
+                max = right;
             }
 
-            private void Heap(ref decimal[] input, int size, int current, ref int count, ref OutputScreen OutputWin)
+            if (max != current)
             {
-                //get variables
-                int left = (current + 1) * 2 - 1;
-                int right = (current + 1) * 2;
-                int max = 0;
+                //swap
+                Output.SwapBars(current, input[current], max, input[max]);
+                Output.UpdateOperations(count);
 
-                //add counter
-                count++;
+                decimal temp = input[current];
+                input[current] = input[max];
+                input[max] = temp;
 
-                //compare
-                if (left < size && input[left] < input[current])
-                {
-                    max = left;
-                }
-                else
-                {
-                    max = current;
-                }
+                //heapify
+                AscendingHeap(ref input, size, max, ref count);
+            }
+        }
+        public void Descending(decimal[] input)
+        {
+            //creates counter
+            int count = 0;
 
-                if (right < size && input[right] < input[max])
-                {
-                    max = right;
-                }
+            //call initial sort
+            DescendingSort(ref input, ref count);
+        }
 
-                if (max != current)
-                {
-                    //swap
-                    OutputWin.SwapBars(current, input[current], max, input[max]);
-                    OutputWin.UpdateOperations(count);
+        private void DescendingSort(ref decimal[] input, ref int count)
+        {
+            //get size
+            int heapSize = input.Length;
 
-                    decimal temp = input[current];
-                    input[current] = input[max];
-                    input[max] = temp;
+            //backwards loop through array
+            for (int i = (heapSize - 1) / 2; i >= 0; i--)
+            {
+                //heapify
+                DescendingHeap(ref input, heapSize, i, ref count);
+            }
 
-                    //heapify
-                    Heap(ref input, size, max, ref count, ref OutputWin);
-                }
+            for (int i = input.Length - 1; i > 0; i--)
+            {
+                //swap
+                Output.SwapBars(i, input[i], 0, input[0]);
+                Output.UpdateOperations(count);
+
+                decimal temp = input[i];
+                input[i] = input[0];
+                input[0] = temp;
+
+                //reduce size
+                heapSize--;
+
+                //heapify
+                DescendingHeap(ref input, heapSize, 0, ref count);
+            }
+        }
+
+        private void DescendingHeap(ref decimal[] input, int size, int current, ref int count)
+        {
+            //get variables
+            int left = (current + 1) * 2 - 1;
+            int right = (current + 1) * 2;
+            int max = 0;
+
+            //add counter
+            count++;
+
+            //compare
+            if (left < size && input[left] < input[current])
+            {
+                max = left;
+            }
+            else
+            {
+                max = current;
+            }
+
+            if (right < size && input[right] < input[max])
+            {
+                max = right;
+            }
+
+            if (max != current)
+            {
+                //swap
+                Output.SwapBars(current, input[current], max, input[max]);
+                Output.UpdateOperations(count);
+
+                decimal temp = input[current];
+                input[current] = input[max];
+                input[max] = temp;
+
+                //heapify
+                DescendingHeap(ref input, size, max, ref count);
             }
         }
     }

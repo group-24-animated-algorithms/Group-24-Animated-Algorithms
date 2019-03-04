@@ -8,16 +8,29 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
 {
     class Interpolation
     {
-        public string ISearch(decimal[] input, int min, int max, decimal key, ref int count, ref OutputScreen OutputWin)
+        private OutputScreen Output;
+
+        public Interpolation(ref OutputScreen OutputWin)
+        {
+            Output = OutputWin;
+        }
+
+        private void Update(string info, string code)
+        {
+            Output.UpdateInfo(info, code);
+        }
+
+        public string ISearch(decimal[] input, int min, int max, decimal key)
         {
             //midpoint container
             int mid;
+            int count = 0;
 
             while (min <= max)
             {
                 //add counter
                 count++;
-                OutputWin.UpdateOperations(count);
+                Output.UpdateOperations(count);
 
                 //get midpoint
                 mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
@@ -35,7 +48,7 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
                 }
 
                 //highlight
-                OutputWin.HighlightBar(mid);
+                Output.HighlightBar(mid);
 
                 //if found
                 if (key == input[mid])

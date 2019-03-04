@@ -617,7 +617,7 @@
             this.bt_interpolation.TabIndex = 8;
             this.bt_interpolation.Text = "Go";
             this.bt_interpolation.UseVisualStyleBackColor = true;
-            this.bt_interpolation.Click += new System.EventHandler(this.BT_Interpolation_ClickAsync);
+            this.bt_interpolation.Click += new System.EventHandler(this.Bt_interpolation_Click);
             // 
             // lb_interpolation
             // 
