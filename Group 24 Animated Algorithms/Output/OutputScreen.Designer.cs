@@ -28,38 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lb_operations = new System.Windows.Forms.Label();
             this.grp_algorithminfo = new System.Windows.Forms.GroupBox();
+            this.TB_Info = new System.Windows.Forms.TextBox();
+            this.TB_How = new System.Windows.Forms.TextBox();
+            this.grp_operations = new System.Windows.Forms.GroupBox();
+            this.tb_operations = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grp_showingcode = new System.Windows.Forms.GroupBox();
+            this.grp_algorithminfo.SuspendLayout();
+            this.grp_operations.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grp_showingcode.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lb_operations
-            // 
-            this.lb_operations.AutoSize = true;
-            this.lb_operations.BackColor = System.Drawing.SystemColors.Control;
-            this.lb_operations.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_operations.Location = new System.Drawing.Point(13, 13);
-            this.lb_operations.Name = "lb_operations";
-            this.lb_operations.Size = new System.Drawing.Size(136, 13);
-            this.lb_operations.TabIndex = 0;
-            this.lb_operations.Text = "Number of operations: ";
             // 
             // grp_algorithminfo
             // 
+            this.grp_algorithminfo.Controls.Add(this.TB_Info);
             this.grp_algorithminfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_algorithminfo.Location = new System.Drawing.Point(13, 311);
+            this.grp_algorithminfo.Location = new System.Drawing.Point(6, 87);
             this.grp_algorithminfo.Name = "grp_algorithminfo";
-            this.grp_algorithminfo.Size = new System.Drawing.Size(454, 138);
+            this.grp_algorithminfo.Size = new System.Drawing.Size(238, 190);
             this.grp_algorithminfo.TabIndex = 1;
             this.grp_algorithminfo.TabStop = false;
             this.grp_algorithminfo.Text = "Information on the algorithm chosen:";
             // 
+            // TB_Info
+            // 
+            this.TB_Info.Location = new System.Drawing.Point(6, 19);
+            this.TB_Info.Multiline = true;
+            this.TB_Info.Name = "TB_Info";
+            this.TB_Info.ReadOnly = true;
+            this.TB_Info.Size = new System.Drawing.Size(226, 165);
+            this.TB_Info.TabIndex = 0;
+            // 
+            // TB_How
+            // 
+            this.TB_How.Location = new System.Drawing.Point(7, 20);
+            this.TB_How.Multiline = true;
+            this.TB_How.Name = "TB_How";
+            this.TB_How.ReadOnly = true;
+            this.TB_How.Size = new System.Drawing.Size(225, 164);
+            this.TB_How.TabIndex = 0;
+            // 
+            // grp_operations
+            // 
+            this.grp_operations.Controls.Add(this.tb_operations);
+            this.grp_operations.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_operations.Location = new System.Drawing.Point(6, 34);
+            this.grp_operations.Name = "grp_operations";
+            this.grp_operations.Size = new System.Drawing.Size(238, 47);
+            this.grp_operations.TabIndex = 3;
+            this.grp_operations.TabStop = false;
+            this.grp_operations.Text = "Number of operations: ";
+            // 
+            // tb_operations
+            // 
+            this.tb_operations.Location = new System.Drawing.Point(6, 19);
+            this.tb_operations.Name = "tb_operations";
+            this.tb_operations.ReadOnly = true;
+            this.tb_operations.Size = new System.Drawing.Size(226, 20);
+            this.tb_operations.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.grp_operations);
+            this.groupBox1.Controls.Add(this.grp_showingcode);
+            this.groupBox1.Controls.Add(this.grp_algorithminfo);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Location = new System.Drawing.Point(734, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 479);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Info";
+            // 
             // grp_showingcode
             // 
+            this.grp_showingcode.Controls.Add(this.TB_How);
             this.grp_showingcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_showingcode.Location = new System.Drawing.Point(518, 311);
+            this.grp_showingcode.Location = new System.Drawing.Point(6, 283);
             this.grp_showingcode.Name = "grp_showingcode";
-            this.grp_showingcode.Size = new System.Drawing.Size(454, 138);
+            this.grp_showingcode.Size = new System.Drawing.Size(238, 190);
             this.grp_showingcode.TabIndex = 2;
             this.grp_showingcode.TabStop = false;
             this.grp_showingcode.Text = "How the code works:";
@@ -69,21 +129,31 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(984, 461);
-            this.Controls.Add(this.grp_showingcode);
-            this.Controls.Add(this.grp_algorithminfo);
-            this.Controls.Add(this.lb_operations);
+            this.ClientSize = new System.Drawing.Size(984, 479);
+            this.ControlBox = false;
+            this.Controls.Add(this.groupBox1);
             this.Name = "OutputScreen";
             this.Text = "Output";
+            this.grp_algorithminfo.ResumeLayout(false);
+            this.grp_algorithminfo.PerformLayout();
+            this.grp_operations.ResumeLayout(false);
+            this.grp_operations.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.grp_showingcode.ResumeLayout(false);
+            this.grp_showingcode.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lb_operations;
         private System.Windows.Forms.GroupBox grp_algorithminfo;
+        private System.Windows.Forms.TextBox TB_Info;
+        private System.Windows.Forms.TextBox TB_How;
+        private System.Windows.Forms.GroupBox grp_operations;
+        private System.Windows.Forms.TextBox tb_operations;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grp_showingcode;
     }
 }

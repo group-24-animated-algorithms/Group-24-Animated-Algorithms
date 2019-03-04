@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -38,6 +39,10 @@ namespace Group_24_Animated_Algorithms
         //Variables hold new scale
         const int newMin = 10;
         const int newMax = 400;
+
+        //Side margin
+        const int marginRight = 300;
+
         //Variable holds min bar width
         const int minWidth = 5;
         //how long you want to hover over a highlighted bar 
@@ -64,7 +69,7 @@ namespace Group_24_Animated_Algorithms
             if (barWidth < minWidth)
             {
                 barWidth = minWidth;
-                this.Width = Input.Count() * minWidth + (barWidth * 2);
+                this.Width = (Input.Count() * minWidth) + (barWidth * 2) + marginRight;
             }
 
             //Create bar objects from array and all them to a list
@@ -121,8 +126,8 @@ namespace Group_24_Animated_Algorithms
 
         public void UpdateOperations(int value)
         {
-            lb_operations.Text = $"Number of operations: {value}";
-            lb_operations.Refresh();
+            tb_operations.Text = $"Number of operations: {value}";
+            tb_operations.Refresh();
         }
 
         public void DrawBars()
@@ -193,6 +198,14 @@ namespace Group_24_Animated_Algorithms
             ClearBar(bar2.Pos);
             DrawBar(bar1);
             DrawBar(bar2);
+        }
+
+        public void UpdateInfo(string info, string code)
+        {
+            this.TB_Info.Text = info;
+            this.TB_How.Text = code;
+            TB_How.Refresh();
+            TB_Info.Refresh();
         }
     }
 

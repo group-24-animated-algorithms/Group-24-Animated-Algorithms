@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grp_sort = new System.Windows.Forms.GroupBox();
+            this.lb_insertion = new System.Windows.Forms.Label();
+            this.bt_insertion_go = new System.Windows.Forms.Button();
             this.bt_merge = new System.Windows.Forms.Button();
             this.bt_quick = new System.Windows.Forms.Button();
             this.lb_merge = new System.Windows.Forms.Label();
@@ -78,8 +80,6 @@
             this.grp_tree = new System.Windows.Forms.GroupBox();
             this.lb_TreeBalance = new System.Windows.Forms.Label();
             this.btTreeBalance_go = new System.Windows.Forms.Button();
-            this.lb_insertion = new System.Windows.Forms.Label();
-            this.bt_insertion_go = new System.Windows.Forms.Button();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
             this.grp_TreeBalancing.SuspendLayout();
@@ -110,6 +110,27 @@
             this.grp_sort.TabStop = false;
             this.grp_sort.Text = "Sorting Algorithms";
             // 
+            // lb_insertion
+            // 
+            this.lb_insertion.AutoSize = true;
+            this.lb_insertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_insertion.Location = new System.Drawing.Point(6, 140);
+            this.lb_insertion.Name = "lb_insertion";
+            this.lb_insertion.Size = new System.Drawing.Size(69, 13);
+            this.lb_insertion.TabIndex = 11;
+            this.lb_insertion.Text = "Insertion Sort";
+            // 
+            // bt_insertion_go
+            // 
+            this.bt_insertion_go.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_insertion_go.Location = new System.Drawing.Point(161, 135);
+            this.bt_insertion_go.Name = "bt_insertion_go";
+            this.bt_insertion_go.Size = new System.Drawing.Size(75, 23);
+            this.bt_insertion_go.TabIndex = 10;
+            this.bt_insertion_go.Text = "Go";
+            this.bt_insertion_go.UseVisualStyleBackColor = true;
+            this.bt_insertion_go.Click += new System.EventHandler(this.BT_Insertion_Go_Click);
+            // 
             // bt_merge
             // 
             this.bt_merge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,7 +140,7 @@
             this.bt_merge.TabIndex = 9;
             this.bt_merge.Text = "Go";
             this.bt_merge.UseVisualStyleBackColor = true;
-            this.bt_merge.Click += new System.EventHandler(this.Bt_merge_Click);
+            this.bt_merge.Click += new System.EventHandler(this.BT_Merge_Click);
             // 
             // bt_quick
             // 
@@ -130,7 +151,7 @@
             this.bt_quick.TabIndex = 8;
             this.bt_quick.Text = "Go";
             this.bt_quick.UseVisualStyleBackColor = true;
-            this.bt_quick.Click += new System.EventHandler(this.Bt_quick_Click);
+            this.bt_quick.Click += new System.EventHandler(this.BT_Quick_Click);
             // 
             // lb_merge
             // 
@@ -161,7 +182,7 @@
             this.bt_heap.TabIndex = 4;
             this.bt_heap.Text = "Go";
             this.bt_heap.UseVisualStyleBackColor = true;
-            this.bt_heap.Click += new System.EventHandler(this.Bt_Heap_Click);
+            this.bt_heap.Click += new System.EventHandler(this.BT_Heap_Click);
             // 
             // lb_quick
             // 
@@ -192,7 +213,7 @@
             this.bt_bubble.TabIndex = 0;
             this.bt_bubble.Text = "Go";
             this.bt_bubble.UseVisualStyleBackColor = true;
-            this.bt_bubble.Click += new System.EventHandler(this.Bt_Bubble_Click);
+            this.bt_bubble.Click += new System.EventHandler(this.BT_Bubble_Click);
             // 
             // tb_array
             // 
@@ -333,7 +354,7 @@
             this.txt_sizeoftree.Name = "txt_sizeoftree";
             this.txt_sizeoftree.Size = new System.Drawing.Size(44, 20);
             this.txt_sizeoftree.TabIndex = 6;
-            this.txt_sizeoftree.Text = "100";
+            this.txt_sizeoftree.Text = "50";
             // 
             // button1
             // 
@@ -473,7 +494,7 @@
             this.bt_generatearray.TabIndex = 2;
             this.bt_generatearray.Text = "Generate new array";
             this.bt_generatearray.UseVisualStyleBackColor = true;
-            this.bt_generatearray.Click += new System.EventHandler(this.Bt_GenerateArray_Click);
+            this.bt_generatearray.Click += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // tb_arraysize
             // 
@@ -482,8 +503,8 @@
             this.tb_arraysize.Name = "tb_arraysize";
             this.tb_arraysize.Size = new System.Drawing.Size(44, 20);
             this.tb_arraysize.TabIndex = 6;
-            this.tb_arraysize.Text = "100";
-            this.tb_arraysize.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
+            this.tb_arraysize.Text = "50";
+            this.tb_arraysize.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // tb_realmin
             // 
@@ -502,7 +523,7 @@
             this.tb_max.Size = new System.Drawing.Size(44, 20);
             this.tb_max.TabIndex = 7;
             this.tb_max.Text = "100";
-            this.tb_max.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
+            this.tb_max.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // tb_realmax
             // 
@@ -521,7 +542,7 @@
             this.tb_min.Size = new System.Drawing.Size(44, 20);
             this.tb_min.TabIndex = 8;
             this.tb_min.Text = "1";
-            this.tb_min.TextChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
+            this.tb_min.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // cb_decimals
             // 
@@ -533,7 +554,7 @@
             this.cb_decimals.TabIndex = 14;
             this.cb_decimals.Text = "Allow decimals";
             this.cb_decimals.UseVisualStyleBackColor = true;
-            this.cb_decimals.CheckedChanged += new System.EventHandler(this.Bt_GenerateArray_Click);
+            this.cb_decimals.CheckedChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // label1
             // 
@@ -596,7 +617,7 @@
             this.bt_interpolation.TabIndex = 8;
             this.bt_interpolation.Text = "Go";
             this.bt_interpolation.UseVisualStyleBackColor = true;
-            this.bt_interpolation.Click += new System.EventHandler(this.Bt_Interpolation_ClickAsync);
+            this.bt_interpolation.Click += new System.EventHandler(this.BT_Interpolation_ClickAsync);
             // 
             // lb_interpolation
             // 
@@ -639,27 +660,6 @@
             this.btTreeBalance_go.TabIndex = 0;
             this.btTreeBalance_go.Text = "Go";
             this.btTreeBalance_go.UseVisualStyleBackColor = true;
-            // 
-            // lb_insertion
-            // 
-            this.lb_insertion.AutoSize = true;
-            this.lb_insertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_insertion.Location = new System.Drawing.Point(6, 140);
-            this.lb_insertion.Name = "lb_insertion";
-            this.lb_insertion.Size = new System.Drawing.Size(69, 13);
-            this.lb_insertion.TabIndex = 11;
-            this.lb_insertion.Text = "Insertion Sort";
-            // 
-            // bt_insertion_go
-            // 
-            this.bt_insertion_go.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_insertion_go.Location = new System.Drawing.Point(161, 135);
-            this.bt_insertion_go.Name = "bt_insertion_go";
-            this.bt_insertion_go.Size = new System.Drawing.Size(75, 23);
-            this.bt_insertion_go.TabIndex = 10;
-            this.bt_insertion_go.Text = "Go";
-            this.bt_insertion_go.UseVisualStyleBackColor = true;
-            this.bt_insertion_go.Click += new System.EventHandler(this.bt_insertion_go_Click);
             // 
             // Input
             // 

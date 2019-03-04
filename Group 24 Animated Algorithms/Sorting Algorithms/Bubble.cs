@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,69 +10,93 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
     class Bubble
     {
-        internal class Ascending
+        private OutputScreen Output;
+        public Bubble(ref OutputScreen OutputWin)
         {
-            public Ascending(Decimal[] input, ref OutputScreen OutputWin)
+            Output = OutputWin;
+        }
+
+        private void Update(string info, string code)
+        {
+            Output.UpdateInfo(info, code);
+        }
+
+        public async void Ascending(Decimal[] input)
+        {
+            Thread.CurrentThread.IsBackground = true;
+
+            //creates counter, length and placeholder
+            int count = 0;
+            decimal tmp;
+            int length = input.Length;
+
+            //Outer loop
+            for (int j = 0; j < length; j++)
             {
-                //creates counter, length and placeholder
-                int count = 0;
-                decimal tmp;
-                int length = input.Length;
+                Update("Increment the outer loop", "for (int j = 0; j < length; j++)");
 
-                //Outer loop
-                for (int j = 0; j < length; j++)
+                //Inner loop
+                for (int i = 0; i < length - 1; i++)
                 {
-                    //Inner loop
-                    for (int i = 0; i < length - 1; i++)
-                    {
-                        //check to see which is bigger
-                        if (input[i] > input[i + 1])
-                        {
-                            //Add counter
-                            count++;
+                    Update("Increment the inner loop", "for (int i = 0; i < length - 1; i++)");
 
-                            //move
-                            OutputWin.SwapBars(i, input[i], i+1, input[i+1]);
-                            OutputWin.UpdateOperations(count);
-                            tmp = input[i + 1];
-                            input[i + 1] = input[i];
-                            input[i] = tmp;
-                        }
+                    //check to see which is bigger
+                    Update("Check to see which value is bigger", "if (input[i] > input[i + 1])");
+                    if (input[i] > input[i + 1])
+                    {
+                        //Add counter
+                        Update("Increment Counter", "count++;");
+                        count++;
+
+                        //move
+                        Output.SwapBars(i, input[i], i + 1, input[i + 1]);
+                        Output.UpdateOperations(count);
+                        Update("If true, swap the values", @"tmp = input[i + 1];
+                        input[i + 1] = input[i];
+                        input[i] = tmp;");
+                        tmp = input[i + 1];
+                        input[i + 1] = input[i];
+                        input[i] = tmp;
                     }
                 }
             }
         }
-
-
-        internal class Descending
+        public async void Descending(Decimal[] input)
         {
-            public Descending(Decimal[] input, ref OutputScreen OutputWin)
-            {                
-                //creates counter, length and placeholder
-                int count = 0;
-                decimal tmp;
-                int length = input.Length;
+            //creates counter, length and placeholder
+            int count = 0;
+            decimal tmp;
+            int length = input.Length;
 
-                //outer loop
-                for (int j = 0; j < length; j++)
+            //outer loop
+            for (int j = 0; j < length; j++)
+            {
+                Update("Increment the outer loop", "for (int j = 0; j < length; j++)");
+
+                //inner loop
+                for (int i = 0; i < length - 1; i++)
                 {
-                    //inner loop
-                    for (int i = 0; i < length - 1; i++)
-                    {
-                        //check to see which is bigger
-                        if (input[i] < input[i + 1])
-                        {
-                            //add counter
-                            count++;
-                            //move
-                            OutputWin.SwapBars(i, input[i], i + 1, input[i + 1]);
-                            OutputWin.UpdateOperations(count);
-                            tmp = input[i + 1];
-                            input[i + 1] = input[i];
-                            input[i] = tmp;
-                        }
+                    Update("Increment the inner loop", "for (int i = 0; i < length - 1; i++)");
 
+                    //check to see which is bigger
+                    if (input[i] < input[i + 1])
+                    {
+                        //add counter
+                        Update("Increment Counter", "count++;");
+                        count++;
+
+                        //move
+                        Output.SwapBars(i, input[i], i + 1, input[i + 1]);
+                        Output.UpdateOperations(count);
+                        Update("If true, swap the values", @"
+                        tmp = input[i + 1];
+                        input[i + 1] = input[i];
+                        input[i] = tmp;");
+                        tmp = input[i + 1];
+                        input[i + 1] = input[i];
+                        input[i] = tmp;
                     }
+
                 }
             }
         }

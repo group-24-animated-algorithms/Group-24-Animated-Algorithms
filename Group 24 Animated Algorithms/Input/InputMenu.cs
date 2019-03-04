@@ -10,15 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Threading;
+using Group_24_Animated_Algorithms.Output;
 
 namespace Group_24_Animated_Algorithms
 {
+
     public partial class Input : Form
     {
         private Decimal[] array;
         private Random r = new Random();
         SoundPlayer splayer = new SoundPlayer("button21.wav");
         int waitbeforeclose = 2000;
+        Action WorkerThread;
+        Action FormThread;
+        OutputScreen Form;
 
         public Input()
         {
@@ -27,7 +33,7 @@ namespace Group_24_Animated_Algorithms
             GenerateArray();
         }
 
-        private void Bt_GenerateArray_Click(object sender, EventArgs e)
+        private void BT_GenerateArray_Click(object sender, EventArgs e)
         {
             GenerateArray();
         }
@@ -57,31 +63,57 @@ namespace Group_24_Animated_Algorithms
             tb_searchfor.Text = array[r.Next(array.Count())].ToString();
         }
 
-        private void Bt_Bubble_Click(object sender, EventArgs e)
+        private void BT_Bubble_Click(object sender, EventArgs e)
         {
             //Create new output window
-            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
-            OutputWin.Show();
-            OutputWin.DrawBars();
-
             if (rb_ascending.Checked)
             {
-                splayer.Play();
-                var BubbleObj = new Bubble.Ascending(array, ref OutputWin);
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array)
+                    {
+                        Text = "Output Bubble Sort Ascending"
+                    };
+                    Form.Show();
+                    Form.DrawBars();
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                    var bubble = new Bubble(ref Form);
+                    bubble.Ascending(array);
+                };
+                BeginInvoke(WorkerThread);
             }
             else
             {
-                splayer.Play();
-                var BubbleObj = new Bubble.Descending(array, ref OutputWin);
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array)
+                    {
+                        Text = "Output Bubble Sort Descending"
+                    };
+                    Form.Show();
+                    Form.DrawBars();
+                };
+                BeginInvoke(FormThread);
+
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                    var bubble = new Bubble(ref Form);
+                    bubble.Descending(array);
+                };
+                BeginInvoke(WorkerThread);
             }
-            System.Threading.Thread.Sleep(waitbeforeclose);
-            OutputWin.Close();
         }
 
-        private void Bt_Heap_Click(object sender, EventArgs e)
+        private void BT_Heap_Click(object sender, EventArgs e)
         {
             //Create new output window
-            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
+            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Heap Sort Ascending" };
             OutputWin.Show();
             OutputWin.DrawBars();
 
@@ -99,14 +131,14 @@ namespace Group_24_Animated_Algorithms
             OutputWin.Close();
         }
 
-        private void Bt_Interpolation_ClickAsync(object sender, EventArgs e)
+        private void BT_Interpolation_ClickAsync(object sender, EventArgs e)
         {
             splayer.Play();
             Array.Sort(array);
             tb_array.Text = string.Join(", ", array);
 
             //Create new output window
-            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Bubble Sort Ascending" };
+            OutputScreen OutputWin = new OutputScreen(array) { Text = "Output Interpolation Search" };
             OutputWin.Show();
             OutputWin.DrawBars();
 
@@ -124,24 +156,24 @@ namespace Group_24_Animated_Algorithms
             }
             int c = 0;
             var search = new Interpolation();
-            this.tb_searchresult.Text = search.ISearch(array, 0, array.Count()-1, decimal.Parse(this.tb_searchfor.Text), ref c, ref OutputWin);
+            this.tb_searchresult.Text = search.ISearch(array, 0, array.Count() - 1, decimal.Parse(this.tb_searchfor.Text), ref c, ref OutputWin);
             System.Threading.Thread.Sleep(waitbeforeclose);
             OutputWin.Close();
         }
 
-        private void Bt_quick_Click(object sender, EventArgs e)
+        private void BT_Quick_Click(object sender, EventArgs e)
         {
             splayer.Play();
 
         }
 
-        private void Bt_merge_Click(object sender, EventArgs e)
+        private void BT_Merge_Click(object sender, EventArgs e)
         {
             splayer.Play();
 
         }
 
-        private void bt_insertion_go_Click(object sender, EventArgs e)
+        private void BT_Insertion_Go_Click(object sender, EventArgs e)
         {
             if (rb_ascending.Checked)
             {
