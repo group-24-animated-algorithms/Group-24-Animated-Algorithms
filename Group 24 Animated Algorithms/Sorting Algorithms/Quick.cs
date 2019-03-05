@@ -18,6 +18,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
         private void Update(string info, string code)
         {
             Output.UpdateInfo(info, code);
+            System.Threading.Thread.Sleep(100);
         }
 
         public void Ascending(Decimal[] input)

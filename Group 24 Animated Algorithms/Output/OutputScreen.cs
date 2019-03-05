@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Group_24_Animated_Algorithms
@@ -25,7 +26,7 @@ namespace Group_24_Animated_Algorithms
         ///////////////
         // Variables //
         ///////////////
-        
+
         //List holds all the bars
         private List<Bar> bars = new List<Bar>();
 
@@ -36,9 +37,12 @@ namespace Group_24_Animated_Algorithms
         bool ascending;
         bool isSorting;
         int target;
+        private System.Timers.Timer aTimer;
 
         //Variable holds the base width of the bars
         private int barWidth;
+        StringBuilder info = new StringBuilder();
+        StringBuilder how = new StringBuilder();
 
         //Variables hold inputs min and max (old scale)
         private int min;
@@ -67,7 +71,7 @@ namespace Group_24_Animated_Algorithms
         //////////////////
         // Constructors //
         //////////////////
-        
+
         //Sorting Constructor
         public OutputScreen(Decimal[] Input, Sorting Sorting, bool Ascending)
         {
@@ -85,47 +89,77 @@ namespace Group_24_Animated_Algorithms
             {
                 //Bubble
                 case Sorting.Bubble:
-                    var Bubble = new Bubble(ref me);
-                    if (ascending)
-                        Bubble.Ascending(input);
-                    else
-                        Bubble.Descending(input);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            var Bubble = new Bubble(ref me);
+                            if (ascending)
+                                Bubble.Ascending(input);
+                            else
+                                Bubble.Descending(input);
+                        }));
+                    }).Start();
                     break;
 
                 //Quick
                 case Sorting.Quick:
-                    var Quick = new Quick(ref me);
-                    if (ascending)
-                        Quick.Ascending(input);
-                    else
-                        Quick.Descending(input);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            var Quick = new Quick(ref me);
+                            if (ascending)
+                                Quick.Ascending(input);
+                            else
+                                Quick.Descending(input);
+                        }));
+                    }).Start();
                     break;
-                
+
                 //Heap
                 case Sorting.Heap:
-                    var Heap = new Heap(ref me);
-                    if (ascending)
-                        Heap.Ascending(input);
-                    else
-                        Heap.Descending(input);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            var Heap = new Heap(ref me);
+                            if (ascending)
+                                Heap.Ascending(input);
+                            else
+                                Heap.Descending(input);
+                        }));
+                    }).Start();
                     break;
 
                 //Merge
                 case Sorting.Merge:
-                    var Merge = new Merge(ref me);
-                    if (ascending)
-                        Merge.Ascending(input);
-                    else
-                        Merge.Descending(input);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            var Merge = new Merge(ref me);
+                            if (ascending)
+                                Merge.Ascending(input);
+                            else
+                                Merge.Descending(input);
+                        }));
+                    }).Start();
                     break;
 
                 //Insertion
                 case Sorting.Insertion:
-                    var Insertion = new Insertion(ref me);
-                    if (ascending)
-                        Insertion.Ascending(input);
-                    else
-                        Insertion.Descending(input);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            var Insertion = new Insertion(ref me);
+                            if (ascending)
+                                Insertion.Ascending(input);
+                            else
+                                Insertion.Descending(input);
+                        }));
+                    }).Start();
                     break;
 
                 default:
@@ -151,8 +185,14 @@ namespace Group_24_Animated_Algorithms
             switch (searching)
             {
                 case Searching.Interpolation:
-                    var search = new Interpolation(ref me);
-                    TB_Result.Text = search.ISearch(Input, 0, Input.Count() - 1, (decimal)target);
+                    new System.Threading.Thread(() =>
+                    {
+                        Invoke((Action)(() =>
+                                    {
+                        var search = new Interpolation(ref me);
+                        TB_Result.Text = search.ISearch(Input, 0, Input.Count() - 1, (decimal)target);
+                    }));
+                    }).Start();
                     break;
                 default:
                     break;
@@ -164,12 +204,13 @@ namespace Group_24_Animated_Algorithms
         {
             MainBrush.Dispose();
             Graphics.Dispose();
+            aTimer.Dispose();
         }
 
         //Setup the window width height etc.
         private void Init()
-        { 
-
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
 
             //Set the width of the bars so that they sill the screen
@@ -239,7 +280,6 @@ namespace Group_24_Animated_Algorithms
             return (int)newValue;
         }
 
-
         /////////////////
         // Update Text //
         /////////////////
@@ -247,9 +287,13 @@ namespace Group_24_Animated_Algorithms
         //Updates the Text on output window
         public void UpdateInfo(string info, string code)
         {
-            this.TB_Info.Text = info;
-            this.TB_How.Text = code;
+            this.info.Clear();
+            this.how.Clear();
+            this.info.Append(info);
+            this.how.Append(code);
+            TB_How.Text = how.ToString();
             TB_How.Refresh();
+            TB_Info.Text = info.ToString();
             TB_Info.Refresh();
         }
 
@@ -272,7 +316,7 @@ namespace Group_24_Animated_Algorithms
                 DrawBar(item);
             }
         }
-        
+
         //Draw specific bar
         private void DrawBar(Bar bar)
         {
@@ -337,11 +381,10 @@ namespace Group_24_Animated_Algorithms
         ////////////////
         // Algorithms //
         ////////////////
-        
+
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }
     }
-
 }

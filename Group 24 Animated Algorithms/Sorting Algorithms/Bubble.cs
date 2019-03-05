@@ -20,6 +20,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
         private void Update(string info, string code)
         {
             Output.UpdateInfo(info, code);
+            System.Threading.Thread.Sleep(100);
         }
 
         public void Ascending(Decimal[] input)
@@ -53,8 +54,8 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                         Output.SwapBars(i, input[i], i + 1, input[i + 1]);
                         Output.UpdateOperations(count);
                         Update("If true, swap the values", @"tmp = input[i + 1];
-                        input[i + 1] = input[i];
-                        input[i] = tmp;");
+input[i + 1] = input[i];
+input[i] = tmp;");
                         tmp = input[i + 1];
                         input[i + 1] = input[i];
                         input[i] = tmp;
@@ -89,10 +90,9 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                         //move
                         Output.SwapBars(i, input[i], i + 1, input[i + 1]);
                         Output.UpdateOperations(count);
-                        Update("If true, swap the values", @"
-                        tmp = input[i + 1];
-                        input[i + 1] = input[i];
-                        input[i] = tmp;");
+                        Update("If true, swap the values", @"tmp = input[i + 1];
+input[i + 1] = input[i];
+input[i] = tmp;");
                         tmp = input[i + 1];
                         input[i + 1] = input[i];
                         input[i] = tmp;
