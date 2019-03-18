@@ -36,17 +36,17 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                 for (index = Sorted; index > 0; index--)
                 {
                     its++;
+                    Output.UpdateOperations(its);
                     if (temp < input[index - 1])
                     {
                         input[index] = input[index - 1];
+                        Output.SwapBars(index, index - 1);
                     }
                     else
                     {
                         break;
                     }
                 }
-                Output.SwapBars(index, input[index], index + 1, input[index - 1]);
-                Output.UpdateOperations(its);
                 input[index] = temp;
                 Sorted++;
 

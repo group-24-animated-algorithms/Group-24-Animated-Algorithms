@@ -349,11 +349,9 @@ namespace Group_24_Animated_Algorithms
         }
 
         //swaps two bars positions
-        public void SwapBars(int CurrentPos, Decimal Val, int NewPos, Decimal NewVal)
+        public void SwapBars(int CurrentPos, int NewPos)
         {
             //store the bars
-            //var bar1 = bars.Single(x => x.Pos == CurrentPos && x.Value == Val);
-            //var bar2 = bars.Single(x => x.Pos == NewPos && x.Value == NewVal);
             var bar1 = bars.Single(x => x.Pos == CurrentPos);
             var bar2 = bars.Single(x => x.Pos == NewPos);
 

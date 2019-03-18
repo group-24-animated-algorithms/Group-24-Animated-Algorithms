@@ -45,7 +45,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             for (int i = input.Length - 1; i > 0; i--)
             {
                 //swap
-                Output.SwapBars(i, input[i], 0, input[0]);
+                Output.SwapBars(i, 0);
                 Output.UpdateOperations(count);
 
                 decimal temp = input[i];
@@ -88,7 +88,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             if (max != current)
             {
                 //swap
-                Output.SwapBars(current, input[current], max, input[max]);
+                Output.SwapBars(current, max);
                 Output.UpdateOperations(count);
                 decimal temp = input[current];
                 input[current] = input[max];
@@ -122,7 +122,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             for (int i = input.Length - 1; i > 0; i--)
             {
                 //swap
-                Output.SwapBars(i, input[i], 0, input[0]);
+                Output.SwapBars(i, 0);
                 Output.UpdateOperations(count);
 
                 decimal temp = input[i];
@@ -165,7 +165,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             if (max != current)
             {
                 //swap
-                Output.SwapBars(current, input[current], max, input[max]);
+                Output.SwapBars(current, max);
                 Output.UpdateOperations(count);
 
                 decimal temp = input[current];
