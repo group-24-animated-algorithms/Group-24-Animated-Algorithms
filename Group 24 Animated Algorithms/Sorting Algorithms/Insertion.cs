@@ -16,10 +16,10 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             Output = OutputWin;
         }
 
-        private void Update(string info, string code)
+        private void Update(int lineNo, int lineLength)
         {
-            Output.UpdateInfo(info, code);
-            System.Threading.Thread.Sleep(100);
+            Output.UpdateBox(lineNo, lineLength);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public void Ascending(Decimal[] input)

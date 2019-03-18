@@ -503,7 +503,7 @@
             this.tb_arraysize.Name = "tb_arraysize";
             this.tb_arraysize.Size = new System.Drawing.Size(44, 20);
             this.tb_arraysize.TabIndex = 6;
-            this.tb_arraysize.Text = "50";
+            this.tb_arraysize.Text = "10";
             this.tb_arraysize.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // tb_realmin

@@ -37,12 +37,9 @@ namespace Group_24_Animated_Algorithms
         bool ascending;
         bool isSorting;
         int target;
-        private System.Timers.Timer aTimer;
 
         //Variable holds the base width of the bars
         private int barWidth;
-        StringBuilder info = new StringBuilder();
-        StringBuilder how = new StringBuilder();
 
         //Variables hold inputs min and max (old scale)
         private int min;
@@ -61,7 +58,7 @@ namespace Group_24_Animated_Algorithms
         const int newMax = 400;
 
         //Side margin
-        const int marginRight = 300;
+        const int marginRight = 500;
 
         //Variable holds min bar width
         const int minWidth = 5;
@@ -204,7 +201,6 @@ namespace Group_24_Animated_Algorithms
         {
             MainBrush.Dispose();
             Graphics.Dispose();
-            aTimer.Dispose();
         }
 
         //Setup the window width height etc.
@@ -285,15 +281,19 @@ namespace Group_24_Animated_Algorithms
         /////////////////
 
         //Updates the Text on output window
-        public void UpdateInfo(string info, string code)
+        public void UpdateInfo(string code)
         {
-            this.info.Clear();
-            this.how.Clear();
-            this.info.Append(info);
-            this.how.Append(code);
-            TB_How.Text = how.ToString();
-            TB_How.Refresh();
-            TB_Info.Text = info.ToString();
+            TB_Info.Text = code;
+            TB_Info.SelectionColor = Color.Yellow;
+            TB_Info.SelectionBackColor = Color.White;
+            TB_Info.Refresh();
+        }
+
+        public void UpdateBox(int line, int line2)
+        {
+            var startIndex = TB_Info.GetFirstCharIndexFromLine(line-1);
+            var endIndex = TB_Info.GetFirstCharIndexFromLine(line2);
+            TB_Info.Select(startIndex, (endIndex-1) - startIndex);
             TB_Info.Refresh();
         }
 
@@ -352,8 +352,10 @@ namespace Group_24_Animated_Algorithms
         public void SwapBars(int CurrentPos, Decimal Val, int NewPos, Decimal NewVal)
         {
             //store the bars
-            var bar1 = bars.Single(x => x.Pos == CurrentPos && x.Value == Val);
-            var bar2 = bars.Single(x => x.Pos == NewPos && x.Value == NewVal);
+            //var bar1 = bars.Single(x => x.Pos == CurrentPos && x.Value == Val);
+            //var bar2 = bars.Single(x => x.Pos == NewPos && x.Value == NewVal);
+            var bar1 = bars.Single(x => x.Pos == CurrentPos);
+            var bar2 = bars.Single(x => x.Pos == NewPos);
 
             //if they're the same dont try swap
             if (bar1.Pos == bar2.Pos && bar1.Value == bar2.Value)
@@ -365,11 +367,11 @@ namespace Group_24_Animated_Algorithms
             CurrentBar(bar2);
 
             //move 1st bar to tmp pos
-            bars.Single(x => x.Pos == CurrentPos && x.Value == Val).Pos = -1;
+            bars.Single(x => x.Pos == CurrentPos).Pos = -1;
             //move over 2nd bar
-            bars.Single(x => x.Pos == NewPos && x.Value == NewVal).Pos = CurrentPos;
+            bars.Single(x => x.Pos == NewPos).Pos = CurrentPos;
             //move over 1st bar
-            bars.Single(x => x.Pos == -1 && x.Value == Val).Pos = NewPos;
+            bars.Single(x => x.Pos == -1).Pos = NewPos;
 
             ClearBar(bar1.Pos);
             ClearBar(bar2.Pos);

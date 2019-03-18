@@ -69,6 +69,12 @@ namespace Group_24_Animated_Algorithms
 
         private void BT_Bubble_Click(object sender, EventArgs e)
         {
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
@@ -82,12 +88,6 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
             else
             {
@@ -100,17 +100,17 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
         }
 
         private void BT_Heap_Click(object sender, EventArgs e)
         {
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
@@ -124,12 +124,6 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
             else
             {
@@ -142,17 +136,17 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
         }
 
         private void BT_Quick_Click(object sender, EventArgs e)
         {
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
@@ -166,12 +160,6 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
             else
             {
@@ -184,17 +172,17 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
         }
 
         private void BT_Merge_Click(object sender, EventArgs e)
         {
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
@@ -207,13 +195,7 @@ namespace Group_24_Animated_Algorithms
                     };
                     Form.FormClosed += Form_FormClosed;
                 };
-                BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
+                BeginInvoke(FormThread);                
             }
             else
             {
@@ -226,16 +208,17 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
         }
 
         private void BT_Insertion_Go_Click(object sender, EventArgs e)
         {
+                WorkerThread = delegate
+                {
+                    splayer.Play();
+                };
+                BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
@@ -249,15 +232,10 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
             else
             {
+
                 FormThread = delegate
                 {
                     Form = new OutputScreen(array, Sorting.Insertion, false)
@@ -267,17 +245,18 @@ namespace Group_24_Animated_Algorithms
                     Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
-
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
             }
         }
 
         private void Bt_interpolation_Click(object sender, EventArgs e)
         {
+
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
+
             this.Enabled = false;
             FormThread = delegate
             {
@@ -298,19 +277,13 @@ namespace Group_24_Animated_Algorithms
                 {
                     return;
                 }         
-                Form = new OutputScreen(array, Sorting.Insertion, true)
+                Form = new OutputScreen(array, Searching.Interpolation, int.Parse(tb_searchfor.Text))
                 {
                     Text = "Output Interpolation Search"
                 };
                 Form.FormClosed += Form_FormClosed;
             };
             BeginInvoke(FormThread);
-
-            WorkerThread = delegate
-            {
-                splayer.Play();
-            };
-            BeginInvoke(WorkerThread);
         }
     }
 

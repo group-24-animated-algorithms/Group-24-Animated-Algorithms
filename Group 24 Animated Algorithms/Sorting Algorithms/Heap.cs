@@ -15,10 +15,10 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             Output = OutputWin;
         }
 
-        private void Update(string info, string code)
+        private void Update(int lineNo, int lineLength)
         {
-            Output.UpdateInfo(info, code);
-            System.Threading.Thread.Sleep(150);
+            Output.UpdateBox(lineNo, lineLength);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public void Ascending(decimal[] input)
@@ -27,31 +27,24 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             int count = 0;
 
             //call initial sort
-            Update("Call initial sort", "AscendingSort(ref input, ref count);");
             AscendingSort(ref input, ref count);
         }
 
         private void AscendingSort(ref decimal[] input, ref int count)
         {
             //get size
-            Update("Get heap size", "int heapSize = input.Length;");
             int heapSize = input.Length;
 
             //backwards loop through array
-            Update("Backwards loop through array", "for (int i = (heapSize - 1) / 2; i >= 0; i--)");
             for (int i = (heapSize - 1) / 2; i >= 0; i--)
             {
                 //heapify
-                Update("Heapify", "AscendingHeap(ref input, heapSize, i, ref count);");
                 AscendingHeap(ref input, heapSize, i, ref count);
             }
 
             for (int i = input.Length - 1; i > 0; i--)
             {
                 //swap
-                Update("Swap values", @"decimal temp = input[i];
-input[i] = input[0];
-input[0] = temp;");
                 Output.SwapBars(i, input[i], 0, input[0]);
                 Output.UpdateOperations(count);
 
@@ -60,11 +53,9 @@ input[0] = temp;");
                 input[0] = temp;
 
                 //reduce size
-                Update("Reduce heap size", "heapSize--;");
                 heapSize--;
 
                 //heapify
-                Update("Heapify", "AscendingHeap(ref input, heapSize, 0, ref count);");
                 AscendingHeap(ref input, heapSize, 0, ref count);
             }
         }
@@ -80,7 +71,6 @@ input[0] = temp;");
             count++;
 
             //compare
-            Update("Compare Values", @"if (left < size && input[left] > input[current])");
             if (left < size && input[left] > input[current])
             {
                 max = left;
@@ -89,29 +79,22 @@ input[0] = temp;");
             {
                 max = current;
             }
-
-            Update("Compare Values", @"if (right < size && input[right] > input[max])");
+            
             if (right < size && input[right] > input[max])
             {
                 max = right;
             }
-
-            Update("Compare Values", @"max != current");
+            
             if (max != current)
             {
                 //swap
                 Output.SwapBars(current, input[current], max, input[max]);
                 Output.UpdateOperations(count);
-
-                Update("Swap values", @"decimal temp = input[current];
-input[current] = input[max];
-input[max] = temp;");
                 decimal temp = input[current];
                 input[current] = input[max];
                 input[max] = temp;
 
                 //heapify
-                Update("Heapify", "AscendingHeap(ref input, heapSize, 0, ref count);");
                 AscendingHeap(ref input, size, max, ref count);
             }
         }
