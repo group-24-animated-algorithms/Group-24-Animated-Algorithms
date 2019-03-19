@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Group_24_Animated_Algorithms.Output;
+using System;
 
 namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
-    class Bubble
-    {
-        private OutputScreen Output;
-
-        public Bubble(ref OutputScreen OutputWin)
+    class Bubble : Algorithm
+    {        
+        //Algorithm
+        public Bubble(ref OutputScreen OutputWin, int time)
         {
             Output = OutputWin;
+            this.time = time;
+            data = new Data() { time = "O(n^2)", space = "O(1)" };
         }
 
-        private void Update(int lineNo, int lineLength)
-        {
-            Output.UpdateBox(lineNo, lineLength);
-            System.Threading.Thread.Sleep(1000);
-        }
-
-        public void Ascending(Decimal[] input)
+        public override void Ascending(Decimal[] input)
         {
             Output.UpdateInfo(@"//creates counter, length and placeholder
 int count = 0;
@@ -86,7 +76,8 @@ for (int j = 0; j < length; j++)
                 }
             }
         }
-        public void Descending(Decimal[] input)
+
+        public override void Descending(Decimal[] input)
         {
             Output.UpdateInfo(@"//creates counter, length and placeholder
 int count = 0;
@@ -129,7 +120,6 @@ for (int j = 0; j < length; j++)
                 //inner loop
                 for (int i = 0; i < length - 1; i++)
                 {
-
                     Update(14, 16);
                     //check to see which is bigger
                     if (input[i] < input[i + 1])

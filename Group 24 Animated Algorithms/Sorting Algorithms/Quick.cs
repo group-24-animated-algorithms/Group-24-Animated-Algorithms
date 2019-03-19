@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Group_24_Animated_Algorithms.Output;
+using System;
 
 namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
-    class Quick
+    class Quick: Algorithm
     {
-        private OutputScreen Output;
-
-        public Quick(ref OutputScreen OutputWin)
+        //Algorithm
+        public Quick(ref OutputScreen OutputWin, int time)
         {
-            Output = OutputWin;
+            this.Output = OutputWin;
+            this.time = time;
+            data = new Data() { time = "O(nLogn)", space = "O(n)" };
         }
 
-        private void Update(int lineNo, int lineLength)
-        {
-            Output.UpdateBox(lineNo, lineLength);
-            System.Threading.Thread.Sleep(250);
-        }
-
-        public void Ascending(Decimal[] input)
+        public override void Ascending(Decimal[] input)
         {
             //creates counter
             int count = 0;
@@ -81,7 +73,6 @@ private int PartitionAscending(decimal[] array, int left, int right, ref int cou
             //call initial sort
             SortAscending(input, 0, input.Length - 1, ref count);
         }
-
         private void SortAscending(decimal[] input, int start, int end, ref int count)
         {
             Update(3, 4);
@@ -105,12 +96,12 @@ private int PartitionAscending(decimal[] array, int left, int right, ref int cou
                 SortAscending(input, current, end, ref count);
             }
         }
-
         private int PartitionAscending(decimal[] array, int left, int right, ref int count)
         {
             Update(21, 22);
             //add counter
             count++;
+            Output.UpdateOperations(count);
 
             Update(24, 25);
             //get pivot
@@ -150,7 +141,8 @@ private int PartitionAscending(decimal[] array, int left, int right, ref int cou
             return left;
         }
 
-        public void Descending(Decimal[] input)
+
+        public override void Descending(Decimal[] input)
         {
             //creates counter
             int count = 0;
@@ -210,7 +202,6 @@ private int PartitionDescending(decimal[] array, int left, int right, ref int co
             //call initial sort
             SortDescending(input, 0, input.Length - 1, ref count);
         }
-
         private void SortDescending(decimal[] input, int start, int end, ref int count)
         {
             Update(3, 4);
@@ -234,7 +225,6 @@ private int PartitionDescending(decimal[] array, int left, int right, ref int co
                 SortDescending(input, current, end, ref count);
             }
         }
-
         private int PartitionDescending(decimal[] array, int left, int right, ref int count)
         {
             Update(21, 22);

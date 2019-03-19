@@ -41,19 +41,6 @@
             this.bt_bubble = new System.Windows.Forms.Button();
             this.tb_array = new System.Windows.Forms.TextBox();
             this.grp_options = new System.Windows.Forms.GroupBox();
-            this.grp_TreeBalancing = new System.Windows.Forms.GroupBox();
-            this.txt_realmintree = new System.Windows.Forms.TextBox();
-            this.txt_realmaxtree = new System.Windows.Forms.TextBox();
-            this.cv_decimalsTree = new System.Windows.Forms.CheckBox();
-            this.lb_Tree = new System.Windows.Forms.Label();
-            this.lb_sizeoftree = new System.Windows.Forms.Label();
-            this.lb_mintree = new System.Windows.Forms.Label();
-            this.lb_maxtree = new System.Windows.Forms.Label();
-            this.txt_mintree = new System.Windows.Forms.TextBox();
-            this.txt_maxoftree = new System.Windows.Forms.TextBox();
-            this.txt_sizeoftree = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txt_TreeValues = new System.Windows.Forms.TextBox();
             this.grp_searchopt = new System.Windows.Forms.GroupBox();
             this.tb_searchresult = new System.Windows.Forms.TextBox();
             this.lb_searchfor = new System.Windows.Forms.Label();
@@ -77,17 +64,16 @@
             this.grp_search = new System.Windows.Forms.GroupBox();
             this.bt_interpolation = new System.Windows.Forms.Button();
             this.lb_interpolation = new System.Windows.Forms.Label();
-            this.grp_tree = new System.Windows.Forms.GroupBox();
-            this.lb_TreeBalance = new System.Windows.Forms.Label();
-            this.btTreeBalance_go = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_time = new System.Windows.Forms.TextBox();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
-            this.grp_TreeBalancing.SuspendLayout();
             this.grp_searchopt.SuspendLayout();
             this.grp_sortopt.SuspendLayout();
             this.grp_arrayopt.SuspendLayout();
             this.grp_search.SuspendLayout();
-            this.grp_tree.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_sort
@@ -226,155 +212,16 @@
             // 
             // grp_options
             // 
-            this.grp_options.Controls.Add(this.grp_TreeBalancing);
             this.grp_options.Controls.Add(this.grp_searchopt);
             this.grp_options.Controls.Add(this.grp_sortopt);
             this.grp_options.Controls.Add(this.grp_arrayopt);
             this.grp_options.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_options.Location = new System.Drawing.Point(260, 12);
             this.grp_options.Name = "grp_options";
-            this.grp_options.Size = new System.Drawing.Size(388, 614);
+            this.grp_options.Size = new System.Drawing.Size(388, 362);
             this.grp_options.TabIndex = 2;
             this.grp_options.TabStop = false;
             this.grp_options.Text = "Options";
-            // 
-            // grp_TreeBalancing
-            // 
-            this.grp_TreeBalancing.Controls.Add(this.txt_realmintree);
-            this.grp_TreeBalancing.Controls.Add(this.txt_realmaxtree);
-            this.grp_TreeBalancing.Controls.Add(this.cv_decimalsTree);
-            this.grp_TreeBalancing.Controls.Add(this.lb_Tree);
-            this.grp_TreeBalancing.Controls.Add(this.lb_sizeoftree);
-            this.grp_TreeBalancing.Controls.Add(this.lb_mintree);
-            this.grp_TreeBalancing.Controls.Add(this.lb_maxtree);
-            this.grp_TreeBalancing.Controls.Add(this.txt_mintree);
-            this.grp_TreeBalancing.Controls.Add(this.txt_maxoftree);
-            this.grp_TreeBalancing.Controls.Add(this.txt_sizeoftree);
-            this.grp_TreeBalancing.Controls.Add(this.button1);
-            this.grp_TreeBalancing.Controls.Add(this.txt_TreeValues);
-            this.grp_TreeBalancing.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_TreeBalancing.Location = new System.Drawing.Point(6, 356);
-            this.grp_TreeBalancing.Name = "grp_TreeBalancing";
-            this.grp_TreeBalancing.Size = new System.Drawing.Size(370, 179);
-            this.grp_TreeBalancing.TabIndex = 21;
-            this.grp_TreeBalancing.TabStop = false;
-            this.grp_TreeBalancing.Text = "Tree Balancing";
-            // 
-            // txt_realmintree
-            // 
-            this.txt_realmintree.Enabled = false;
-            this.txt_realmintree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_realmintree.Location = new System.Drawing.Point(320, 97);
-            this.txt_realmintree.Name = "txt_realmintree";
-            this.txt_realmintree.Size = new System.Drawing.Size(44, 20);
-            this.txt_realmintree.TabIndex = 16;
-            // 
-            // txt_realmaxtree
-            // 
-            this.txt_realmaxtree.Enabled = false;
-            this.txt_realmaxtree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_realmaxtree.Location = new System.Drawing.Point(320, 71);
-            this.txt_realmaxtree.Name = "txt_realmaxtree";
-            this.txt_realmaxtree.Size = new System.Drawing.Size(44, 20);
-            this.txt_realmaxtree.TabIndex = 15;
-            // 
-            // cv_decimalsTree
-            // 
-            this.cv_decimalsTree.AutoSize = true;
-            this.cv_decimalsTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cv_decimalsTree.Location = new System.Drawing.Point(9, 126);
-            this.cv_decimalsTree.Name = "cv_decimalsTree";
-            this.cv_decimalsTree.Size = new System.Drawing.Size(95, 17);
-            this.cv_decimalsTree.TabIndex = 14;
-            this.cv_decimalsTree.Text = "Allow decimals";
-            this.cv_decimalsTree.UseVisualStyleBackColor = true;
-            // 
-            // lb_Tree
-            // 
-            this.lb_Tree.AutoSize = true;
-            this.lb_Tree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Tree.Location = new System.Drawing.Point(6, 22);
-            this.lb_Tree.Name = "lb_Tree";
-            this.lb_Tree.Size = new System.Drawing.Size(32, 13);
-            this.lb_Tree.TabIndex = 12;
-            this.lb_Tree.Text = "Tree:";
-            // 
-            // lb_sizeoftree
-            // 
-            this.lb_sizeoftree.AutoSize = true;
-            this.lb_sizeoftree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_sizeoftree.Location = new System.Drawing.Point(6, 48);
-            this.lb_sizeoftree.Name = "lb_sizeoftree";
-            this.lb_sizeoftree.Size = new System.Drawing.Size(63, 13);
-            this.lb_sizeoftree.TabIndex = 11;
-            this.lb_sizeoftree.Text = "Size of tree:";
-            // 
-            // lb_mintree
-            // 
-            this.lb_mintree.AutoSize = true;
-            this.lb_mintree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_mintree.Location = new System.Drawing.Point(6, 100);
-            this.lb_mintree.Name = "lb_mintree";
-            this.lb_mintree.Size = new System.Drawing.Size(27, 13);
-            this.lb_mintree.TabIndex = 10;
-            this.lb_mintree.Text = "Min:";
-            // 
-            // lb_maxtree
-            // 
-            this.lb_maxtree.AutoSize = true;
-            this.lb_maxtree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_maxtree.Location = new System.Drawing.Point(6, 74);
-            this.lb_maxtree.Name = "lb_maxtree";
-            this.lb_maxtree.Size = new System.Drawing.Size(30, 13);
-            this.lb_maxtree.TabIndex = 9;
-            this.lb_maxtree.Text = "Max:";
-            // 
-            // txt_mintree
-            // 
-            this.txt_mintree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mintree.Location = new System.Drawing.Point(270, 97);
-            this.txt_mintree.Name = "txt_mintree";
-            this.txt_mintree.Size = new System.Drawing.Size(44, 20);
-            this.txt_mintree.TabIndex = 8;
-            this.txt_mintree.Text = "1";
-            // 
-            // txt_maxoftree
-            // 
-            this.txt_maxoftree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_maxoftree.Location = new System.Drawing.Point(270, 71);
-            this.txt_maxoftree.Name = "txt_maxoftree";
-            this.txt_maxoftree.Size = new System.Drawing.Size(44, 20);
-            this.txt_maxoftree.TabIndex = 7;
-            this.txt_maxoftree.Text = "100";
-            // 
-            // txt_sizeoftree
-            // 
-            this.txt_sizeoftree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_sizeoftree.Location = new System.Drawing.Point(320, 45);
-            this.txt_sizeoftree.Name = "txt_sizeoftree";
-            this.txt_sizeoftree.Size = new System.Drawing.Size(44, 20);
-            this.txt_sizeoftree.TabIndex = 6;
-            this.txt_sizeoftree.Text = "50";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(9, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Generate new tree";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // txt_TreeValues
-            // 
-            this.txt_TreeValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_TreeValues.Location = new System.Drawing.Point(46, 19);
-            this.txt_TreeValues.Multiline = true;
-            this.txt_TreeValues.Name = "txt_TreeValues";
-            this.txt_TreeValues.ReadOnly = true;
-            this.txt_TreeValues.Size = new System.Drawing.Size(318, 20);
-            this.txt_TreeValues.TabIndex = 1;
             // 
             // grp_searchopt
             // 
@@ -603,7 +450,7 @@
             this.grp_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_search.Location = new System.Drawing.Point(12, 277);
             this.grp_search.Name = "grp_search";
-            this.grp_search.Size = new System.Drawing.Size(242, 242);
+            this.grp_search.Size = new System.Drawing.Size(242, 97);
             this.grp_search.TabIndex = 3;
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Searching Algorithms";
@@ -629,44 +476,43 @@
             this.lb_interpolation.TabIndex = 0;
             this.lb_interpolation.Text = "Interpolation";
             // 
-            // grp_tree
+            // groupBox1
             // 
-            this.grp_tree.Controls.Add(this.lb_TreeBalance);
-            this.grp_tree.Controls.Add(this.btTreeBalance_go);
-            this.grp_tree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_tree.Location = new System.Drawing.Point(12, 525);
-            this.grp_tree.Name = "grp_tree";
-            this.grp_tree.Size = new System.Drawing.Size(242, 89);
-            this.grp_tree.TabIndex = 12;
-            this.grp_tree.TabStop = false;
-            this.grp_tree.Text = "Tree Balancing";
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tb_time);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(260, 380);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(388, 49);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
             // 
-            // lb_TreeBalance
+            // label3
             // 
-            this.lb_TreeBalance.AutoSize = true;
-            this.lb_TreeBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_TreeBalance.Location = new System.Drawing.Point(6, 24);
-            this.lb_TreeBalance.Name = "lb_TreeBalance";
-            this.lb_TreeBalance.Size = new System.Drawing.Size(71, 13);
-            this.lb_TreeBalance.TabIndex = 1;
-            this.lb_TreeBalance.Text = "Balance Tree";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Delay Timer:";
             // 
-            // btTreeBalance_go
+            // tb_time
             // 
-            this.btTreeBalance_go.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btTreeBalance_go.Location = new System.Drawing.Point(161, 19);
-            this.btTreeBalance_go.Name = "btTreeBalance_go";
-            this.btTreeBalance_go.Size = new System.Drawing.Size(75, 23);
-            this.btTreeBalance_go.TabIndex = 0;
-            this.btTreeBalance_go.Text = "Go";
-            this.btTreeBalance_go.UseVisualStyleBackColor = true;
+            this.tb_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_time.Location = new System.Drawing.Point(326, 22);
+            this.tb_time.Name = "tb_time";
+            this.tb_time.Size = new System.Drawing.Size(44, 20);
+            this.tb_time.TabIndex = 0;
+            this.tb_time.Text = "250";
             // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 626);
-            this.Controls.Add(this.grp_tree);
+            this.ClientSize = new System.Drawing.Size(660, 440);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grp_search);
             this.Controls.Add(this.grp_options);
             this.Controls.Add(this.grp_sort);
@@ -675,8 +521,6 @@
             this.grp_sort.ResumeLayout(false);
             this.grp_sort.PerformLayout();
             this.grp_options.ResumeLayout(false);
-            this.grp_TreeBalancing.ResumeLayout(false);
-            this.grp_TreeBalancing.PerformLayout();
             this.grp_searchopt.ResumeLayout(false);
             this.grp_searchopt.PerformLayout();
             this.grp_sortopt.ResumeLayout(false);
@@ -685,8 +529,8 @@
             this.grp_arrayopt.PerformLayout();
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
-            this.grp_tree.ResumeLayout(false);
-            this.grp_tree.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -727,24 +571,11 @@
         private System.Windows.Forms.TextBox tb_searchresult;
         private System.Windows.Forms.Button bt_merge;
         private System.Windows.Forms.Button bt_quick;
-        private System.Windows.Forms.GroupBox grp_TreeBalancing;
-        private System.Windows.Forms.TextBox txt_realmintree;
-        private System.Windows.Forms.TextBox txt_realmaxtree;
-        private System.Windows.Forms.CheckBox cv_decimalsTree;
-        private System.Windows.Forms.Label lb_Tree;
-        private System.Windows.Forms.Label lb_sizeoftree;
-        private System.Windows.Forms.Label lb_mintree;
-        private System.Windows.Forms.Label lb_maxtree;
-        private System.Windows.Forms.TextBox txt_mintree;
-        private System.Windows.Forms.TextBox txt_maxoftree;
-        private System.Windows.Forms.TextBox txt_sizeoftree;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txt_TreeValues;
-        private System.Windows.Forms.GroupBox grp_tree;
-        private System.Windows.Forms.Label lb_TreeBalance;
-        private System.Windows.Forms.Button btTreeBalance_go;
         private System.Windows.Forms.Label lb_insertion;
         private System.Windows.Forms.Button bt_insertion_go;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tb_time;
     }
 }
 

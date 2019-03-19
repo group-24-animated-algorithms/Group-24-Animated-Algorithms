@@ -1,18 +1,21 @@
-﻿using System;
+﻿using Group_24_Animated_Algorithms.Output;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Group_24_Animated_Algorithms.Searching_Algorithms
 {
-    class Interpolation
+    class Interpolation: Algorithm
     {
-        private OutputScreen Output;
-
-        public Interpolation(ref OutputScreen OutputWin)
+        //Algorithm
+        public Interpolation(ref OutputScreen OutputWin, int time)
         {
             Output = OutputWin;
+            this.time = time;
+            data = new Data() { time = "O(LogLogn)", space = "O(1)" };
             Output.UpdateInfo(@"//midpoint container
 int mid;
 int count = 0;
@@ -98,10 +101,9 @@ while (min <= max)
 return ""Item not found"";");
 }
 
-        private void Update(int lineNo, int lineLength)
+        public override string Search(decimal[] input, decimal target)
         {
-            Output.UpdateBox(lineNo, lineLength);
-            System.Threading.Thread.Sleep(1000);
+            return ISearch(input, 0, input.Count() - 1, target);
         }
 
         public string ISearch(decimal[] input, int min, int max, decimal key)
@@ -210,5 +212,7 @@ return ""Item not found"";");
             return "Item not found";
 
         }
+
+
     }
 }

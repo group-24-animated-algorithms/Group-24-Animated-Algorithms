@@ -35,8 +35,8 @@ namespace Group_24_Animated_Algorithms
         Sorting sorting;
         Searching searching;
         bool ascending;
-        bool isSorting;
-        int target;
+        decimal target;
+        int time;
 
         //Variable holds the base width of the bars
         private int barWidth;
@@ -59,140 +59,53 @@ namespace Group_24_Animated_Algorithms
 
         //Side margin
         const int marginRight = 500;
+        const int minScreenWidth = 1000;
 
         //Variable holds min bar width
-        const int minWidth = 5;
+        const int minWidth = 10;
         //how long you want to hover over a highlighted bar 
         const int miliseconds = 50;
-
+        public bool paused = false;
+        Algorithm algorithm;
         //////////////////
         // Constructors //
         //////////////////
 
         //Sorting Constructor
-        public OutputScreen(Decimal[] Input, Sorting Sorting, bool Ascending)
+        public OutputScreen(Decimal[] Input, Sorting Sorting, bool Ascending, int time)
         {
+            this.time = time;
             input = Input;
             sorting = Sorting;
             ascending = Ascending;
-            isSorting = true;
-
             InitializeComponent(); //Build in, for GUI
             Init();
-
-            var me = this;
-
-            switch (sorting)
-            {
-                //Bubble
-                case Sorting.Bubble:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                        {
-                            var Bubble = new Bubble(ref me);
-                            if (ascending)
-                                Bubble.Ascending(input);
-                            else
-                                Bubble.Descending(input);
-                        }));
-                    }).Start();
-                    break;
-
-                //Quick
-                case Sorting.Quick:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                        {
-                            var Quick = new Quick(ref me);
-                            if (ascending)
-                                Quick.Ascending(input);
-                            else
-                                Quick.Descending(input);
-                        }));
-                    }).Start();
-                    break;
-
-                //Heap
-                case Sorting.Heap:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                        {
-                            var Heap = new Heap(ref me);
-                            if (ascending)
-                                Heap.Ascending(input);
-                            else
-                                Heap.Descending(input);
-                        }));
-                    }).Start();
-                    break;
-
-                //Merge
-                case Sorting.Merge:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                        {
-                            var Merge = new Merge(ref me);
-                            if (ascending)
-                                Merge.Ascending(input);
-                            else
-                                Merge.Descending(input);
-                        }));
-                    }).Start();
-                    break;
-
-                //Insertion
-                case Sorting.Insertion:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                        {
-                            var Insertion = new Insertion(ref me);
-                            if (ascending)
-                                Insertion.Ascending(input);
-                            else
-                                Insertion.Descending(input);
-                        }));
-                    }).Start();
-                    break;
-
-                default:
-                    break;
-            }
-
             DrawBars();
+
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            if (backgroundWorker1.IsBusy != true)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
         }
         //Searching Constructor
-        public OutputScreen(Decimal[] Input, Searching Searching, int Target)
+        public OutputScreen(Decimal[] Input, Searching Searching, decimal Target, int time)
         {
+            this.time = time;
             input = Input;
             searching = Searching;
             target = Target;
-            isSorting = false;
-
             InitializeComponent(); //Build in, for GUI
             Init();
-
-            var me = this;
-
             grp_result.Enabled = true;
-            switch (searching)
+
+            backgroundWorker2.WorkerReportsProgress = true;
+            backgroundWorker2.WorkerSupportsCancellation = true;
+
+            if (backgroundWorker2.IsBusy != true)
             {
-                case Searching.Interpolation:
-                    new System.Threading.Thread(() =>
-                    {
-                        Invoke((Action)(() =>
-                                    {
-                        var search = new Interpolation(ref me);
-                        TB_Result.Text = search.ISearch(Input, 0, Input.Count() - 1, (decimal)target);
-                    }));
-                    }).Start();
-                    break;
-                default:
-                    break;
+                backgroundWorker2.RunWorkerAsync();
             }
         }
 
@@ -206,9 +119,6 @@ namespace Group_24_Animated_Algorithms
         //Setup the window width height etc.
         private void Init()
         {
-            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
-
             //Set the width of the bars so that they sill the screen
             barWidth = input.Count() / this.Width;
 
@@ -220,7 +130,12 @@ namespace Group_24_Animated_Algorithms
             if (barWidth < minWidth)
             {
                 barWidth = minWidth;
-                this.Width = (input.Count() * minWidth) + (barWidth * 2) + marginRight;
+                int size = minScreenWidth;
+                if ((input.Count() * minWidth) + (barWidth * 2) > minScreenWidth)
+                {
+                    size = (input.Count() * minWidth) + (barWidth * 2);
+                }
+                this.Width = size + marginRight;
             }
 
             //Create bar objects from array and all them to a list
@@ -279,29 +194,77 @@ namespace Group_24_Animated_Algorithms
         /////////////////
         // Update Text //
         /////////////////
+        public void UpdateControl(Control control, string text)
+        {
+            try
+            {
+                if (!InvokeRequired)
+                {
+                    control.Text = text;
+                }
+                else
+                {
+                    Invoke(new Action<Control, string>(UpdateControl), control, text);
+                }
+            }
+            catch { }
+        }
 
-        //Updates the Text on output window
         public void UpdateInfo(string code)
         {
-            TB_Info.Text = code;
-            TB_Info.SelectionColor = Color.Yellow;
-            TB_Info.SelectionBackColor = Color.White;
-            TB_Info.Refresh();
+            try
+            {
+                if (!InvokeRequired)
+                {
+                    TB_Info.Text = code;
+                    TB_Info.SelectionColor = Color.Yellow;
+                    TB_Info.SelectionBackColor = Color.White;
+                    TB_Info.Refresh();
+                }
+                else
+                {
+                    Invoke(new Action<string>(UpdateInfo), code);
+                }
+            }
+            catch { }
         }
 
         public void UpdateBox(int line, int line2)
         {
-            var startIndex = TB_Info.GetFirstCharIndexFromLine(line-1);
-            var endIndex = TB_Info.GetFirstCharIndexFromLine(line2);
-            TB_Info.Select(startIndex, (endIndex-1) - startIndex);
-            TB_Info.Refresh();
+            try
+            {
+                if (!InvokeRequired)
+                {
+                    var startIndex = TB_Info.GetFirstCharIndexFromLine(line - 1);
+                    var endIndex = TB_Info.GetFirstCharIndexFromLine(line2);
+                    TB_Info.Select(startIndex, (endIndex - 1) - startIndex);
+                    TB_Info.Refresh();
+                    TB_Info.Focus();
+                }
+                else
+                {
+                    Invoke(new Action<int, int>(UpdateBox), line, line2);
+                }
+            }
+            catch { }
         }
 
         //Updates the operations counter
         public void UpdateOperations(int value)
         {
-            tb_operations.Text = value.ToString();
-            tb_operations.Refresh();
+            try
+            {
+                if (!InvokeRequired)
+                {
+                    tb_operations.Text = value.ToString();
+                    tb_operations.Refresh();
+                }
+                else
+                {
+                    Invoke(new Action<int>(UpdateOperations), value);
+                }
+            }
+            catch { }
         }
 
         /////////////
@@ -343,6 +306,7 @@ namespace Group_24_Animated_Algorithms
         {
             var bar = bars.Single(x => x.Pos == pos);
             Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            System.Threading.Thread.Sleep(100);
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
             Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
@@ -383,6 +347,88 @@ namespace Group_24_Animated_Algorithms
         ////////////////
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var me = this;
+            Thread.CurrentThread.IsBackground = true;
+            switch (sorting)
+            {
+                //Bubble
+                case Sorting.Bubble:
+                    algorithm = new Bubble(ref me, time);
+                    break;
+
+                //Quick
+                case Sorting.Quick:
+                    algorithm = new Quick(ref me, time);
+                    break;
+
+                //Heap
+                case Sorting.Heap:
+                    algorithm = new Heap(ref me, time);
+                    break;
+
+                //Merge
+                case Sorting.Merge:
+                    algorithm = new Merge(ref me, time);
+                    break;
+
+                //Insertion
+                case Sorting.Insertion:
+                    algorithm = new Insertion(ref me, time);
+                    break;
+
+                default:
+                    break;
+            }
+            UpdateControl(LB_Space, algorithm.data.space);
+            UpdateControl(LB_Time, algorithm.data.time);
+
+            if (ascending)
+                algorithm.Ascending(input);
+            else
+                algorithm.Descending(input);
+        }
+
+        private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var me = this;
+            Thread.CurrentThread.IsBackground = true;
+            switch (searching)
+            {
+                case Searching.Interpolation:
+                    algorithm = new Interpolation(ref me, time);
+                    //pauseEvent = search.GetPauser();
+                    break;
+                default:
+                    break;
+            }
+            UpdateControl(LB_Space, algorithm.data.space);
+            UpdateControl(LB_Time, algorithm.data.time);
+
+            var result = algorithm.Search(input, target);
+            Action x = delegate { TB_Result.Text = result; };
+            Invoke(x);
+        }
+
+        private void BT_Pause_Click(object sender, EventArgs e)
+        {
+            if (paused)
+            {
+                System.Threading.Thread.Sleep(100);
+                algorithm.TogglePause(paused);
+                BT_Pause.Text = "Pause";
+                paused = false;
+            }
+            else
+            {
+                System.Threading.Thread.Sleep(100);
+                algorithm.TogglePause(paused);
+                BT_Pause.Text = "Resume";
+                paused = true;
+            }
+        }
+
+        private void TB_Info_TextChanged(object sender, EventArgs e)
         {
 
         }

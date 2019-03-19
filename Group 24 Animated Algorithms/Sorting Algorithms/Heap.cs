@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Group_24_Animated_Algorithms.Output;
+using System;
 
 namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 {
-    class Heap
+    class Heap : Algorithm
     {
-        private OutputScreen Output;
-
-        public Heap(ref OutputScreen OutputWin)
+        //Algorithm
+        public Heap(ref OutputScreen OutputWin, int time)
         {
             Output = OutputWin;
+            this.time = time;
+            data = new Data() { time = "O(nLogn)", space = "O(1)" };
         }
 
-        private void Update(int lineNo, int lineLength)
-        {
-            Output.UpdateBox(lineNo, lineLength);
-            System.Threading.Thread.Sleep(1000);
-        }
-
-        public void Ascending(decimal[] input)
+        public override void Ascending(decimal[] input)
         {
             //creates counter
             int count = 0;
@@ -29,7 +21,6 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             //call initial sort
             AscendingSort(ref input, ref count);
         }
-
         private void AscendingSort(ref decimal[] input, ref int count)
         {
             //get size
@@ -59,7 +50,6 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                 AscendingHeap(ref input, heapSize, 0, ref count);
             }
         }
-
         private void AscendingHeap(ref decimal[] input, int size, int current, ref int count)
         {
             //get variables
@@ -98,7 +88,8 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                 AscendingHeap(ref input, size, max, ref count);
             }
         }
-        public void Descending(decimal[] input)
+
+        public override void Descending(decimal[] input)
         {
             //creates counter
             int count = 0;
@@ -106,7 +97,6 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
             //call initial sort
             DescendingSort(ref input, ref count);
         }
-
         private void DescendingSort(ref decimal[] input, ref int count)
         {
             //get size
@@ -136,7 +126,6 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
                 DescendingHeap(ref input, heapSize, 0, ref count);
             }
         }
-
         private void DescendingHeap(ref decimal[] input, int size, int current, ref int count)
         {
             //get variables

@@ -62,11 +62,6 @@ namespace Group_24_Animated_Algorithms
             tb_searchfor.Text = array[r.Next(array.Count())].ToString();
         }
 
-        private void Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Enabled = true;
-        }
-
         private void BT_Bubble_Click(object sender, EventArgs e)
         {
             WorkerThread = delegate
@@ -74,18 +69,15 @@ namespace Group_24_Animated_Algorithms
                 splayer.Play();
             };
             BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Bubble, true)
+                    Form = new OutputScreen(array, Sorting.Bubble, true, int.Parse(tb_time.Text))
                     {
                         Text = "Output Bubble Sort Ascending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -93,11 +85,10 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Bubble, false)
+                    Form = new OutputScreen(array, Sorting.Bubble, false, int.Parse(tb_time.Text))
                     {
                         Text = "Output Bubble Sort Descending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -110,18 +101,15 @@ namespace Group_24_Animated_Algorithms
                 splayer.Play();
             };
             BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Heap, true)
+                    Form = new OutputScreen(array, Sorting.Heap, true, int.Parse(tb_time.Text))
                     {
                         Text = "Output Heap Sort Ascending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -129,11 +117,10 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Heap, false)
+                    Form = new OutputScreen(array, Sorting.Heap, false, int.Parse(tb_time.Text))
                     {
                         Text = "Output Heap Sort Descending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -146,18 +133,15 @@ namespace Group_24_Animated_Algorithms
                 splayer.Play();
             };
             BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Quick, true)
+                    Form = new OutputScreen(array, Sorting.Quick, true, int.Parse(tb_time.Text))
                     {
                         Text = "Output Quick Sort Ascending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -165,11 +149,10 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Quick, false)
+                    Form = new OutputScreen(array, Sorting.Quick, false, int.Parse(tb_time.Text))
                     {
                         Text = "Output Quick Sort Descending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -182,18 +165,15 @@ namespace Group_24_Animated_Algorithms
                 splayer.Play();
             };
             BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Merge, true)
+                    Form = new OutputScreen(array, Sorting.Merge, true, int.Parse(tb_time.Text))
                     {
                         Text = "Output Merge Sort Ascending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);                
             }
@@ -201,11 +181,10 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Merge, false)
+                    Form = new OutputScreen(array, Sorting.Merge, false, int.Parse(tb_time.Text))
                     {
                         Text = "Output Merge Sort Descending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -218,18 +197,15 @@ namespace Group_24_Animated_Algorithms
                     splayer.Play();
                 };
                 BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             //Create new output window
             if (rb_ascending.Checked)
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Insertion, true)
+                    Form = new OutputScreen(array, Sorting.Insertion, true, int.Parse(tb_time.Text))
                     {
                         Text = "Output Insertion Sort Ascending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -238,11 +214,10 @@ namespace Group_24_Animated_Algorithms
 
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Insertion, false)
+                    Form = new OutputScreen(array, Sorting.Insertion, false, int.Parse(tb_time.Text))
                     {
                         Text = "Output Insertion Sort Descending"
                     };
-                    Form.FormClosed += Form_FormClosed;
                 };
                 BeginInvoke(FormThread);
             }
@@ -256,8 +231,6 @@ namespace Group_24_Animated_Algorithms
                 splayer.Play();
             };
             BeginInvoke(WorkerThread);
-
-            this.Enabled = false;
             FormThread = delegate
             {
                 Array.Sort(array);
@@ -277,11 +250,10 @@ namespace Group_24_Animated_Algorithms
                 {
                     return;
                 }         
-                Form = new OutputScreen(array, Searching.Interpolation, int.Parse(tb_searchfor.Text))
+                Form = new OutputScreen(array, Searching.Interpolation, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
                 {
                     Text = "Output Interpolation Search"
                 };
-                Form.FormClosed += Form_FormClosed;
             };
             BeginInvoke(FormThread);
         }
@@ -299,5 +271,11 @@ namespace Group_24_Animated_Algorithms
     public enum Searching
     {
         Interpolation = 1
+    }
+
+    public class Data
+    {
+        public string time = "";
+        public string space = "";
     }
 }
