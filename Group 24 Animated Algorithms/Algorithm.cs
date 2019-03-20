@@ -31,6 +31,11 @@ namespace Group_24_Animated_Algorithms
             System.Threading.Thread.Sleep(time);
         }
 
+        public void Chill()
+        {
+            System.Threading.Thread.Sleep(500);
+        }
+
         public virtual void Ascending(Decimal[] input) { }
         public virtual void Descending(Decimal[] input) { }
         public virtual string Search(Decimal[] input, decimal target) { return ""; }

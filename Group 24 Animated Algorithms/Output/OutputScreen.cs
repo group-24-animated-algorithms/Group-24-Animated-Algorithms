@@ -414,14 +414,14 @@ namespace Group_24_Animated_Algorithms
         {
             if (paused)
             {
-                System.Threading.Thread.Sleep(100);
+                algorithm.Chill();
                 algorithm.TogglePause(paused);
                 BT_Pause.Text = "Pause";
                 paused = false;
             }
             else
             {
-                System.Threading.Thread.Sleep(100);
+                algorithm.Chill();
                 algorithm.TogglePause(paused);
                 BT_Pause.Text = "Resume";
                 paused = true;
