@@ -157,14 +157,13 @@ namespace Group_24_Animated_Algorithms
         {
             decimal a = bars.Count();
             List<int[]> tmp = new List<int[]>();
-            decimal x = (a / 6);
+            decimal x = (a / 5);
             int counter = (int)Math.Ceiling(x);
             for (int r = 0; r < counter; r++) tmp.Add(new int[3] { r * 255 / counter, 255, 0 });
             for (int g = counter; g > 0; g--) tmp.Add(new int[3] { 255, g * 255 / counter, 0 });
             for (int b = 0; b < counter; b++) tmp.Add(new int[3] { 255, 0, b * 255 / counter });
             for (int r = counter; r > 0; r--) tmp.Add(new int[3] { r * 255 / counter, 0, 255 });
-            for (int g = 0; g < counter; g++) tmp.Add(new int[3] { 0, g * 255 / counter, 255 });
-            for (int b = ((int)a - (counter * 5)); b > 0; b--) tmp.Add(new int[3] { 0, 255, b * 255 / ((int)a - (counter * 5)) });
+            for (int g = 0; g < ((int)a - (counter * 4)); g++) tmp.Add(new int[3] { 0, g * 255 / ((int)a - (counter * 4)), 255 });
 
             for (int i = 0; i < a; i++)
             {
