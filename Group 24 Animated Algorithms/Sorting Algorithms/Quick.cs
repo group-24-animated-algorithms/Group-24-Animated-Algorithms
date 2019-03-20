@@ -128,7 +128,7 @@ private int PartitionAscending(decimal[] array, int left, int right, ref int cou
                 if (left <= right)
                 {
                     Update(43, 48);
-                    Output.SwapBars(left, right);
+                    SwapBars(left, right);
                     decimal tmp = array[left];
                     array[left] = array[right];
                     array[right] = tmp;
@@ -256,7 +256,7 @@ private int PartitionDescending(decimal[] array, int left, int right, ref int co
                 if (left <= right)
                 {
                     Update(43, 48);
-                    Output.SwapBars(left, right);
+                    SwapBars(left, right);
                     decimal tmp = array[left];
                     array[left] = array[right];
                     array[right] = tmp;

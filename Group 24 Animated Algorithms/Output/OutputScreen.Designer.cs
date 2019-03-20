@@ -105,7 +105,6 @@
             this.TB_Info.TabIndex = 2;
             this.TB_Info.Text = "";
             this.TB_Info.WordWrap = false;
-            this.TB_Info.TextChanged += new System.EventHandler(this.TB_Info_TextChanged);
             // 
             // BT_Pause
             // 

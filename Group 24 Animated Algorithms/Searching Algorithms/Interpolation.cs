@@ -126,7 +126,7 @@ return ""Item not found"";");
                 mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
 
                 //highlight
-                Output.HighlightBar(mid);
+                Highlight(mid);
 
                 Update(13, 22);
                 //keep it in bounds of array

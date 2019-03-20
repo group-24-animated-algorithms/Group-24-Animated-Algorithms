@@ -67,7 +67,7 @@ for (int j = 0; j < length; j++)
 
                         Update(20, 23);
                         //move
-                        Output.SwapBars(i, i + 1);
+                        SwapBars(i, i + 1);
                         Output.UpdateOperations(count);
                         tmp = input[i + 1];
                         input[i + 1] = input[i];
@@ -130,7 +130,7 @@ for (int j = 0; j < length; j++)
 
                         Update(20, 23);
                         //move
-                        Output.SwapBars(i, i + 1);
+                        SwapBars(i, i + 1);
                         Output.UpdateOperations(count);
                         tmp = input[i + 1];
                         input[i + 1] = input[i];

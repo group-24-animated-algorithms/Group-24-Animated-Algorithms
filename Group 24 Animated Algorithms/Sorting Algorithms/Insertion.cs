@@ -62,7 +62,7 @@ while (Sorted < input.Length)
                     {
                         Update(15, 16);
                         input[index] = input[index - 1];
-                        Output.SwapBars(index, index - 1);
+                        SwapBars(index, index - 1);
                     }
                     else
                     {
@@ -125,7 +125,7 @@ while (Sorted < input.Length)
                     {
                         Update(15, 16);
                         input[index] = input[index - 1];
-                        Output.SwapBars(index, index - 1);
+                        SwapBars(index, index - 1);
                     }
                     else
                     {

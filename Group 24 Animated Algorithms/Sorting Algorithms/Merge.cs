@@ -172,14 +172,14 @@ private void AscendingMerge(ref decimal[] input, int start, int mid, int end, re
                 if (leftVal[i] <= rightVal[j])
                 {
                     Update(54, 55);
-                    Output.SwapBars(k, i);
+                    SwapBars(k, i);
                     input[k] = leftVal[i];
                     i++;
                 }
                 else
                 {
                     Update(59, 60);
-                    Output.SwapBars(k, mid + i - 1);
+                    SwapBars(k, mid + i - 1);
                     input[k] = rightVal[j];
                     j++;
                 }
@@ -193,7 +193,7 @@ private void AscendingMerge(ref decimal[] input, int start, int mid, int end, re
             {
                 Update(68, 71);
                 //move
-                Output.SwapBars(k, i);
+                SwapBars(k, i);
                 input[k] = leftVal[i];
                 i++;
                 k++;
@@ -204,7 +204,7 @@ private void AscendingMerge(ref decimal[] input, int start, int mid, int end, re
             {
                 Update(76, 79);
                 //move
-                Output.SwapBars(k, mid + i - 1);
+                SwapBars(k, mid + i - 1);
                 input[k] = rightVal[j];
                 j++;
                 k++;

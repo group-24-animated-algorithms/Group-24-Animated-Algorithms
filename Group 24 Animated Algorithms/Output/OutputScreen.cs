@@ -293,21 +293,19 @@ namespace Group_24_Animated_Algorithms
             Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 0, minWidth, Height));
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
-
-        //Draw specific bar
-        private void CurrentBar(Bar bar)
-        {
-            Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
-            //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
-        }
-
+        
         //highlights a bar
-        public void HighlightBar(int pos)
+        public void StartHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
             Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
             System.Threading.Thread.Sleep(100);
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
+        }
+
+        public void EndHighlightBar(int pos)
+        {
+            var bar = bars.Single(x => x.Pos == pos);
             Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
@@ -324,9 +322,6 @@ namespace Group_24_Animated_Algorithms
             {
                 return;
             }
-
-            CurrentBar(bar1);
-            CurrentBar(bar2);
 
             //move 1st bar to tmp pos
             bars.Single(x => x.Pos == CurrentPos).Pos = -1;
@@ -426,11 +421,6 @@ namespace Group_24_Animated_Algorithms
                 BT_Pause.Text = "Resume";
                 paused = true;
             }
-        }
-
-        private void TB_Info_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
