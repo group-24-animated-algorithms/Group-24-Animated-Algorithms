@@ -49,20 +49,16 @@ namespace Group_24_Animated_Algorithms
         Graphics Graphics;
         SolidBrush Backbrush;
 
-        //Editable past this point
-        SolidBrush MainBrush = new SolidBrush(Color.Blue);
-        SolidBrush SelectBrush = new SolidBrush(Color.Red);
-
         //Variables hold new scale
         const int newMin = 10;
-        const int newMax = 400;
+        const int newMax = 650;
 
         //Side margin
         const int marginRight = 500;
         const int minScreenWidth = 1000;
 
         //Variable holds min bar width
-        const int minWidth = 10;
+        const int minWidth = 25;
         //how long you want to hover over a highlighted bar 
         const int miliseconds = 50;
         public bool paused = false;
@@ -112,13 +108,13 @@ namespace Group_24_Animated_Algorithms
         //Destructor 
         ~OutputScreen()
         {
-            MainBrush.Dispose();
             Graphics.Dispose();
         }
 
         //Setup the window width height etc.
         private void Init()
         {
+
             //Set the width of the bars so that they sill the screen
             barWidth = input.Count() / this.Width;
 
@@ -126,7 +122,7 @@ namespace Group_24_Animated_Algorithms
             min = (int)input.Min();
             max = (int)input.Max();
 
-            //If <newWidth px width resize the window to fit them all with newWidth px
+            //If < newWidth px width resize the window to fit them all with newWidth px
             if (barWidth < minWidth)
             {
                 barWidth = minWidth;
@@ -156,6 +152,27 @@ namespace Group_24_Animated_Algorithms
         // Other //
         ///////////
 
+        //
+        private List<Bar> Getnewrgb(List<Bar> bars)
+        {
+            decimal a = bars.Count();
+            List<int[]> tmp = new List<int[]>();
+            decimal x = (a / 6);
+            int counter = (int)Math.Ceiling(x);
+            for (int r = 0; r < counter; r++) tmp.Add(new int[3] { r * 255 / counter, 255, 0 });
+            for (int g = counter; g > 0; g--) tmp.Add(new int[3] { 255, g * 255 / counter, 0 });
+            for (int b = 0; b < counter; b++) tmp.Add(new int[3] { 255, 0, b * 255 / counter });
+            for (int r = counter; r > 0; r--) tmp.Add(new int[3] { r * 255 / counter, 0, 255 });
+            for (int g = 0; g < counter; g++) tmp.Add(new int[3] { 0, g * 255 / counter, 255 });
+            for (int b = ((int)a - (counter * 5)); b > 0; b--) tmp.Add(new int[3] { 0, 255, b * 255 / ((int)a - (counter * 5)) });
+
+            for (int i = 0; i < a; i++)
+            {
+                bars[i].Colour = tmp[i];
+            }
+            return bars;
+        }
+
         //Takes the array and returns a List of Bar objects
         private List<Bar> ArrayToBarList(Decimal[] Input)
         {
@@ -174,7 +191,7 @@ namespace Group_24_Animated_Algorithms
                 //increment position
                 pos++;
             }
-
+            tmpBarList = Getnewrgb(tmpBarList);
             //Return list
             return tmpBarList;
         }
@@ -283,31 +300,32 @@ namespace Group_24_Animated_Algorithms
         //Draw specific bar
         private void DrawBar(Bar bar)
         {
-            Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         //Remove bar at position
         private void ClearBar(int pos)
         {
-            Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 0, minWidth, Height));
+            Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 40, minWidth, Height));
             //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
-        
+
         //highlights a bar
         public void StartHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
-            Graphics.FillRectangle(SelectBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
+            var y = new SolidBrush(Color.FromArgb(255, 255, 255));
+            Graphics.FillRectangle(y, new Rectangle(bar.Width * bar.Pos,40, bar.Width, bar.Height));
             System.Threading.Thread.Sleep(100);
-            //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         public void EndHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
-            Graphics.FillRectangle(MainBrush, new Rectangle(bar.Width * bar.Pos, 0, bar.Width, bar.Height));
-            //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
+            var y = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
+            Graphics.FillRectangle(y, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
         }
 
         //swaps two bars positions
@@ -382,6 +400,8 @@ namespace Group_24_Animated_Algorithms
                 algorithm.Ascending(input);
             else
                 algorithm.Descending(input);
+
+            DrawBars();
         }
 
         private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)

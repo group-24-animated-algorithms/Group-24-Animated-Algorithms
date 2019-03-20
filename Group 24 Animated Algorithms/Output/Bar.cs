@@ -19,5 +19,6 @@ namespace Group_24_Animated_Algorithms.Output
         public int Width { get => width; set => width = value; }
         public int Pos { get => pos; set => pos = value; }
         public decimal Value { get => value; set => this.value = value; }
+        public int[] Colour = new int[3] { 0, 0, 255 };
     }
 }
