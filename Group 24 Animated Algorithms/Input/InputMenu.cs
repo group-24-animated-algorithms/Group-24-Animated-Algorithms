@@ -40,22 +40,31 @@ namespace Group_24_Animated_Algorithms
         private void GenerateArray()
         {
             array = new Decimal[int.Parse(tb_arraysize.Text)];
-
-            for (int i = 0; i < int.Parse(tb_arraysize.Text); i++)
+            var numbers = new List<decimal>();
+            switch (cb_decimals.Checked)
             {
-                switch (cb_decimals.Checked)
-                {
-                    case true:
-                        array[i] = ((Decimal)r.Next(int.Parse(tb_min.Text) * 100, int.Parse(tb_max.Text) * 100)) / 100;
-                        break;
-                    case false:
-                        array[i] = r.Next(int.Parse(tb_min.Text), int.Parse(tb_max.Text));
-                        break;
-                    default:
-                        break;
-                }
+                case true:
+                    while (numbers.Count() < array.Length)
+                    {
+                        numbers.Add(((Decimal)r.Next(int.Parse(tb_min.Text) * 100, int.Parse(tb_max.Text) * 100)) / 100);
+                        var tmp = numbers.Distinct().ToList();
+                        numbers.Clear();
+                        numbers.AddRange(tmp);
+                    }
+                    break;
+                case false:
+                    while (numbers.Count() < array.Length)
+                    {
+                        numbers.Add(r.Next(int.Parse(tb_min.Text), int.Parse(tb_max.Text)));
+                        var tmp = numbers.Distinct().ToList();
+                        numbers.Clear();
+                        numbers.AddRange(tmp);
+                    }
+                    break;
+                default:
+                    break;
             }
-
+            array = numbers.ToArray();
             tb_array.Text = string.Join(", ", array);
             tb_realmax.Text = array.Max().ToString();
             tb_realmin.Text = array.Min().ToString();
@@ -175,7 +184,7 @@ namespace Group_24_Animated_Algorithms
                         Text = "Output Merge Sort Ascending"
                     };
                 };
-                BeginInvoke(FormThread);                
+                BeginInvoke(FormThread);
             }
             else
             {
@@ -192,11 +201,11 @@ namespace Group_24_Animated_Algorithms
 
         private void BT_Insertion_Go_Click(object sender, EventArgs e)
         {
-                WorkerThread = delegate
-                {
-                    splayer.Play();
-                };
-                BeginInvoke(WorkerThread);
+            WorkerThread = delegate
+            {
+                splayer.Play();
+            };
+            BeginInvoke(WorkerThread);
             //Create new output window
             if (rb_ascending.Checked)
             {
@@ -249,13 +258,30 @@ namespace Group_24_Animated_Algorithms
                 catch (Exception)
                 {
                     return;
-                }         
+                }
                 Form = new OutputScreen(array, Searching.Interpolation, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
                 {
                     Text = "Output Interpolation Search"
                 };
             };
             BeginInvoke(FormThread);
+        }
+
+        private void tb_max_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.Parse(tb_max.Text) < decimal.Parse(tb_min.Text))
+            {
+                var tmp = tb_max.Text;
+                tb_max.Text = tb_min.Text;
+                tb_min.Text = tmp;
+            }
+
+            if (Math.Abs(decimal.Parse(tb_max.Text) - decimal.Parse(tb_min.Text)) < decimal.Parse(tb_arraysize.Text))
+            {
+                tb_max.Text = (decimal.Parse(tb_min.Text) + decimal.Parse(tb_arraysize.Text)).ToString();
+            }
+
+            GenerateArray();
         }
     }
 

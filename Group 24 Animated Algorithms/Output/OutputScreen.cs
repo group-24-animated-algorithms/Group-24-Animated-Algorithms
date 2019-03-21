@@ -155,7 +155,10 @@ namespace Group_24_Animated_Algorithms
         //
         private List<Bar> Getnewrgb(List<Bar> bars)
         {
-            decimal a = bars.Count();
+            var tmpbars = new List<Bar>();
+            tmpbars = bars.OrderBy(b => b.Value).ToList();
+
+            decimal a = tmpbars.Count();
             List<int[]> tmp = new List<int[]>();
             decimal x = (a / 5);
             int counter = (int)Math.Ceiling(x);
@@ -167,8 +170,14 @@ namespace Group_24_Animated_Algorithms
 
             for (int i = 0; i < a; i++)
             {
-                bars[i].Colour = tmp[i];
+                tmpbars[i].Colour = tmp[i];
             }
+
+            foreach (var item in tmpbars)
+            {
+                bars.Single(z => z.Value == item.Value).Colour = item.Colour;
+            }
+
             return bars;
         }
 
@@ -418,15 +427,18 @@ namespace Group_24_Animated_Algorithms
             else
                 algorithm.Descending(input);
 
-            DrawBars();
 
             Action x = delegate {
                 BT_Pause.Text = "Complete";
                 BT_Pause.Enabled = false;
             };
-            Invoke(x);
-
-            MessageBox.Show($"Sorting Completed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                Invoke(x);
+                MessageBox.Show($"Sorting Completed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DrawBars();
+            }
+            catch { }
         }
 
         private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
@@ -457,9 +469,13 @@ namespace Group_24_Animated_Algorithms
             TB_Result.Text = result;
             BT_Pause.Text = "Complete";
             BT_Pause.Enabled = false; };
-            Invoke(x);
+            try
+            {
+                Invoke(x);
+                MessageBox.Show($"Search Completed", result, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch { }
 
-            MessageBox.Show($"Search Completed", result, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BT_Pause_Click(object sender, EventArgs e)
