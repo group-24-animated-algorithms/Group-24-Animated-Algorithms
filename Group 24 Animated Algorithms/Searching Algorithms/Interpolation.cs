@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Group_24_Animated_Algorithms.Searching_Algorithms
 {
-    class Interpolation: Algorithm
+    class Interpolation : Algorithm
     {
         //Algorithm
         public Interpolation(ref OutputScreen OutputWin, int time)
@@ -99,7 +99,7 @@ while (min <= max)
 
 //return error
 return ""Item not found"";");
-}
+        }
 
         public override string Search(decimal[] input, decimal target)
         {
@@ -108,6 +108,7 @@ return ""Item not found"";");
 
         public string ISearch(decimal[] input, int min, int max, decimal key)
         {
+            var me = this as Algorithm;
             Update(1, 3); //Line number
             //midpoint container
             int mid;
@@ -124,9 +125,6 @@ return ""Item not found"";");
                 Update(10, 11);
                 //get midpoint
                 mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
-
-                //highlight
-                Highlight(mid);
 
                 Update(13, 22);
                 //keep it in bounds of array
@@ -146,7 +144,11 @@ return ""Item not found"";");
                 {
                     Update(27, 28);
                     //add location to string
-                    string tmp = $"Location: {mid}";
+                    string tmp = $" Location: {mid + 1}";
+
+                    //highlight
+                    Highlight(mid);
+
                     Update(30, 34);
                     //check for duiplicates
                     int countLeft = 0;
@@ -158,15 +160,22 @@ return ""Item not found"";");
                     //add duplicate locations
                     for (int i = 1; i <= countLeft; i++)
                     {
-                        tmp = $"{tmp}\nLocation: {mid - i}";
+                        //highlight
+                        Highlight(mid - i);
+
+                        tmp = $"{tmp}\n Location: {(mid - i) + 1}";
                     }
                     Update(42, 45);
                     for (int i = 1; i <= countRight; i++)
                     {
-                        tmp = $"{tmp}\nLocation: {mid + i}";
+                        //highlight
+                        Highlight(mid + i);
+
+                        tmp = $"{tmp}\n Location: {(mid + i) + 1}";
                     }
 
                     Update(47, 48);
+
                     //return string
                     return tmp;
                 }
@@ -175,15 +184,19 @@ return ""Item not found"";");
                 else if (SearchChecking.AboveBounds(mid, ref key, ref max))
                 {
                     Update(51, 56);
+
                     //return location and closest value
-                    return $"Location: {mid} Value: {input[mid]}";
+                    return $" Location: {mid + 1} Value: {input[mid]}";
+
                 }
                 //check if it belongs below the array
                 else if (SearchChecking.BelowBounds(mid, ref key))
                 {
-                Update(57, 62);
+                    Update(57, 62);
+
                     //return location and closest value
-                    return $"Location: {mid} Value: {input[mid]}";
+                    return $" Location: {mid + 1} Value: {input[mid]}";
+
                 }
 
                 //check if it fits between two items in array
@@ -191,7 +204,7 @@ return ""Item not found"";");
                 {
                     Update(64, 69);
                     //return closest value and location
-                    return SearchChecking.ClosestValue(ref input, mid, mid + 1, ref key);
+                    return SearchChecking.ClosestValue(ref input, mid, mid + 1, ref key, ref me);
                 }
 
                 //where to look next

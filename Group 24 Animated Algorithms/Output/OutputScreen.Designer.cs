@@ -35,6 +35,9 @@
             this.TB_Info = new System.Windows.Forms.RichTextBox();
             this.BT_Pause = new System.Windows.Forms.Button();
             this.grp_result = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TB_SearchFor = new System.Windows.Forms.TextBox();
             this.TB_Result = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +55,7 @@
             // 
             // grp_operations
             // 
+            this.grp_operations.BackColor = System.Drawing.SystemColors.Control;
             this.grp_operations.Controls.Add(this.tb_operations);
             this.grp_operations.Font = new System.Drawing.Font("Open Sans", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_operations.Location = new System.Drawing.Point(6, 12);
@@ -72,6 +76,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.grp_algorithminfo);
             this.groupBox1.Controls.Add(this.BT_Pause);
             this.groupBox1.Controls.Add(this.grp_result);
@@ -85,6 +90,7 @@
             // 
             // grp_algorithminfo
             // 
+            this.grp_algorithminfo.BackColor = System.Drawing.SystemColors.Control;
             this.grp_algorithminfo.Controls.Add(this.TB_Info);
             this.grp_algorithminfo.Font = new System.Drawing.Font("Open Sans", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_algorithminfo.Location = new System.Drawing.Point(6, 203);
@@ -108,9 +114,9 @@
             // 
             // BT_Pause
             // 
-            this.BT_Pause.Location = new System.Drawing.Point(6, 152);
+            this.BT_Pause.Location = new System.Drawing.Point(6, 168);
             this.BT_Pause.Name = "BT_Pause";
-            this.BT_Pause.Size = new System.Drawing.Size(488, 45);
+            this.BT_Pause.Size = new System.Drawing.Size(488, 29);
             this.BT_Pause.TabIndex = 4;
             this.BT_Pause.Text = "Pause";
             this.BT_Pause.UseVisualStyleBackColor = true;
@@ -118,23 +124,56 @@
             // 
             // grp_result
             // 
+            this.grp_result.BackColor = System.Drawing.SystemColors.Control;
+            this.grp_result.Controls.Add(this.label4);
+            this.grp_result.Controls.Add(this.label3);
+            this.grp_result.Controls.Add(this.TB_SearchFor);
             this.grp_result.Controls.Add(this.TB_Result);
             this.grp_result.Enabled = false;
             this.grp_result.Font = new System.Drawing.Font("Open Sans", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_result.Location = new System.Drawing.Point(6, 83);
             this.grp_result.Name = "grp_result";
-            this.grp_result.Size = new System.Drawing.Size(488, 63);
+            this.grp_result.Size = new System.Drawing.Size(488, 79);
             this.grp_result.TabIndex = 5;
             this.grp_result.TabStop = false;
-            this.grp_result.Text = "Search Result: ";
+            this.grp_result.Text = "Search: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(253, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Found at:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Searching for:";
+            // 
+            // TB_SearchFor
+            // 
+            this.TB_SearchFor.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_SearchFor.Location = new System.Drawing.Point(6, 45);
+            this.TB_SearchFor.Name = "TB_SearchFor";
+            this.TB_SearchFor.ReadOnly = true;
+            this.TB_SearchFor.Size = new System.Drawing.Size(226, 28);
+            this.TB_SearchFor.TabIndex = 5;
             // 
             // TB_Result
             // 
             this.TB_Result.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_Result.Location = new System.Drawing.Point(6, 29);
+            this.TB_Result.Location = new System.Drawing.Point(256, 45);
             this.TB_Result.Name = "TB_Result";
             this.TB_Result.ReadOnly = true;
-            this.TB_Result.Size = new System.Drawing.Size(476, 28);
+            this.TB_Result.Size = new System.Drawing.Size(226, 28);
             this.TB_Result.TabIndex = 4;
             // 
             // backgroundWorker1
@@ -214,7 +253,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "OutputScreen";
             this.Text = "Output";
-            this.TopMost = true;
             this.grp_operations.ResumeLayout(false);
             this.grp_operations.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -243,5 +281,8 @@
         private System.Windows.Forms.Button BT_Pause;
         private System.Windows.Forms.GroupBox grp_algorithminfo;
         private System.Windows.Forms.RichTextBox TB_Info;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TB_SearchFor;
     }
 }

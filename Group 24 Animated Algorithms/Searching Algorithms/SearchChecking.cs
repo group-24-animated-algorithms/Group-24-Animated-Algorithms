@@ -74,7 +74,7 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
             return false;
         }
 
-        public static string ClosestValue(ref decimal[] input, int i1, int i2, ref decimal key)
+        public static string ClosestValue(ref decimal[] input, int i1, int i2, ref decimal key, ref Algorithm Alg)
         {
             //find diference between values
             decimal d1 = key - input[i1];
@@ -83,15 +83,25 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
             //find the closest
             if (d1 > d2)
             {
-                return $"Location: {i2} Value: {input[i2]}";
+                //highlight
+                Alg.Highlight(i2);
+
+                return $" Location: {i2+1} Value: {input[i2]}";
             }
             else if (d2 > d1)
             {
-                return $"Location: {i1} Value: {input[i1]}";
+                //highlight
+                Alg.Highlight(i1);
+
+                return $" Location: {i1 + 1} Value: {input[i1]}";
             }
             else
             {
-                return $"Locations: {i1}, {i2} Values: {input[i1]}, {input[i2]}";
+                //highlight
+                Alg.Highlight(i1);
+                Alg.Highlight(i2);
+
+                return $" Locations: {i1 + 1}, {i2 + 1} Values: {input[i1]}, {input[i2]}";
             }
         }
     }

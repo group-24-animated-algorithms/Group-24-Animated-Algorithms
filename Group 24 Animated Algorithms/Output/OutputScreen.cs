@@ -296,35 +296,52 @@ namespace Group_24_Animated_Algorithms
             }
         }
 
+        //Draw All the bars
+        public void OutlineBars()
+        {
+            foreach (var item in bars)
+            {
+                DrawOutline(item);
+            }
+        }
+
         //Draw specific bar
         private void DrawBar(Bar bar)
         {
             var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
             Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
-            //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
+            DrawOutline(bar);
+        }
+        private void DrawOutline(Bar bar)
+        {
+            var x = new Pen(Color.Black,bar.Width/8);
+            Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos)+((bar.Width / 8)/2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
+        }
+        //Draw specific bar
+        public void DrawBar(int pos)
+        {
+            var bar = bars.Single(y => y.Pos == pos);
+            var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+            DrawOutline(bar);
         }
 
         //Remove bar at position
-        private void ClearBar(int pos)
+        public void ClearBar(int pos)
         {
             Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 40, minWidth, Height));
-            //Graphics.Flush(System.Drawing.Drawing2D.FlushIntention.Sync);
         }
 
         //highlights a bar
         public void StartHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
-            var y = new SolidBrush(Color.FromArgb(255, 255, 255));
-            Graphics.FillRectangle(y, new Rectangle(bar.Width * bar.Pos,40, bar.Width, bar.Height));
-            System.Threading.Thread.Sleep(100);
-        }
+            using (Pen p = new Pen(new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2])), 4f))
+            {
+                p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-        public void EndHighlightBar(int pos)
-        {
-            var bar = bars.Single(x => x.Pos == pos);
-            var y = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
-            Graphics.FillRectangle(y, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 65, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
+            }
         }
 
         //swaps two bars positions
@@ -337,6 +354,7 @@ namespace Group_24_Animated_Algorithms
             //if they're the same dont try swap
             if (bar1.Pos == bar2.Pos && bar1.Value == bar2.Value)
             {
+                DrawBar(bar1);
                 return;
             }
 
@@ -401,17 +419,31 @@ namespace Group_24_Animated_Algorithms
                 algorithm.Descending(input);
 
             DrawBars();
+
+            Action x = delegate {
+                BT_Pause.Text = "Complete";
+                BT_Pause.Enabled = false;
+            };
+            Invoke(x);
+
+            MessageBox.Show($"Sorting Completed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             var me = this;
             Thread.CurrentThread.IsBackground = true;
+            OutlineBars();
+
+            Action y = delegate {
+                TB_SearchFor.Text = target.ToString();
+            };
+            Invoke(y);
+
             switch (searching)
             {
                 case Searching.Interpolation:
                     algorithm = new Interpolation(ref me, time);
-                    //pauseEvent = search.GetPauser();
                     break;
                 default:
                     break;
@@ -420,8 +452,14 @@ namespace Group_24_Animated_Algorithms
             UpdateControl(LB_Time, algorithm.data.time);
 
             var result = algorithm.Search(input, target);
-            Action x = delegate { TB_Result.Text = result; };
+
+            Action x = delegate {
+            TB_Result.Text = result;
+            BT_Pause.Text = "Complete";
+            BT_Pause.Enabled = false; };
             Invoke(x);
+
+            MessageBox.Show($"Search Completed", result, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BT_Pause_Click(object sender, EventArgs e)

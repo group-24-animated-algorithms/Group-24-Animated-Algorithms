@@ -11,6 +11,7 @@ namespace Group_24_Animated_Algorithms
         protected int time = 0;
         protected ManualResetEvent pauseEvent = new ManualResetEvent(true);
         public Data data;
+
         //Functions
         public void TogglePause(bool paused)
         {
@@ -35,22 +36,23 @@ namespace Group_24_Animated_Algorithms
         {
             System.Threading.Thread.Sleep(500);
         }
+
         public void SwapBars(int i, int j)
         {
             Output.StartHighlightBar(i);
             Output.StartHighlightBar(j);
-            System.Threading.Thread.Sleep(100);
+            System.Threading.Thread.Sleep(time);
+            Output.ClearBar(i);
+            Output.ClearBar(j);
             Output.SwapBars(i, j);
-            System.Threading.Thread.Sleep(100);
-            Output.EndHighlightBar(i);
-            Output.EndHighlightBar(j);
         }
+
         public void Highlight(int i)
         {
-            Output.StartHighlightBar(i);
-            System.Threading.Thread.Sleep(100);
-            Output.EndHighlightBar(i);
+            Output.DrawBar(i);
+            System.Threading.Thread.Sleep(time);
         }
+
         public virtual void Ascending(Decimal[] input) { }
         public virtual void Descending(Decimal[] input) { }
         public virtual string Search(Decimal[] input, decimal target) { return ""; }

@@ -42,7 +42,6 @@
             this.tb_array = new System.Windows.Forms.TextBox();
             this.grp_options = new System.Windows.Forms.GroupBox();
             this.grp_searchopt = new System.Windows.Forms.GroupBox();
-            this.tb_searchresult = new System.Windows.Forms.TextBox();
             this.lb_searchfor = new System.Windows.Forms.Label();
             this.tb_searchfor = new System.Windows.Forms.TextBox();
             this.grp_sortopt = new System.Windows.Forms.GroupBox();
@@ -218,32 +217,22 @@
             this.grp_options.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_options.Location = new System.Drawing.Point(260, 12);
             this.grp_options.Name = "grp_options";
-            this.grp_options.Size = new System.Drawing.Size(388, 362);
+            this.grp_options.Size = new System.Drawing.Size(388, 331);
             this.grp_options.TabIndex = 2;
             this.grp_options.TabStop = false;
             this.grp_options.Text = "Options";
             // 
             // grp_searchopt
             // 
-            this.grp_searchopt.Controls.Add(this.tb_searchresult);
             this.grp_searchopt.Controls.Add(this.lb_searchfor);
             this.grp_searchopt.Controls.Add(this.tb_searchfor);
             this.grp_searchopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_searchopt.Location = new System.Drawing.Point(6, 274);
             this.grp_searchopt.Name = "grp_searchopt";
-            this.grp_searchopt.Size = new System.Drawing.Size(376, 76);
+            this.grp_searchopt.Size = new System.Drawing.Size(376, 50);
             this.grp_searchopt.TabIndex = 20;
             this.grp_searchopt.TabStop = false;
             this.grp_searchopt.Text = "Search";
-            // 
-            // tb_searchresult
-            // 
-            this.tb_searchresult.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchresult.Location = new System.Drawing.Point(6, 50);
-            this.tb_searchresult.Name = "tb_searchresult";
-            this.tb_searchresult.ReadOnly = true;
-            this.tb_searchresult.Size = new System.Drawing.Size(364, 20);
-            this.tb_searchresult.TabIndex = 2;
             // 
             // lb_searchfor
             // 
@@ -450,7 +439,7 @@
             this.grp_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_search.Location = new System.Drawing.Point(12, 277);
             this.grp_search.Name = "grp_search";
-            this.grp_search.Size = new System.Drawing.Size(242, 97);
+            this.grp_search.Size = new System.Drawing.Size(242, 121);
             this.grp_search.TabIndex = 3;
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Searching Algorithms";
@@ -481,12 +470,12 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tb_time);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(260, 380);
+            this.groupBox1.Location = new System.Drawing.Point(260, 349);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(388, 49);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
+            this.groupBox1.Text = "Other";
             // 
             // label3
             // 
@@ -511,7 +500,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 440);
+            this.ClientSize = new System.Drawing.Size(660, 407);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grp_search);
             this.Controls.Add(this.grp_options);
@@ -568,7 +557,6 @@
         private System.Windows.Forms.TextBox tb_searchfor;
         private System.Windows.Forms.Label lb_interpolation;
         private System.Windows.Forms.Button bt_interpolation;
-        private System.Windows.Forms.TextBox tb_searchresult;
         private System.Windows.Forms.Button bt_merge;
         private System.Windows.Forms.Button bt_quick;
         private System.Windows.Forms.Label lb_insertion;
