@@ -20,7 +20,7 @@ namespace Group_24_Animated_Algorithms
     {
         private Decimal[] array;
         private Random r = new Random();
-        SoundPlayer splayer = new SoundPlayer("button21.wav");
+        SoundPlayer snd_button = new SoundPlayer("Button.wav");
         Action WorkerThread;
         Action FormThread;
         OutputScreen Form;
@@ -34,6 +34,11 @@ namespace Group_24_Animated_Algorithms
 
         private void BT_GenerateArray_Click(object sender, EventArgs e)
         {
+            if (Math.Abs(decimal.Parse(tb_max.Text) - decimal.Parse(tb_min.Text)) < decimal.Parse(tb_arraysize.Text))
+            {
+                tb_max.Text = (decimal.Parse(tb_min.Text) + decimal.Parse(tb_arraysize.Text)).ToString();
+            }
+
             GenerateArray();
         }
 
@@ -75,7 +80,7 @@ namespace Group_24_Animated_Algorithms
         {
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             //Create new output window
@@ -107,7 +112,7 @@ namespace Group_24_Animated_Algorithms
         {
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             //Create new output window
@@ -139,7 +144,7 @@ namespace Group_24_Animated_Algorithms
         {
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             //Create new output window
@@ -171,7 +176,7 @@ namespace Group_24_Animated_Algorithms
         {
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             //Create new output window
@@ -203,7 +208,7 @@ namespace Group_24_Animated_Algorithms
         {
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             //Create new output window
@@ -237,7 +242,7 @@ namespace Group_24_Animated_Algorithms
 
             WorkerThread = delegate
             {
-                splayer.Play();
+                snd_button.Play();
             };
             BeginInvoke(WorkerThread);
             FormThread = delegate

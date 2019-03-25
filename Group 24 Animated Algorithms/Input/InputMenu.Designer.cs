@@ -494,7 +494,7 @@
             this.tb_time.Name = "tb_time";
             this.tb_time.Size = new System.Drawing.Size(44, 20);
             this.tb_time.TabIndex = 0;
-            this.tb_time.Text = "250";
+            this.tb_time.Text = "500";
             // 
             // Input
             // 

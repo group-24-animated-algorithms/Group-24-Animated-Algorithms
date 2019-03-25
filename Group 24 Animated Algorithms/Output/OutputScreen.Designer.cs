@@ -46,6 +46,7 @@
             this.LB_Time = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.BT_Step = new System.Windows.Forms.Button();
             this.grp_operations.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grp_algorithminfo.SuspendLayout();
@@ -77,6 +78,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.BT_Step);
             this.groupBox1.Controls.Add(this.grp_algorithminfo);
             this.groupBox1.Controls.Add(this.BT_Pause);
             this.groupBox1.Controls.Add(this.grp_result);
@@ -116,7 +118,7 @@
             // 
             this.BT_Pause.Location = new System.Drawing.Point(6, 168);
             this.BT_Pause.Name = "BT_Pause";
-            this.BT_Pause.Size = new System.Drawing.Size(488, 29);
+            this.BT_Pause.Size = new System.Drawing.Size(232, 29);
             this.BT_Pause.TabIndex = 4;
             this.BT_Pause.Text = "Pause";
             this.BT_Pause.UseVisualStyleBackColor = true;
@@ -241,6 +243,17 @@
             // 
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker2_DoWork);
             // 
+            // BT_Step
+            // 
+            this.BT_Step.Enabled = false;
+            this.BT_Step.Location = new System.Drawing.Point(262, 168);
+            this.BT_Step.Name = "BT_Step";
+            this.BT_Step.Size = new System.Drawing.Size(232, 29);
+            this.BT_Step.TabIndex = 6;
+            this.BT_Step.Text = "Step";
+            this.BT_Step.UseVisualStyleBackColor = true;
+            this.BT_Step.Click += new System.EventHandler(this.BT_Step_Click);
+            // 
             // OutputScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +266,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "OutputScreen";
             this.Text = "Output";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OutputScreen_FormClosing);
             this.grp_operations.ResumeLayout(false);
             this.grp_operations.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -284,5 +298,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TB_SearchFor;
+        private System.Windows.Forms.Button BT_Step;
     }
 }

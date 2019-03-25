@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,7 +62,13 @@ namespace Group_24_Animated_Algorithms
         const int minWidth = 25;
         //how long you want to hover over a highlighted bar 
         const int miliseconds = 50;
+        //holdssounds
+        SoundPlayer snd_button = new SoundPlayer("Button.wav");
+        SoundPlayer snd_switch = new SoundPlayer("Switch.wav");
+        //holds states
         public bool paused = false;
+        public bool step = false;
+        //holds algorithm object
         Algorithm algorithm;
         //////////////////
         // Constructors //
@@ -260,11 +267,20 @@ namespace Group_24_Animated_Algorithms
             {
                 if (!InvokeRequired)
                 {
+                    bool scroll = false;
                     var startIndex = TB_Info.GetFirstCharIndexFromLine(line - 1);
                     var endIndex = TB_Info.GetFirstCharIndexFromLine(line2);
+                    if (TB_Info.SelectionStart > startIndex)
+                    {
+                        scroll = true;
+                    }
                     TB_Info.Select(startIndex, (endIndex - 1) - startIndex);
                     TB_Info.Refresh();
                     TB_Info.Focus();
+                    if (scroll)
+                    {
+                        TB_Info.ScrollToCaret();
+                    }
                 }
                 else
                 {
@@ -323,8 +339,8 @@ namespace Group_24_Animated_Algorithms
         }
         private void DrawOutline(Bar bar)
         {
-            var x = new Pen(Color.Black,bar.Width/8);
-            Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos)+((bar.Width / 8)/2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
+            var x = new Pen(Color.Black, bar.Width / 8);
+            Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos) + ((bar.Width / 8) / 2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
         }
         //Draw specific bar
         public void DrawBar(int pos)
@@ -345,17 +361,22 @@ namespace Group_24_Animated_Algorithms
         public void StartHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
-            using (Pen p = new Pen(new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2])), 4f))
+            using (Pen p = new Pen(new SolidBrush(Color.FromArgb(0, 0, 0)), 10f))
             {
                 p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 65, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
+                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
             }
         }
 
         //swaps two bars positions
         public void SwapBars(int CurrentPos, int NewPos)
         {
+            var windowInApplicationIsFocused = Form.ActiveForm != null;
+            if (windowInApplicationIsFocused)
+            {
+                    snd_switch.Play();
+            }
             //store the bars
             var bar1 = bars.Single(x => x.Pos == CurrentPos);
             var bar2 = bars.Single(x => x.Pos == NewPos);
@@ -428,7 +449,8 @@ namespace Group_24_Animated_Algorithms
                 algorithm.Descending(input);
 
 
-            Action x = delegate {
+            Action x = delegate
+            {
                 BT_Pause.Text = "Complete";
                 BT_Pause.Enabled = false;
             };
@@ -447,7 +469,8 @@ namespace Group_24_Animated_Algorithms
             Thread.CurrentThread.IsBackground = true;
             OutlineBars();
 
-            Action y = delegate {
+            Action y = delegate
+            {
                 TB_SearchFor.Text = target.ToString();
             };
             Invoke(y);
@@ -465,10 +488,12 @@ namespace Group_24_Animated_Algorithms
 
             var result = algorithm.Search(input, target);
 
-            Action x = delegate {
-            TB_Result.Text = result;
-            BT_Pause.Text = "Complete";
-            BT_Pause.Enabled = false; };
+            Action x = delegate
+            {
+                TB_Result.Text = result;
+                BT_Pause.Text = "Complete";
+                BT_Pause.Enabled = false;
+            };
             try
             {
                 Invoke(x);
@@ -485,15 +510,53 @@ namespace Group_24_Animated_Algorithms
                 algorithm.Chill();
                 algorithm.TogglePause(paused);
                 BT_Pause.Text = "Pause";
+                if (this.ContainsFocus)
+                {
+                    snd_button.Play();
+                }
                 paused = false;
+                step = false;
+                algorithm.ToggleStepping(step);
+                BT_Step.Enabled = false;
             }
             else
             {
                 algorithm.Chill();
                 algorithm.TogglePause(paused);
                 BT_Pause.Text = "Resume";
+                if (this.ContainsFocus)
+                {
+                    snd_button.Play();
+                }
                 paused = true;
+                BT_Step.Enabled = true;
             }
+        }
+
+        private void BT_Step_Click(object sender, EventArgs e)
+        {
+            if (step)
+            {
+                snd_button.Play();
+                algorithm.NextStep();
+            }
+            else
+            {
+                step = true;
+                algorithm.ToggleStepping(step);
+            }
+        }
+
+        private void OutputScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            this.algorithm.Close();
+            this.input = new decimal[] { 1,2,3};
+            //this.algorithm = null;
+            //this.snd_button.Dispose();
+            //this.snd_switch.Dispose();
+            //this.Dispose();
+
         }
     }
 }
