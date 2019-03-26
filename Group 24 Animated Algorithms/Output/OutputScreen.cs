@@ -23,7 +23,6 @@ namespace Group_24_Animated_Algorithms
 
     public partial class OutputScreen : Form
     {
-
         ///////////////
         // Variables //
         ///////////////
@@ -36,6 +35,7 @@ namespace Group_24_Animated_Algorithms
         Sorting sorting;
         Searching searching;
         bool ascending;
+        bool issorting = false;
         decimal target;
         int time;
 
@@ -60,16 +60,21 @@ namespace Group_24_Animated_Algorithms
 
         //Variable holds min bar width
         const int minWidth = 25;
+
         //how long you want to hover over a highlighted bar 
         const int miliseconds = 50;
+
         //holdssounds
         SoundPlayer snd_button = new SoundPlayer("Button.wav");
         SoundPlayer snd_switch = new SoundPlayer("Switch.wav");
+
         //holds states
         public bool paused = false;
         public bool step = false;
+
         //holds algorithm object
         Algorithm algorithm;
+
         //////////////////
         // Constructors //
         //////////////////
@@ -77,39 +82,39 @@ namespace Group_24_Animated_Algorithms
         //Sorting Constructor
         public OutputScreen(Decimal[] Input, Sorting Sorting, bool Ascending, int time)
         {
+            //assign variables
             this.time = time;
             input = Input;
+            issorting = true;
             sorting = Sorting;
             ascending = Ascending;
             InitializeComponent(); //Build in, for GUI
             Init();
             DrawBars();
 
+            //setup and start background thread
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            if (backgroundWorker1.IsBusy != true)
-            {
-                backgroundWorker1.RunWorkerAsync();
-            }
+            backgroundWorker1.RunWorkerAsync();
         }
+
         //Searching Constructor
         public OutputScreen(Decimal[] Input, Searching Searching, decimal Target, int time)
         {
+            //assign variables
             this.time = time;
             input = Input;
+            issorting = false;
             searching = Searching;
             target = Target;
             InitializeComponent(); //Build in, for GUI
             Init();
             grp_result.Enabled = true;
 
+            //setup and start background thread
             backgroundWorker2.WorkerReportsProgress = true;
             backgroundWorker2.WorkerSupportsCancellation = true;
-
-            if (backgroundWorker2.IsBusy != true)
-            {
-                backgroundWorker2.RunWorkerAsync();
-            }
+            backgroundWorker2.RunWorkerAsync();
         }
 
         //Destructor 
@@ -122,29 +127,38 @@ namespace Group_24_Animated_Algorithms
         private void Init()
         {
 
-            //Set the width of the bars so that they sill the screen
+            //Set the width of the bars so that they fill the screen
             barWidth = input.Count() / this.Width;
 
             //Set min and max values
             min = (int)input.Min();
             max = (int)input.Max();
 
-            //If < newWidth px width resize the window to fit them all with newWidth px
+            //if there are too many bars make the output window bigger
             if (barWidth < minWidth)
             {
+                //set bar width to min if lower
                 barWidth = minWidth;
+
                 int size = minScreenWidth;
+
+                //if the window should be resized, resize
                 if ((input.Count() * minWidth) + (barWidth * 2) > minScreenWidth)
                 {
                     size = (input.Count() * minWidth) + (barWidth * 2);
                 }
+
+                //set new size + margin
                 this.Width = size + marginRight;
             }
 
             //Create bar objects from array and all them to a list
             bars = ArrayToBarList(input);
 
+            //set background colour as brush
             Backbrush = new SolidBrush(this.BackColor);
+
+            //init graphics object
             Graphics = CreateGraphics();
             Graphics.BeginContainer();
             Graphics.ScaleTransform(1.0F, -1.0F);
@@ -155,38 +169,9 @@ namespace Group_24_Animated_Algorithms
             Show();
         }
 
-        ///////////
-        // Other //
-        ///////////
-
-        //
-        private List<Bar> Getnewrgb(List<Bar> bars)
-        {
-            var tmpbars = new List<Bar>();
-            tmpbars = bars.OrderBy(b => b.Value).ToList();
-
-            decimal a = tmpbars.Count();
-            List<int[]> tmp = new List<int[]>();
-            decimal x = (a / 5);
-            int counter = (int)Math.Ceiling(x);
-            for (int r = 0; r < counter; r++) tmp.Add(new int[3] { r * 255 / counter, 255, 0 });
-            for (int g = counter; g > 0; g--) tmp.Add(new int[3] { 255, g * 255 / counter, 0 });
-            for (int b = 0; b < counter; b++) tmp.Add(new int[3] { 255, 0, b * 255 / counter });
-            for (int r = counter; r > 0; r--) tmp.Add(new int[3] { r * 255 / counter, 0, 255 });
-            for (int g = 0; g < ((int)a - (counter * 4)); g++) tmp.Add(new int[3] { 0, g * 255 / ((int)a - (counter * 4)), 255 });
-
-            for (int i = 0; i < a; i++)
-            {
-                tmpbars[i].Colour = tmp[i];
-            }
-
-            foreach (var item in tmpbars)
-            {
-                bars.Single(z => z.Value == item.Value).Colour = item.Colour;
-            }
-
-            return bars;
-        }
+        ///////////////
+        // Functions //
+        ///////////////
 
         //Takes the array and returns a List of Bar objects
         private List<Bar> ArrayToBarList(Decimal[] Input)
@@ -206,9 +191,52 @@ namespace Group_24_Animated_Algorithms
                 //increment position
                 pos++;
             }
+            //add the colours
             tmpBarList = Getnewrgb(tmpBarList);
+
             //Return list
             return tmpBarList;
+        }
+
+        //gets the colour of the list of bars
+        private List<Bar> Getnewrgb(List<Bar> bars)
+        {
+            //duplicate the bars list
+            var tmpbars = new List<Bar>();
+            //sort the bars list by value (get to the end state)
+            tmpbars = bars.OrderBy(b => b.Value).ToList();
+
+            //variables
+            decimal a = tmpbars.Count();
+            List<int[]> tmp = new List<int[]>(); //list to hold colours
+
+            //get count divided by rgb split
+            decimal x = (a / 5);
+            //round up to int
+            int counter = (int)Math.Ceiling(x);
+
+            //run for loops creating rgb colours at "equal" (enough) intervals
+            for (int r = 0; r < counter; r++) tmp.Add(new int[3] { r * 255 / counter, 255, 0 });
+            for (int g = counter; g > 0; g--) tmp.Add(new int[3] { 255, g * 255 / counter, 0 });
+            for (int b = 0; b < counter; b++) tmp.Add(new int[3] { 255, 0, b * 255 / counter });
+            for (int r = counter; r > 0; r--) tmp.Add(new int[3] { r * 255 / counter, 0, 255 });
+            //as counter was rounded up, calculate the remaining time needed to run
+            for (int g = 0; g < ((int)a - (counter * 4)); g++) tmp.Add(new int[3] { 0, g * 255 / ((int)a - (counter * 4)), 255 });
+
+            //assign new colours
+            for (int i = 0; i < a; i++)
+            {
+                tmpbars[i].Colour = tmp[i];
+            }
+
+            //transfer colours from ordered bars to original bars
+            foreach (var item in tmpbars)
+            {
+                bars.Single(z => z.Value == item.Value).Colour = item.Colour;
+            }
+
+            //return
+            return bars;
         }
 
         //Calculates the height based on the min and max values and stretches to required scale
@@ -226,6 +254,8 @@ namespace Group_24_Animated_Algorithms
         /////////////////
         // Update Text //
         /////////////////
+
+        //uses invoke to update ui elements text property from a different thread
         public void UpdateControl(Control control, string text)
         {
             try
@@ -242,6 +272,7 @@ namespace Group_24_Animated_Algorithms
             catch { }
         }
 
+        //uses invoke to update ui code from a different thread
         public void UpdateInfo(string code)
         {
             try
@@ -261,22 +292,33 @@ namespace Group_24_Animated_Algorithms
             catch { }
         }
 
+        //uses invoke to update highlighted lines of code from a different thread
         public void UpdateBox(int line, int line2)
         {
             try
             {
                 if (!InvokeRequired)
                 {
+                    //need to scroll?
                     bool scroll = false;
+                    //character locations of start and end of highlight
                     var startIndex = TB_Info.GetFirstCharIndexFromLine(line - 1);
                     var endIndex = TB_Info.GetFirstCharIndexFromLine(line2);
+
+                    //if the highlighted lines are above previously highlighted ("off screen") then scroll
                     if (TB_Info.SelectionStart > startIndex)
                     {
                         scroll = true;
                     }
+
+                    //highlight
                     TB_Info.Select(startIndex, (endIndex - 1) - startIndex);
+                    //refresh ui element
                     TB_Info.Refresh();
+                    //give element focus
                     TB_Info.Focus();
+
+                    //if needed scroll to the right location
                     if (scroll)
                     {
                         TB_Info.ScrollToCaret();
@@ -290,7 +332,7 @@ namespace Group_24_Animated_Algorithms
             catch { }
         }
 
-        //Updates the operations counter
+        //uses invoke to update  the operations counter from a different thread
         public void UpdateOperations(int value)
         {
             try
@@ -321,7 +363,7 @@ namespace Group_24_Animated_Algorithms
             }
         }
 
-        //Draw All the bars
+        //Draw All the outlines
         public void OutlineBars()
         {
             foreach (var item in bars)
@@ -337,12 +379,15 @@ namespace Group_24_Animated_Algorithms
             Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
             DrawOutline(bar);
         }
+
+        //draw a specific bars outline
         private void DrawOutline(Bar bar)
         {
             var x = new Pen(Color.Black, bar.Width / 8);
             Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos) + ((bar.Width / 8) / 2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
         }
-        //Draw specific bar
+
+        //Draw specific bar from position
         public void DrawBar(int pos)
         {
             var bar = bars.Single(y => y.Pos == pos);
@@ -357,7 +402,7 @@ namespace Group_24_Animated_Algorithms
             Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 40, minWidth, Height));
         }
 
-        //highlights a bar
+        //highlights a bar at position
         public void StartHighlightBar(int pos)
         {
             var bar = bars.Single(x => x.Pos == pos);
@@ -372,11 +417,13 @@ namespace Group_24_Animated_Algorithms
         //swaps two bars positions
         public void SwapBars(int CurrentPos, int NewPos)
         {
+            //if foreground, play sound
             var windowInApplicationIsFocused = Form.ActiveForm != null;
             if (windowInApplicationIsFocused)
             {
-                    snd_switch.Play();
+                snd_switch.Play();
             }
+
             //store the bars
             var bar1 = bars.Single(x => x.Pos == CurrentPos);
             var bar2 = bars.Single(x => x.Pos == NewPos);
@@ -395,21 +442,134 @@ namespace Group_24_Animated_Algorithms
             //move over 1st bar
             bars.Single(x => x.Pos == -1).Pos = NewPos;
 
+            //clear and redraw
             ClearBar(bar1.Pos);
             ClearBar(bar2.Pos);
             DrawBar(bar1);
             DrawBar(bar2);
         }
 
+        ////////////
+        // Events //
+        ////////////
+
+        //tell algorithm object to begin closing
+        private void OutputScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.algorithm.Close();
+        }
+
+        //if minimised and resumed draw back the bars (bug fix)
+        private void OutputScreen_Resize(object sender, EventArgs e)
+        {
+            if (algorithm != null)
+            {
+                if (WindowState != FormWindowState.Minimized)
+                {
+                    if (issorting)
+                    {
+                        DrawBars();
+                    }
+                    else
+                    {
+                        OutlineBars();
+                        algorithm.HighlightAll();
+                    }
+                }
+                else if (!paused) //when minimised pause the solution (just an extra feature)
+                {
+                    algorithm.Chill();
+                    algorithm.TogglePause(paused);
+                    BT_Pause.Text = "Resume";
+                    paused = true;
+                    BT_Step.Enabled = true;
+                }
+            }
+        }
+
+        /////////////
+        // Buttons //
+        /////////////
+
+        private void BT_Pause_Click(object sender, EventArgs e)
+        {
+            //if paused resume
+            if (paused)
+            {
+                //slow down
+                algorithm.Chill();
+                //resume
+                algorithm.TogglePause(paused);
+                //change text on button
+                BT_Pause.Text = "Pause";
+
+                //if focused play sound
+                if (this.ContainsFocus)
+                {
+                    snd_button.Play();
+                }
+
+                //update states
+                paused = false;
+                step = false;
+
+                //ensure stepping is false in algorithm
+                algorithm.ToggleStepping(step);
+
+                //disable step button
+                BT_Step.Enabled = false;
+            }
+            //pause
+            else
+            {
+                //slow down
+                algorithm.Chill();
+                //resume
+                algorithm.TogglePause(paused);
+                //change text on button
+                BT_Pause.Text = "Resume";
+
+                //if focused play sound
+                if (this.ContainsFocus)
+                {
+                    snd_button.Play();
+                }
+
+                //update states
+                paused = true;
+                BT_Step.Enabled = true;
+            }
+        }
+
+        private void BT_Step_Click(object sender, EventArgs e)
+        {
+            //if already stepping take next step
+            if (step)
+            {
+                snd_button.Play();
+                algorithm.NextStep();
+            }
+            //change to stepping state and step
+            else
+            {
+                snd_button.Play();
+                step = true;
+                algorithm.ToggleStepping(step);
+            }
+        }
 
         ////////////////
         // Algorithms //
         ////////////////
 
-        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker1_Sort(object sender, DoWorkEventArgs e)
         {
+            //get ref to self to pass
             var me = this;
+            //mark thread as background
             Thread.CurrentThread.IsBackground = true;
+
+            //assign algorithm object to selected sort
             switch (sorting)
             {
                 //Bubble
@@ -440,15 +600,18 @@ namespace Group_24_Animated_Algorithms
                 default:
                     break;
             }
+
+            //update ui with space and time complexity
             UpdateControl(LB_Space, algorithm.data.space);
             UpdateControl(LB_Time, algorithm.data.time);
 
+            //run algorithm
             if (ascending)
                 algorithm.Ascending(input);
             else
                 algorithm.Descending(input);
 
-
+            //after completion disable the pause button
             Action x = delegate
             {
                 BT_Pause.Text = "Complete";
@@ -456,6 +619,7 @@ namespace Group_24_Animated_Algorithms
             };
             try
             {
+                //display window informing that it is complete
                 Invoke(x);
                 MessageBox.Show($"Sorting Completed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DrawBars();
@@ -463,18 +627,23 @@ namespace Group_24_Animated_Algorithms
             catch { }
         }
 
-        private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker2_Search(object sender, DoWorkEventArgs e)
         {
+            //get ref to self to pass
             var me = this;
+            //mark thread as background
             Thread.CurrentThread.IsBackground = true;
+            //draw line outlines
             OutlineBars();
 
+            //update ui with target
             Action y = delegate
             {
                 TB_SearchFor.Text = target.ToString();
             };
             Invoke(y);
 
+            //assign algorithm object to selected search
             switch (searching)
             {
                 case Searching.Interpolation:
@@ -483,11 +652,15 @@ namespace Group_24_Animated_Algorithms
                 default:
                     break;
             }
+
+            //update ui with space and time complexity
             UpdateControl(LB_Space, algorithm.data.space);
             UpdateControl(LB_Time, algorithm.data.time);
 
+            //run search
             var result = algorithm.Search(input, target);
 
+            //after completion disable the pause button
             Action x = delegate
             {
                 TB_Result.Text = result;
@@ -496,6 +669,7 @@ namespace Group_24_Animated_Algorithms
             };
             try
             {
+                //display window informing that it is complete
                 Invoke(x);
                 MessageBox.Show($"Search Completed", result, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -503,60 +677,6 @@ namespace Group_24_Animated_Algorithms
 
         }
 
-        private void BT_Pause_Click(object sender, EventArgs e)
-        {
-            if (paused)
-            {
-                algorithm.Chill();
-                algorithm.TogglePause(paused);
-                BT_Pause.Text = "Pause";
-                if (this.ContainsFocus)
-                {
-                    snd_button.Play();
-                }
-                paused = false;
-                step = false;
-                algorithm.ToggleStepping(step);
-                BT_Step.Enabled = false;
-            }
-            else
-            {
-                algorithm.Chill();
-                algorithm.TogglePause(paused);
-                BT_Pause.Text = "Resume";
-                if (this.ContainsFocus)
-                {
-                    snd_button.Play();
-                }
-                paused = true;
-                BT_Step.Enabled = true;
-            }
-        }
 
-        private void BT_Step_Click(object sender, EventArgs e)
-        {
-            if (step)
-            {
-                snd_button.Play();
-                algorithm.NextStep();
-            }
-            else
-            {
-                step = true;
-                algorithm.ToggleStepping(step);
-            }
-        }
-
-        private void OutputScreen_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-            this.algorithm.Close();
-            this.input = new decimal[] { 1,2,3};
-            //this.algorithm = null;
-            //this.snd_button.Dispose();
-            //this.snd_switch.Dispose();
-            //this.Dispose();
-
-        }
     }
 }

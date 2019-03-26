@@ -359,7 +359,7 @@
             this.tb_max.Size = new System.Drawing.Size(44, 20);
             this.tb_max.TabIndex = 7;
             this.tb_max.Text = "100";
-            this.tb_max.TextChanged += new System.EventHandler(this.tb_max_TextChanged);
+            this.tb_max.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
             // 
             // tb_realmax
             // 
@@ -378,7 +378,7 @@
             this.tb_min.Size = new System.Drawing.Size(44, 20);
             this.tb_min.TabIndex = 8;
             this.tb_min.Text = "1";
-            this.tb_min.TextChanged += new System.EventHandler(this.tb_max_TextChanged);
+            this.tb_min.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
             // 
             // cb_decimals
             // 

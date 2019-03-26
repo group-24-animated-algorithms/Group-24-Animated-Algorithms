@@ -1,5 +1,6 @@
 ﻿using Group_24_Animated_Algorithms.Output;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Group_24_Animated_Algorithms
@@ -13,16 +14,19 @@ namespace Group_24_Animated_Algorithms
         protected bool stepping = false;
         protected bool step = true;
         protected bool close = false;
+        protected List<int> searched = new List<int>();
         public Data data;
 
         //Functions
         public void TogglePause(bool paused)
         {
+            //if paused, resume
             if (paused)
             {
                 pauseEvent.Set();
             }
             else
+            //pause
             {
                 pauseEvent.Reset();
             }
@@ -30,6 +34,7 @@ namespace Group_24_Animated_Algorithms
 
         public void ToggleStepping(bool Step)
         {
+            //if already stepping, stop stepping
             if (Step)
             {
                 stepping = true;
@@ -37,6 +42,7 @@ namespace Group_24_Animated_Algorithms
                 pauseEvent.Set();
             }
             else
+            //start stepping
             {
                 stepping = false;
                 step = true;
@@ -45,33 +51,43 @@ namespace Group_24_Animated_Algorithms
 
         public void NextStep()
         {
+            //take next step
             pauseEvent.Set();
             step = true;
         }
 
         public void Close()
         {
+            //enter closing state
             close = true;
         }
 
         protected void Update(int lineNo, int lineLength)
         {
+            //if closing dont update ui
             if (close)
             {
                 return;
             }
+            //if stepping
             if (stepping)
             {
+                //step over
                 step = false;
+                //wait
                 pauseEvent.Reset();
                 pauseEvent.WaitOne(Timeout.Infinite);
+                //wait for next step
                 while (!step)
                 {
                     Thread.Sleep(50);
                 }
             }
+            //add wait location
             pauseEvent.WaitOne(Timeout.Infinite);
+            //Highlight lines in ui
             Output.UpdateBox(lineNo, lineLength);
+            //if not stepping wait
             if (!stepping)
             {
                 System.Threading.Thread.Sleep(time);
@@ -80,6 +96,7 @@ namespace Group_24_Animated_Algorithms
 
         public void Chill()
         {
+            //tells thread to wait for a little while
             if (!stepping)
             {
                 System.Threading.Thread.Sleep(500);
@@ -88,16 +105,20 @@ namespace Group_24_Animated_Algorithms
 
         public void SwapBars(int i, int j)
         {
+            //if closing dont update ui
             if (close)
             {
                 return;
             }
+            //highlight the two swapping bars
             Output.StartHighlightBar(i);
             Output.StartHighlightBar(j);
+            //if not stepping, wait
             if (!stepping)
             {
                 System.Threading.Thread.Sleep(time);
             }
+            //remove the previous bars and redraw in new positions
             Output.ClearBar(i);
             Output.ClearBar(j);
             Output.SwapBars(i, j);
@@ -105,10 +126,23 @@ namespace Group_24_Animated_Algorithms
 
         public void Highlight(int i)
         {
+            //add found location to list
+            searched.Add(i);
+            //colour the bar just searched for
             Output.DrawBar(i);
+            //if not stepping, wait
             if (!stepping)
             {
                 System.Threading.Thread.Sleep(time);
+            }
+        }
+
+        public void HighlightAll()
+        {
+            //fixes bug and redraws all searched bars onto the screen when required
+            foreach (var item in searched)
+            {
+                Output.DrawBar(item);
             }
         }
 

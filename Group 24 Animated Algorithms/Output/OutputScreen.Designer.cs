@@ -31,6 +31,7 @@
             this.grp_operations = new System.Windows.Forms.GroupBox();
             this.tb_operations = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BT_Step = new System.Windows.Forms.Button();
             this.grp_algorithminfo = new System.Windows.Forms.GroupBox();
             this.TB_Info = new System.Windows.Forms.RichTextBox();
             this.BT_Pause = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.LB_Time = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.BT_Step = new System.Windows.Forms.Button();
             this.grp_operations.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grp_algorithminfo.SuspendLayout();
@@ -89,6 +89,17 @@
             this.groupBox1.Size = new System.Drawing.Size(500, 761);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // BT_Step
+            // 
+            this.BT_Step.Enabled = false;
+            this.BT_Step.Location = new System.Drawing.Point(262, 168);
+            this.BT_Step.Name = "BT_Step";
+            this.BT_Step.Size = new System.Drawing.Size(232, 29);
+            this.BT_Step.TabIndex = 6;
+            this.BT_Step.Text = "Step";
+            this.BT_Step.UseVisualStyleBackColor = true;
+            this.BT_Step.Click += new System.EventHandler(this.BT_Step_Click);
             // 
             // grp_algorithminfo
             // 
@@ -180,7 +191,7 @@
             // 
             // backgroundWorker1
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_Sort);
             // 
             // label1
             // 
@@ -241,18 +252,7 @@
             // 
             // backgroundWorker2
             // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker2_DoWork);
-            // 
-            // BT_Step
-            // 
-            this.BT_Step.Enabled = false;
-            this.BT_Step.Location = new System.Drawing.Point(262, 168);
-            this.BT_Step.Name = "BT_Step";
-            this.BT_Step.Size = new System.Drawing.Size(232, 29);
-            this.BT_Step.TabIndex = 6;
-            this.BT_Step.Text = "Step";
-            this.BT_Step.UseVisualStyleBackColor = true;
-            this.BT_Step.Click += new System.EventHandler(this.BT_Step_Click);
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker2_Search);
             // 
             // OutputScreen
             // 
@@ -267,6 +267,7 @@
             this.Name = "OutputScreen";
             this.Text = "Output";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OutputScreen_FormClosing);
+            this.Resize += new System.EventHandler(this.OutputScreen_Resize);
             this.grp_operations.ResumeLayout(false);
             this.grp_operations.PerformLayout();
             this.groupBox1.ResumeLayout(false);
