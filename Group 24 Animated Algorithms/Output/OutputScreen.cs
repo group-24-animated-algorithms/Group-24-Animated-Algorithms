@@ -169,6 +169,7 @@ namespace Group_24_Animated_Algorithms
             Show();
         }
 
+
         ///////////////
         // Functions //
         ///////////////
@@ -362,7 +363,7 @@ namespace Group_24_Animated_Algorithms
                 DrawBar(item);
             }
         }
-
+               
         //Draw All the outlines
         public void OutlineBars()
         {
@@ -412,6 +413,31 @@ namespace Group_24_Animated_Algorithms
 
                 Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
             }
+        }
+
+        public void StartHighlightBar(decimal value)
+        {
+            var bar = bars.Single(x => x.Value == value);
+            using (Pen p = new Pen(new SolidBrush(Color.FromArgb(0, 0, 0)), 10f))
+            {
+                p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+
+                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
+            }
+        }
+
+        public void EditBarPos(decimal v, int k)
+        {
+            //if foreground, play sound
+            var windowInApplicationIsFocused = Form.ActiveForm != null;
+            if (windowInApplicationIsFocused)
+            {
+                snd_switch.Play();
+            }
+
+            ClearBar(k);
+            bars.Single(x => x.Value == v).Pos = k;
+            DrawBar(bars.Single(x => x.Value == v));
         }
 
         //swaps two bars positions

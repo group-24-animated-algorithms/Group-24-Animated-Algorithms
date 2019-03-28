@@ -170,7 +170,7 @@ private void AscendingHeap(ref decimal[] input, int size, int current, ref int c
 
         public override void Descending(decimal[] input)
         {
-            Output.UpdateInfo(@"private void AscendingSort(ref decimal[] input, ref int count)
+            Output.UpdateInfo(@"private void DescendingSort(ref decimal[] input, ref int count)
 {
 	//get size
 	int heapSize = input.Length;
@@ -179,7 +179,7 @@ private void AscendingHeap(ref decimal[] input, int size, int current, ref int c
 	for (int i = (heapSize - 1) / 2; i >= 0; i--)
 	{
 		//heapify
-		AscendingHeap(ref input, heapSize, i, ref count);
+		DescendingHeap(ref input, heapSize, i, ref count);
 	}
 
 	for (int i = input.Length - 1; i > 0; i--)
@@ -192,10 +192,10 @@ private void AscendingHeap(ref decimal[] input, int size, int current, ref int c
 		heapSize--;
 
 		//heapify
-		AscendingHeap(ref input, heapSize, 0, ref count);
+		DescendingHeap(ref input, heapSize, 0, ref count);
 	}
 }
-private void AscendingHeap(ref decimal[] input, int size, int current, ref int count)
+private void DescendingHeap(ref decimal[] input, int size, int current, ref int count)
 {
 	//get variables
 	int left = (current + 1) * 2 - 1;
@@ -227,7 +227,7 @@ private void AscendingHeap(ref decimal[] input, int size, int current, ref int c
 		input[max] = temp;
 
 		//heapify
-		AscendingHeap(ref input, size, max, ref count);
+		DescendingHeap(ref input, size, max, ref count);
 	}
 }");
             //creates counter
@@ -317,7 +317,7 @@ private void AscendingHeap(ref decimal[] input, int size, int current, ref int c
 
                 Update(57, 58);
                 //heapify
-                AscendingHeap(ref input, size, max, ref count);
+                DescendingHeap(ref input, size, max, ref count);
             }
         }
     }

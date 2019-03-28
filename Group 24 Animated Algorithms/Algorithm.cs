@@ -124,6 +124,22 @@ namespace Group_24_Animated_Algorithms
             Output.SwapBars(i, j);
         }
 
+        public void SwapBars(decimal v, int k)
+        {
+            //if closing dont update ui
+            if (close)
+            {
+                return;
+            }
+            //if not stepping, wait
+            if (!stepping)
+            {
+                System.Threading.Thread.Sleep(time);
+            }
+            //remove the previous bar and redraw in new positions
+            Output.EditBarPos(v, k);
+        }
+
         public void Highlight(int i)
         {
             //add found location to list
