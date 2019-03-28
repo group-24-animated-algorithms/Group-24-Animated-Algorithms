@@ -93,7 +93,7 @@ for (int j = 0; j < length; j++)
 	{
 
 		//check to see which is bigger
-		if (input[i] > input[i + 1])
+		if (input[i] < input[i + 1])
 		{
 			//Add counter
 			count++;

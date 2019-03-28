@@ -62,7 +62,7 @@ namespace Group_24_Animated_Algorithms
             close = true;
         }
 
-        protected void Update(int lineNo, int lineLength)
+        protected void Update(int line1, int line2)
         {
             //if closing dont update ui
             if (close)
@@ -86,7 +86,7 @@ namespace Group_24_Animated_Algorithms
             //add wait location
             pauseEvent.WaitOne(Timeout.Infinite);
             //Highlight lines in ui
-            Output.UpdateBox(lineNo, lineLength);
+            Output.UpdateBox(line1, line2);
             //if not stepping wait
             if (!stepping)
             {
