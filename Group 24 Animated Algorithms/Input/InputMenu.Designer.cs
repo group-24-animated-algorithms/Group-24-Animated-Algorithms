@@ -61,11 +61,21 @@
             this.lb_array = new System.Windows.Forms.Label();
             this.lb_arraysize = new System.Windows.Forms.Label();
             this.grp_search = new System.Windows.Forms.GroupBox();
+            this.Bt_Fibonacci = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Bt_Linear = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Bt_Binary = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Bt_Exponential = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.bt_interpolation = new System.Windows.Forms.Button();
             this.lb_interpolation = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_time = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Bt_Gnome = new System.Windows.Forms.Button();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
             this.grp_searchopt.SuspendLayout();
@@ -77,6 +87,8 @@
             // 
             // grp_sort
             // 
+            this.grp_sort.Controls.Add(this.label8);
+            this.grp_sort.Controls.Add(this.Bt_Gnome);
             this.grp_sort.Controls.Add(this.lb_insertion);
             this.grp_sort.Controls.Add(this.bt_insertion_go);
             this.grp_sort.Controls.Add(this.bt_merge);
@@ -90,7 +102,7 @@
             this.grp_sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_sort.Location = new System.Drawing.Point(12, 12);
             this.grp_sort.Name = "grp_sort";
-            this.grp_sort.Size = new System.Drawing.Size(242, 258);
+            this.grp_sort.Size = new System.Drawing.Size(242, 195);
             this.grp_sort.TabIndex = 0;
             this.grp_sort.TabStop = false;
             this.grp_sort.Text = "Sorting Algorithms";
@@ -99,16 +111,16 @@
             // 
             this.lb_insertion.AutoSize = true;
             this.lb_insertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_insertion.Location = new System.Drawing.Point(6, 140);
+            this.lb_insertion.Location = new System.Drawing.Point(6, 111);
             this.lb_insertion.Name = "lb_insertion";
-            this.lb_insertion.Size = new System.Drawing.Size(69, 13);
+            this.lb_insertion.Size = new System.Drawing.Size(47, 13);
             this.lb_insertion.TabIndex = 11;
-            this.lb_insertion.Text = "Insertion Sort";
+            this.lb_insertion.Text = "Insertion";
             // 
             // bt_insertion_go
             // 
             this.bt_insertion_go.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_insertion_go.Location = new System.Drawing.Point(161, 135);
+            this.bt_insertion_go.Location = new System.Drawing.Point(161, 106);
             this.bt_insertion_go.Name = "bt_insertion_go";
             this.bt_insertion_go.Size = new System.Drawing.Size(75, 23);
             this.bt_insertion_go.TabIndex = 10;
@@ -119,7 +131,7 @@
             // bt_merge
             // 
             this.bt_merge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_merge.Location = new System.Drawing.Point(161, 106);
+            this.bt_merge.Location = new System.Drawing.Point(161, 77);
             this.bt_merge.Name = "bt_merge";
             this.bt_merge.Size = new System.Drawing.Size(75, 23);
             this.bt_merge.TabIndex = 9;
@@ -130,7 +142,7 @@
             // bt_quick
             // 
             this.bt_quick.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_quick.Location = new System.Drawing.Point(161, 48);
+            this.bt_quick.Location = new System.Drawing.Point(161, 164);
             this.bt_quick.Name = "bt_quick";
             this.bt_quick.Size = new System.Drawing.Size(75, 23);
             this.bt_quick.TabIndex = 8;
@@ -142,26 +154,26 @@
             // 
             this.lb_merge.AutoSize = true;
             this.lb_merge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_merge.Location = new System.Drawing.Point(6, 111);
+            this.lb_merge.Location = new System.Drawing.Point(6, 82);
             this.lb_merge.Name = "lb_merge";
-            this.lb_merge.Size = new System.Drawing.Size(56, 13);
+            this.lb_merge.Size = new System.Drawing.Size(37, 13);
             this.lb_merge.TabIndex = 7;
-            this.lb_merge.Text = "MergeSort";
+            this.lb_merge.Text = "Merge";
             // 
             // lb_heap
             // 
             this.lb_heap.AutoSize = true;
             this.lb_heap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_heap.Location = new System.Drawing.Point(6, 82);
+            this.lb_heap.Location = new System.Drawing.Point(6, 140);
             this.lb_heap.Name = "lb_heap";
-            this.lb_heap.Size = new System.Drawing.Size(52, 13);
+            this.lb_heap.Size = new System.Drawing.Size(33, 13);
             this.lb_heap.TabIndex = 5;
-            this.lb_heap.Text = "HeapSort";
+            this.lb_heap.Text = "Heap";
             // 
             // bt_heap
             // 
             this.bt_heap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_heap.Location = new System.Drawing.Point(161, 77);
+            this.bt_heap.Location = new System.Drawing.Point(161, 135);
             this.bt_heap.Name = "bt_heap";
             this.bt_heap.Size = new System.Drawing.Size(75, 23);
             this.bt_heap.TabIndex = 4;
@@ -173,11 +185,11 @@
             // 
             this.lb_quick.AutoSize = true;
             this.lb_quick.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_quick.Location = new System.Drawing.Point(6, 53);
+            this.lb_quick.Location = new System.Drawing.Point(6, 169);
             this.lb_quick.Name = "lb_quick";
-            this.lb_quick.Size = new System.Drawing.Size(54, 13);
+            this.lb_quick.Size = new System.Drawing.Size(35, 13);
             this.lb_quick.TabIndex = 3;
-            this.lb_quick.Text = "QuickSort";
+            this.lb_quick.Text = "Quick";
             // 
             // lb_bubble
             // 
@@ -185,9 +197,9 @@
             this.lb_bubble.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_bubble.Location = new System.Drawing.Point(6, 24);
             this.lb_bubble.Name = "lb_bubble";
-            this.lb_bubble.Size = new System.Drawing.Size(59, 13);
+            this.lb_bubble.Size = new System.Drawing.Size(40, 13);
             this.lb_bubble.TabIndex = 1;
-            this.lb_bubble.Text = "BubbleSort";
+            this.lb_bubble.Text = "Bubble";
             // 
             // bt_bubble
             // 
@@ -434,20 +446,112 @@
             // 
             // grp_search
             // 
+            this.grp_search.Controls.Add(this.Bt_Fibonacci);
+            this.grp_search.Controls.Add(this.label7);
+            this.grp_search.Controls.Add(this.Bt_Linear);
+            this.grp_search.Controls.Add(this.label6);
+            this.grp_search.Controls.Add(this.Bt_Binary);
+            this.grp_search.Controls.Add(this.label5);
+            this.grp_search.Controls.Add(this.Bt_Exponential);
+            this.grp_search.Controls.Add(this.label4);
             this.grp_search.Controls.Add(this.bt_interpolation);
             this.grp_search.Controls.Add(this.lb_interpolation);
             this.grp_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_search.Location = new System.Drawing.Point(12, 277);
+            this.grp_search.Location = new System.Drawing.Point(12, 232);
             this.grp_search.Name = "grp_search";
-            this.grp_search.Size = new System.Drawing.Size(242, 121);
+            this.grp_search.Size = new System.Drawing.Size(242, 166);
             this.grp_search.TabIndex = 3;
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Searching Algorithms";
             // 
+            // Bt_Fibonacci
+            // 
+            this.Bt_Fibonacci.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Fibonacci.Location = new System.Drawing.Point(161, 135);
+            this.Bt_Fibonacci.Name = "Bt_Fibonacci";
+            this.Bt_Fibonacci.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Fibonacci.TabIndex = 16;
+            this.Bt_Fibonacci.Text = "Go";
+            this.Bt_Fibonacci.UseVisualStyleBackColor = true;
+            this.Bt_Fibonacci.Click += new System.EventHandler(this.Bt_Fibonacci_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(7, 140);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Fibonacci";
+            // 
+            // Bt_Linear
+            // 
+            this.Bt_Linear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Linear.Location = new System.Drawing.Point(161, 19);
+            this.Bt_Linear.Name = "Bt_Linear";
+            this.Bt_Linear.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Linear.TabIndex = 14;
+            this.Bt_Linear.Text = "Go";
+            this.Bt_Linear.UseVisualStyleBackColor = true;
+            this.Bt_Linear.Click += new System.EventHandler(this.Bt_Linear_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Linear";
+            // 
+            // Bt_Binary
+            // 
+            this.Bt_Binary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Binary.Location = new System.Drawing.Point(161, 48);
+            this.Bt_Binary.Name = "Bt_Binary";
+            this.Bt_Binary.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Binary.TabIndex = 12;
+            this.Bt_Binary.Text = "Go";
+            this.Bt_Binary.UseVisualStyleBackColor = true;
+            this.Bt_Binary.Click += new System.EventHandler(this.Bt_Binary_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(7, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Binary";
+            // 
+            // Bt_Exponential
+            // 
+            this.Bt_Exponential.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Exponential.Location = new System.Drawing.Point(161, 77);
+            this.Bt_Exponential.Name = "Bt_Exponential";
+            this.Bt_Exponential.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Exponential.TabIndex = 10;
+            this.Bt_Exponential.Text = "Go";
+            this.Bt_Exponential.UseVisualStyleBackColor = true;
+            this.Bt_Exponential.Click += new System.EventHandler(this.Bt_Exponential_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(7, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Exponential";
+            // 
             // bt_interpolation
             // 
             this.bt_interpolation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_interpolation.Location = new System.Drawing.Point(161, 15);
+            this.bt_interpolation.Location = new System.Drawing.Point(161, 106);
             this.bt_interpolation.Name = "bt_interpolation";
             this.bt_interpolation.Size = new System.Drawing.Size(75, 23);
             this.bt_interpolation.TabIndex = 8;
@@ -459,7 +563,7 @@
             // 
             this.lb_interpolation.AutoSize = true;
             this.lb_interpolation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_interpolation.Location = new System.Drawing.Point(7, 20);
+            this.lb_interpolation.Location = new System.Drawing.Point(7, 111);
             this.lb_interpolation.Name = "lb_interpolation";
             this.lb_interpolation.Size = new System.Drawing.Size(65, 13);
             this.lb_interpolation.TabIndex = 0;
@@ -495,6 +599,27 @@
             this.tb_time.Size = new System.Drawing.Size(44, 20);
             this.tb_time.TabIndex = 0;
             this.tb_time.Text = "500";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 53);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Gnome";
+            // 
+            // Bt_Gnome
+            // 
+            this.Bt_Gnome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Gnome.Location = new System.Drawing.Point(161, 48);
+            this.Bt_Gnome.Name = "Bt_Gnome";
+            this.Bt_Gnome.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Gnome.TabIndex = 12;
+            this.Bt_Gnome.Text = "Go";
+            this.Bt_Gnome.UseVisualStyleBackColor = true;
+            this.Bt_Gnome.Click += new System.EventHandler(this.Bt_Gnome_Click);
             // 
             // Input
             // 
@@ -564,6 +689,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_time;
+        private System.Windows.Forms.Button Bt_Binary;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button Bt_Exponential;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Bt_Fibonacci;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button Bt_Linear;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Bt_Gnome;
     }
 }
 

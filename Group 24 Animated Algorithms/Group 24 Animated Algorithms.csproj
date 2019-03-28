@@ -63,9 +63,13 @@
     <Compile Include="Output\Bar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Searching Algorithms\Binary.cs" />
+    <Compile Include="Searching Algorithms\Exponential.cs" />
+    <Compile Include="Searching Algorithms\Fibonacci.cs" />
     <Compile Include="Searching Algorithms\Interpolation.cs" />
-    <Compile Include="Searching Algorithms\SearchChecking.cs" />
+    <Compile Include="Searching Algorithms\Linear.cs" />
     <Compile Include="Sorting Algorithms\Bubble.cs" />
+    <Compile Include="Sorting Algorithms\Gnome.cs" />
     <Compile Include="Sorting Algorithms\Heap.cs" />
     <Compile Include="Sorting Algorithms\Insertion.cs" />
     <Compile Include="Sorting Algorithms\Merge.cs" />

@@ -150,61 +150,12 @@ return ""Item not found"";");
                     Highlight(mid);
 
                     Update(30, 34);
-                    //check for duiplicates
-                    int countLeft = 0;
-                    SearchChecking.LookForDupesLeft(ref input, mid, ref key, ref countLeft);
-                    int countRight = 0;
-                    SearchChecking.LookForDupesRight(ref input, mid, ref key, ref countRight, ref max);
-
                     Update(36, 40);
-                    //add duplicate locations
-                    for (int i = 1; i <= countLeft; i++)
-                    {
-                        //highlight
-                        Highlight(mid - i);
-
-                        tmp = $"{tmp}\n Location: {(mid - i) + 1}";
-                    }
                     Update(42, 45);
-                    for (int i = 1; i <= countRight; i++)
-                    {
-                        //highlight
-                        Highlight(mid + i);
-
-                        tmp = $"{tmp}\n Location: {(mid + i) + 1}";
-                    }
-
                     Update(47, 48);
 
                     //return string
                     return tmp;
-                }
-
-                //check if it belongs above the array
-                else if (SearchChecking.AboveBounds(mid, ref key, ref max))
-                {
-                    Update(51, 56);
-
-                    //return location and closest value
-                    return $" Location: {mid + 1} Value: {input[mid]}";
-
-                }
-                //check if it belongs below the array
-                else if (SearchChecking.BelowBounds(mid, ref key))
-                {
-                    Update(57, 62);
-
-                    //return location and closest value
-                    return $" Location: {mid + 1} Value: {input[mid]}";
-
-                }
-
-                //check if it fits between two items in array
-                else if (SearchChecking.ShouldGoHere(input[mid], input[mid + 1], ref key, ref max)) //if it fits here and not here, find closest
-                {
-                    Update(64, 69);
-                    //return closest value and location
-                    return SearchChecking.ClosestValue(ref input, mid, mid + 1, ref key, ref me);
                 }
 
                 //where to look next

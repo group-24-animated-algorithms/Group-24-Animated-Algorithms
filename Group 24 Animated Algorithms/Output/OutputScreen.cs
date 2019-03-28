@@ -623,6 +623,11 @@ namespace Group_24_Animated_Algorithms
                     algorithm = new Insertion(ref me, time);
                     break;
 
+                //Gnome
+                case Sorting.Gnome:
+                    algorithm = new Gnome(ref me, time);
+                    break;
+
                 default:
                     break;
             }
@@ -674,6 +679,18 @@ namespace Group_24_Animated_Algorithms
             {
                 case Searching.Interpolation:
                     algorithm = new Interpolation(ref me, time);
+                    break;
+                case Searching.Exponential:
+                    algorithm = new Exponential(ref me, time);
+                    break;
+                case Searching.Binary:
+                    algorithm = new Binary(ref me, time);
+                    break;
+                case Searching.Linear:
+                    algorithm = new Linear(ref me, time);
+                    break;
+                case Searching.Fibonacci:
+                    algorithm = new Fibonacci(ref me, time);
                     break;
                 default:
                     break;

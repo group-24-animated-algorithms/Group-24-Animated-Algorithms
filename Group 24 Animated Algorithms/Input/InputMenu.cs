@@ -288,6 +288,42 @@ namespace Group_24_Animated_Algorithms
             GenerateArray();
         }
 
+        private void Bt_Gnome_Click(object sender, EventArgs e)
+        {
+
+            //play sound in seperate thread
+            WorkerThread = delegate
+            {
+                snd_button.Play();
+            };
+            BeginInvoke(WorkerThread);
+            //Create new output window ascending
+            if (rb_ascending.Checked)
+            {
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Gnome, true, int.Parse(tb_time.Text))
+                    {
+                        Text = "Output Gnome Sort Ascending"
+                    };
+                };
+                BeginInvoke(FormThread);
+            }
+            else
+            {
+                //Create new output window descending
+                FormThread = delegate
+                {
+                    Form = new OutputScreen(array, Sorting.Gnome, false, int.Parse(tb_time.Text))
+                    {
+                        Text = "Output Gnome Sort Descending"
+                    };
+                };
+                BeginInvoke(FormThread);
+            }
+            GenerateArray();
+        }
+
         //Insertion sort
         private void BT_Insertion_Go_Click(object sender, EventArgs e)
         {
@@ -366,6 +402,168 @@ namespace Group_24_Animated_Algorithms
             GenerateArray();
         }
 
+        private void Bt_Exponential_Click(object sender, EventArgs e)
+        {
+            //play sound in seperate thread
+            WorkerThread = delegate
+            {
+                snd_button.Play();
+            };
+            BeginInvoke(WorkerThread);
+
+            FormThread = delegate
+            {
+                //sort the array
+                Array.Sort(array);
+                //update ui
+                tb_array.Text = string.Join(", ", array);
+                //add "search for" if blank
+                if (this.tb_searchfor.Text == "")
+                {
+                    this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                }
+
+                //try convert text to string
+                try
+                {
+                    decimal.Parse(this.tb_searchfor.Text);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+
+                //Create new output window
+                Form = new OutputScreen(array, Searching.Exponential, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                {
+                    Text = "Output Exponential Search"
+                };
+            };
+            BeginInvoke(FormThread);
+            GenerateArray();
+        }
+
+        private void Bt_Binary_Click(object sender, EventArgs e)
+        {
+            //play sound in seperate thread
+            WorkerThread = delegate
+            {
+                snd_button.Play();
+            };
+            BeginInvoke(WorkerThread);
+
+            FormThread = delegate
+            {
+                //sort the array
+                Array.Sort(array);
+                //update ui
+                tb_array.Text = string.Join(", ", array);
+                //add "search for" if blank
+                if (this.tb_searchfor.Text == "")
+                {
+                    this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                }
+
+                //try convert text to string
+                try
+                {
+                    decimal.Parse(this.tb_searchfor.Text);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+
+                //Create new output window
+                Form = new OutputScreen(array, Searching.Binary, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                {
+                    Text = "Output Binary Search"
+                };
+            };
+            BeginInvoke(FormThread);
+            GenerateArray();
+        }
+
+        private void Bt_Linear_Click(object sender, EventArgs e)
+        {
+            //play sound in seperate thread
+            WorkerThread = delegate
+            {
+                snd_button.Play();
+            };
+            BeginInvoke(WorkerThread);
+
+            FormThread = delegate
+            {
+                //update ui
+                tb_array.Text = string.Join(", ", array);
+
+                //add "search for" if blank
+                if (this.tb_searchfor.Text == "")
+                {
+                    this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                }
+
+                //try convert text to string
+                try
+                {
+                    decimal.Parse(this.tb_searchfor.Text);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+
+                //Create new output window
+                Form = new OutputScreen(array, Searching.Linear, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                {
+                    Text = "Output Linear Search"
+                };
+            };
+            BeginInvoke(FormThread);
+            GenerateArray();
+        }
+
+        private void Bt_Fibonacci_Click(object sender, EventArgs e)
+        {
+            //play sound in seperate thread
+            WorkerThread = delegate
+            {
+                snd_button.Play();
+            };
+            BeginInvoke(WorkerThread);
+
+            FormThread = delegate
+            {
+                //sort the array
+                Array.Sort(array);
+                //update ui
+                tb_array.Text = string.Join(", ", array);
+                //add "search for" if blank
+                if (this.tb_searchfor.Text == "")
+                {
+                    this.tb_searchfor.Text = array[r.Next(array.Count())].ToString();
+                }
+
+                //try convert text to string
+                try
+                {
+                    decimal.Parse(this.tb_searchfor.Text);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+
+                //Create new output window
+                Form = new OutputScreen(array, Searching.Fibonacci, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                {
+                    Text = "Output Binary Search"
+                };
+            };
+            BeginInvoke(FormThread);
+            GenerateArray();
+        }
     }
     //Enum for sorting
     public enum Sorting
@@ -375,13 +573,18 @@ namespace Group_24_Animated_Algorithms
         Heap = 3,
         Merge = 4,
         Insertion = 5,
+        Gnome = 6
     }
 
 
     //Enum for searching
     public enum Searching
     {
-        Interpolation = 1
+        Interpolation = 1,
+        Exponential = 2,
+        Binary = 3,
+        Linear = 4,
+        Fibonacci = 5
     }
 
     //class to hold time and space complexity of algorithms
