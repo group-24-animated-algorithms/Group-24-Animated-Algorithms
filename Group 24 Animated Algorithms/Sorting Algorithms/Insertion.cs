@@ -15,6 +15,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
 
         public override void Ascending(Decimal[] input)
         {
+            int count = 0;
             Output.UpdateInfo(@"int its = 0;
 int Sorted = 1;
 int index;
@@ -46,6 +47,9 @@ while (Sorted < input.Length)
             Update(4, 5);
             while (Sorted < input.Length)
             {
+                count++;
+                Output.UpdateOperations(count);
+
                 Update(6, 7);
                 its++;
                 decimal temp = input[Sorted];
@@ -78,6 +82,7 @@ while (Sorted < input.Length)
 
         public override void Descending(Decimal[] input)
         {
+            int count = 0;
             Output.UpdateInfo(@"int its = 0;
 int Sorted = 1;
 int index;
@@ -109,6 +114,9 @@ while (Sorted < input.Length)
             Update(4, 5);
             while (Sorted < input.Length)
             {
+                count++;
+                Output.UpdateOperations(count);
+
                 Update(6, 7);
                 its++;
                 decimal temp = input[Sorted];
