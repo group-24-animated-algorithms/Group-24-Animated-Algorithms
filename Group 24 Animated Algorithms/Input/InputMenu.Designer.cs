@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grp_sort = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Bt_Gnome = new System.Windows.Forms.Button();
             this.lb_insertion = new System.Windows.Forms.Label();
             this.bt_insertion_go = new System.Windows.Forms.Button();
             this.bt_merge = new System.Windows.Forms.Button();
@@ -41,6 +43,10 @@
             this.bt_bubble = new System.Windows.Forms.Button();
             this.tb_array = new System.Windows.Forms.TextBox();
             this.grp_options = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Bar_Speed = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
             this.grp_searchopt = new System.Windows.Forms.GroupBox();
             this.lb_searchfor = new System.Windows.Forms.Label();
             this.tb_searchfor = new System.Windows.Forms.TextBox();
@@ -71,18 +77,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.bt_interpolation = new System.Windows.Forms.Button();
             this.lb_interpolation = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tb_time = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Bt_Gnome = new System.Windows.Forms.Button();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar_Speed)).BeginInit();
             this.grp_searchopt.SuspendLayout();
             this.grp_sortopt.SuspendLayout();
             this.grp_arrayopt.SuspendLayout();
             this.grp_search.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_sort
@@ -99,30 +101,51 @@
             this.grp_sort.Controls.Add(this.lb_quick);
             this.grp_sort.Controls.Add(this.lb_bubble);
             this.grp_sort.Controls.Add(this.bt_bubble);
-            this.grp_sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_sort.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_sort.Location = new System.Drawing.Point(12, 12);
             this.grp_sort.Name = "grp_sort";
-            this.grp_sort.Size = new System.Drawing.Size(242, 195);
+            this.grp_sort.Size = new System.Drawing.Size(242, 253);
             this.grp_sort.TabIndex = 0;
             this.grp_sort.TabStop = false;
             this.grp_sort.Text = "Sorting Algorithms";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 18);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Gnome";
+            // 
+            // Bt_Gnome
+            // 
+            this.Bt_Gnome.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Gnome.Location = new System.Drawing.Point(161, 65);
+            this.Bt_Gnome.Name = "Bt_Gnome";
+            this.Bt_Gnome.Size = new System.Drawing.Size(75, 25);
+            this.Bt_Gnome.TabIndex = 12;
+            this.Bt_Gnome.Text = "Go";
+            this.Bt_Gnome.UseVisualStyleBackColor = true;
+            this.Bt_Gnome.Click += new System.EventHandler(this.Bt_Gnome_Click);
+            // 
             // lb_insertion
             // 
             this.lb_insertion.AutoSize = true;
-            this.lb_insertion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_insertion.Location = new System.Drawing.Point(6, 111);
+            this.lb_insertion.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_insertion.Location = new System.Drawing.Point(6, 142);
             this.lb_insertion.Name = "lb_insertion";
-            this.lb_insertion.Size = new System.Drawing.Size(47, 13);
+            this.lb_insertion.Size = new System.Drawing.Size(62, 18);
             this.lb_insertion.TabIndex = 11;
             this.lb_insertion.Text = "Insertion";
             // 
             // bt_insertion_go
             // 
-            this.bt_insertion_go.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_insertion_go.Location = new System.Drawing.Point(161, 106);
+            this.bt_insertion_go.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_insertion_go.Location = new System.Drawing.Point(161, 139);
             this.bt_insertion_go.Name = "bt_insertion_go";
-            this.bt_insertion_go.Size = new System.Drawing.Size(75, 23);
+            this.bt_insertion_go.Size = new System.Drawing.Size(75, 25);
             this.bt_insertion_go.TabIndex = 10;
             this.bt_insertion_go.Text = "Go";
             this.bt_insertion_go.UseVisualStyleBackColor = true;
@@ -130,10 +153,10 @@
             // 
             // bt_merge
             // 
-            this.bt_merge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_merge.Location = new System.Drawing.Point(161, 77);
+            this.bt_merge.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_merge.Location = new System.Drawing.Point(161, 102);
             this.bt_merge.Name = "bt_merge";
-            this.bt_merge.Size = new System.Drawing.Size(75, 23);
+            this.bt_merge.Size = new System.Drawing.Size(75, 25);
             this.bt_merge.TabIndex = 9;
             this.bt_merge.Text = "Go";
             this.bt_merge.UseVisualStyleBackColor = true;
@@ -141,10 +164,10 @@
             // 
             // bt_quick
             // 
-            this.bt_quick.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_quick.Location = new System.Drawing.Point(161, 164);
+            this.bt_quick.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_quick.Location = new System.Drawing.Point(161, 213);
             this.bt_quick.Name = "bt_quick";
-            this.bt_quick.Size = new System.Drawing.Size(75, 23);
+            this.bt_quick.Size = new System.Drawing.Size(75, 25);
             this.bt_quick.TabIndex = 8;
             this.bt_quick.Text = "Go";
             this.bt_quick.UseVisualStyleBackColor = true;
@@ -153,29 +176,29 @@
             // lb_merge
             // 
             this.lb_merge.AutoSize = true;
-            this.lb_merge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_merge.Location = new System.Drawing.Point(6, 82);
+            this.lb_merge.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_merge.Location = new System.Drawing.Point(6, 105);
             this.lb_merge.Name = "lb_merge";
-            this.lb_merge.Size = new System.Drawing.Size(37, 13);
+            this.lb_merge.Size = new System.Drawing.Size(46, 18);
             this.lb_merge.TabIndex = 7;
             this.lb_merge.Text = "Merge";
             // 
             // lb_heap
             // 
             this.lb_heap.AutoSize = true;
-            this.lb_heap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_heap.Location = new System.Drawing.Point(6, 140);
+            this.lb_heap.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_heap.Location = new System.Drawing.Point(6, 177);
             this.lb_heap.Name = "lb_heap";
-            this.lb_heap.Size = new System.Drawing.Size(33, 13);
+            this.lb_heap.Size = new System.Drawing.Size(40, 18);
             this.lb_heap.TabIndex = 5;
             this.lb_heap.Text = "Heap";
             // 
             // bt_heap
             // 
-            this.bt_heap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_heap.Location = new System.Drawing.Point(161, 135);
+            this.bt_heap.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_heap.Location = new System.Drawing.Point(161, 174);
             this.bt_heap.Name = "bt_heap";
-            this.bt_heap.Size = new System.Drawing.Size(75, 23);
+            this.bt_heap.Size = new System.Drawing.Size(75, 25);
             this.bt_heap.TabIndex = 4;
             this.bt_heap.Text = "Go";
             this.bt_heap.UseVisualStyleBackColor = true;
@@ -184,29 +207,29 @@
             // lb_quick
             // 
             this.lb_quick.AutoSize = true;
-            this.lb_quick.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_quick.Location = new System.Drawing.Point(6, 169);
+            this.lb_quick.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_quick.Location = new System.Drawing.Point(6, 216);
             this.lb_quick.Name = "lb_quick";
-            this.lb_quick.Size = new System.Drawing.Size(35, 13);
+            this.lb_quick.Size = new System.Drawing.Size(42, 18);
             this.lb_quick.TabIndex = 3;
             this.lb_quick.Text = "Quick";
             // 
             // lb_bubble
             // 
             this.lb_bubble.AutoSize = true;
-            this.lb_bubble.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_bubble.Location = new System.Drawing.Point(6, 24);
+            this.lb_bubble.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_bubble.Location = new System.Drawing.Point(6, 31);
             this.lb_bubble.Name = "lb_bubble";
-            this.lb_bubble.Size = new System.Drawing.Size(40, 13);
+            this.lb_bubble.Size = new System.Drawing.Size(50, 18);
             this.lb_bubble.TabIndex = 1;
             this.lb_bubble.Text = "Bubble";
             // 
             // bt_bubble
             // 
-            this.bt_bubble.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_bubble.Location = new System.Drawing.Point(161, 19);
+            this.bt_bubble.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_bubble.Location = new System.Drawing.Point(161, 28);
             this.bt_bubble.Name = "bt_bubble";
-            this.bt_bubble.Size = new System.Drawing.Size(75, 23);
+            this.bt_bubble.Size = new System.Drawing.Size(75, 25);
             this.bt_bubble.TabIndex = 0;
             this.bt_bubble.Text = "Go";
             this.bt_bubble.UseVisualStyleBackColor = true;
@@ -214,34 +237,82 @@
             // 
             // tb_array
             // 
-            this.tb_array.Location = new System.Drawing.Point(46, 24);
+            this.tb_array.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_array.Location = new System.Drawing.Point(55, 16);
             this.tb_array.Multiline = true;
             this.tb_array.Name = "tb_array";
             this.tb_array.ReadOnly = true;
-            this.tb_array.Size = new System.Drawing.Size(321, 20);
+            this.tb_array.Size = new System.Drawing.Size(315, 40);
             this.tb_array.TabIndex = 1;
             // 
             // grp_options
             // 
+            this.grp_options.Controls.Add(this.groupBox1);
             this.grp_options.Controls.Add(this.grp_searchopt);
             this.grp_options.Controls.Add(this.grp_sortopt);
             this.grp_options.Controls.Add(this.grp_arrayopt);
-            this.grp_options.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_options.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_options.Location = new System.Drawing.Point(260, 12);
             this.grp_options.Name = "grp_options";
-            this.grp_options.Size = new System.Drawing.Size(388, 331);
+            this.grp_options.Size = new System.Drawing.Size(388, 471);
             this.grp_options.TabIndex = 2;
             this.grp_options.TabStop = false;
             this.grp_options.Text = "Options";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.Bar_Speed);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(6, 385);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(376, 80);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Other";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(327, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "500s";
+            // 
+            // Bar_Speed
+            // 
+            this.Bar_Speed.LargeChange = 250;
+            this.Bar_Speed.Location = new System.Drawing.Point(125, 14);
+            this.Bar_Speed.Maximum = 5000;
+            this.Bar_Speed.Name = "Bar_Speed";
+            this.Bar_Speed.Size = new System.Drawing.Size(245, 45);
+            this.Bar_Speed.SmallChange = 50;
+            this.Bar_Speed.TabIndex = 2;
+            this.Bar_Speed.TickFrequency = 250;
+            this.Bar_Speed.Value = 1;
+            this.Bar_Speed.Scroll += new System.EventHandler(this.Bar_Speed_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 18);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Delay Timer:";
             // 
             // grp_searchopt
             // 
             this.grp_searchopt.Controls.Add(this.lb_searchfor);
             this.grp_searchopt.Controls.Add(this.tb_searchfor);
-            this.grp_searchopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_searchopt.Location = new System.Drawing.Point(6, 274);
+            this.grp_searchopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_searchopt.Location = new System.Drawing.Point(6, 321);
             this.grp_searchopt.Name = "grp_searchopt";
-            this.grp_searchopt.Size = new System.Drawing.Size(376, 50);
+            this.grp_searchopt.Size = new System.Drawing.Size(376, 58);
             this.grp_searchopt.TabIndex = 20;
             this.grp_searchopt.TabStop = false;
             this.grp_searchopt.Text = "Search";
@@ -249,19 +320,20 @@
             // lb_searchfor
             // 
             this.lb_searchfor.AutoSize = true;
-            this.lb_searchfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_searchfor.Location = new System.Drawing.Point(6, 25);
+            this.lb_searchfor.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_searchfor.Location = new System.Drawing.Point(3, 29);
             this.lb_searchfor.Name = "lb_searchfor";
-            this.lb_searchfor.Size = new System.Drawing.Size(88, 13);
+            this.lb_searchfor.Size = new System.Drawing.Size(106, 18);
             this.lb_searchfor.TabIndex = 1;
             this.lb_searchfor.Text = "Search for value:";
             // 
             // tb_searchfor
             // 
-            this.tb_searchfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchfor.Location = new System.Drawing.Point(326, 22);
+            this.tb_searchfor.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_searchfor.Location = new System.Drawing.Point(276, 24);
             this.tb_searchfor.Name = "tb_searchfor";
-            this.tb_searchfor.Size = new System.Drawing.Size(44, 20);
+            this.tb_searchfor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_searchfor.Size = new System.Drawing.Size(94, 28);
             this.tb_searchfor.TabIndex = 0;
             // 
             // grp_sortopt
@@ -269,10 +341,10 @@
             this.grp_sortopt.Controls.Add(this.lb_sortby);
             this.grp_sortopt.Controls.Add(this.rb_ascending);
             this.grp_sortopt.Controls.Add(this.rb_descending);
-            this.grp_sortopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_sortopt.Location = new System.Drawing.Point(6, 220);
+            this.grp_sortopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_sortopt.Location = new System.Drawing.Point(6, 259);
             this.grp_sortopt.Name = "grp_sortopt";
-            this.grp_sortopt.Size = new System.Drawing.Size(376, 48);
+            this.grp_sortopt.Size = new System.Drawing.Size(376, 56);
             this.grp_sortopt.TabIndex = 19;
             this.grp_sortopt.TabStop = false;
             this.grp_sortopt.Text = "Sort";
@@ -280,20 +352,20 @@
             // lb_sortby
             // 
             this.lb_sortby.AutoSize = true;
-            this.lb_sortby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_sortby.Location = new System.Drawing.Point(6, 25);
+            this.lb_sortby.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_sortby.Location = new System.Drawing.Point(9, 26);
             this.lb_sortby.Name = "lb_sortby";
-            this.lb_sortby.Size = new System.Drawing.Size(43, 13);
+            this.lb_sortby.Size = new System.Drawing.Size(54, 18);
             this.lb_sortby.TabIndex = 13;
             this.lb_sortby.Text = "Sort by:";
             // 
             // rb_ascending
             // 
             this.rb_ascending.AutoSize = true;
-            this.rb_ascending.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_ascending.Location = new System.Drawing.Point(207, 23);
+            this.rb_ascending.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_ascending.Location = new System.Drawing.Point(182, 24);
             this.rb_ascending.Name = "rb_ascending";
-            this.rb_ascending.Size = new System.Drawing.Size(75, 17);
+            this.rb_ascending.Size = new System.Drawing.Size(87, 22);
             this.rb_ascending.TabIndex = 4;
             this.rb_ascending.TabStop = true;
             this.rb_ascending.Text = "Ascending";
@@ -302,10 +374,10 @@
             // rb_descending
             // 
             this.rb_descending.AutoSize = true;
-            this.rb_descending.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_descending.Location = new System.Drawing.Point(288, 23);
+            this.rb_descending.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_descending.Location = new System.Drawing.Point(275, 24);
             this.rb_descending.Name = "rb_descending";
-            this.rb_descending.Size = new System.Drawing.Size(82, 17);
+            this.rb_descending.Size = new System.Drawing.Size(95, 22);
             this.rb_descending.TabIndex = 5;
             this.rb_descending.TabStop = true;
             this.rb_descending.Text = "Descending";
@@ -325,20 +397,20 @@
             this.grp_arrayopt.Controls.Add(this.label2);
             this.grp_arrayopt.Controls.Add(this.lb_array);
             this.grp_arrayopt.Controls.Add(this.lb_arraysize);
-            this.grp_arrayopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_arrayopt.Location = new System.Drawing.Point(9, 24);
+            this.grp_arrayopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_arrayopt.Location = new System.Drawing.Point(6, 24);
             this.grp_arrayopt.Name = "grp_arrayopt";
-            this.grp_arrayopt.Size = new System.Drawing.Size(373, 190);
+            this.grp_arrayopt.Size = new System.Drawing.Size(376, 229);
             this.grp_arrayopt.TabIndex = 18;
             this.grp_arrayopt.TabStop = false;
             this.grp_arrayopt.Text = "Array";
             // 
             // bt_generatearray
             // 
-            this.bt_generatearray.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_generatearray.Location = new System.Drawing.Point(9, 161);
+            this.bt_generatearray.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_generatearray.Location = new System.Drawing.Point(6, 192);
             this.bt_generatearray.Name = "bt_generatearray";
-            this.bt_generatearray.Size = new System.Drawing.Size(358, 23);
+            this.bt_generatearray.Size = new System.Drawing.Size(364, 25);
             this.bt_generatearray.TabIndex = 2;
             this.bt_generatearray.Text = "Generate new array";
             this.bt_generatearray.UseVisualStyleBackColor = true;
@@ -346,48 +418,55 @@
             // 
             // tb_arraysize
             // 
-            this.tb_arraysize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_arraysize.Location = new System.Drawing.Point(323, 50);
+            this.tb_arraysize.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_arraysize.Location = new System.Drawing.Point(326, 62);
             this.tb_arraysize.Name = "tb_arraysize";
-            this.tb_arraysize.Size = new System.Drawing.Size(44, 20);
+            this.tb_arraysize.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_arraysize.Size = new System.Drawing.Size(44, 28);
             this.tb_arraysize.TabIndex = 6;
             this.tb_arraysize.Text = "10";
             this.tb_arraysize.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
             // 
             // tb_realmin
             // 
+            this.tb_realmin.BackColor = System.Drawing.SystemColors.Control;
             this.tb_realmin.Enabled = false;
-            this.tb_realmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_realmin.Location = new System.Drawing.Point(323, 102);
+            this.tb_realmin.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_realmin.Location = new System.Drawing.Point(326, 130);
             this.tb_realmin.Name = "tb_realmin";
-            this.tb_realmin.Size = new System.Drawing.Size(44, 20);
+            this.tb_realmin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_realmin.Size = new System.Drawing.Size(44, 28);
             this.tb_realmin.TabIndex = 16;
             // 
             // tb_max
             // 
-            this.tb_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_max.Location = new System.Drawing.Point(273, 76);
+            this.tb_max.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_max.Location = new System.Drawing.Point(275, 96);
             this.tb_max.Name = "tb_max";
-            this.tb_max.Size = new System.Drawing.Size(44, 20);
+            this.tb_max.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_max.Size = new System.Drawing.Size(44, 28);
             this.tb_max.TabIndex = 7;
             this.tb_max.Text = "100";
             this.tb_max.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
             // 
             // tb_realmax
             // 
+            this.tb_realmax.BackColor = System.Drawing.SystemColors.Control;
             this.tb_realmax.Enabled = false;
-            this.tb_realmax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_realmax.Location = new System.Drawing.Point(323, 76);
+            this.tb_realmax.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_realmax.Location = new System.Drawing.Point(326, 96);
             this.tb_realmax.Name = "tb_realmax";
-            this.tb_realmax.Size = new System.Drawing.Size(44, 20);
+            this.tb_realmax.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_realmax.Size = new System.Drawing.Size(44, 28);
             this.tb_realmax.TabIndex = 15;
             // 
             // tb_min
             // 
-            this.tb_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_min.Location = new System.Drawing.Point(273, 102);
+            this.tb_min.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_min.Location = new System.Drawing.Point(276, 130);
             this.tb_min.Name = "tb_min";
-            this.tb_min.Size = new System.Drawing.Size(44, 20);
+            this.tb_min.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tb_min.Size = new System.Drawing.Size(44, 28);
             this.tb_min.TabIndex = 8;
             this.tb_min.Text = "1";
             this.tb_min.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
@@ -395,10 +474,10 @@
             // cb_decimals
             // 
             this.cb_decimals.AutoSize = true;
-            this.cb_decimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_decimals.Location = new System.Drawing.Point(9, 131);
+            this.cb_decimals.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_decimals.Location = new System.Drawing.Point(256, 164);
             this.cb_decimals.Name = "cb_decimals";
-            this.cb_decimals.Size = new System.Drawing.Size(95, 17);
+            this.cb_decimals.Size = new System.Drawing.Size(114, 22);
             this.cb_decimals.TabIndex = 14;
             this.cb_decimals.Text = "Allow decimals";
             this.cb_decimals.UseVisualStyleBackColor = true;
@@ -407,40 +486,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 79);
+            this.label1.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.Size = new System.Drawing.Size(37, 18);
             this.label1.TabIndex = 9;
             this.label1.Text = "Max:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 105);
+            this.label2.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(34, 18);
             this.label2.TabIndex = 10;
             this.label2.Text = "Min:";
             // 
             // lb_array
             // 
             this.lb_array.AutoSize = true;
-            this.lb_array.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_array.Location = new System.Drawing.Point(6, 27);
+            this.lb_array.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_array.Location = new System.Drawing.Point(6, 21);
             this.lb_array.Name = "lb_array";
-            this.lb_array.Size = new System.Drawing.Size(34, 13);
+            this.lb_array.Size = new System.Drawing.Size(43, 18);
             this.lb_array.TabIndex = 12;
             this.lb_array.Text = "Array:";
             // 
             // lb_arraysize
             // 
             this.lb_arraysize.AutoSize = true;
-            this.lb_arraysize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_arraysize.Location = new System.Drawing.Point(6, 53);
+            this.lb_arraysize.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_arraysize.Location = new System.Drawing.Point(9, 67);
             this.lb_arraysize.Name = "lb_arraysize";
-            this.lb_arraysize.Size = new System.Drawing.Size(68, 13);
+            this.lb_arraysize.Size = new System.Drawing.Size(83, 18);
             this.lb_arraysize.TabIndex = 11;
             this.lb_arraysize.Text = "Size of array:";
             // 
@@ -456,20 +535,20 @@
             this.grp_search.Controls.Add(this.label4);
             this.grp_search.Controls.Add(this.bt_interpolation);
             this.grp_search.Controls.Add(this.lb_interpolation);
-            this.grp_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_search.Location = new System.Drawing.Point(12, 232);
+            this.grp_search.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_search.Location = new System.Drawing.Point(12, 271);
             this.grp_search.Name = "grp_search";
-            this.grp_search.Size = new System.Drawing.Size(242, 166);
+            this.grp_search.Size = new System.Drawing.Size(242, 212);
             this.grp_search.TabIndex = 3;
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Searching Algorithms";
             // 
             // Bt_Fibonacci
             // 
-            this.Bt_Fibonacci.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bt_Fibonacci.Location = new System.Drawing.Point(161, 135);
+            this.Bt_Fibonacci.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Fibonacci.Location = new System.Drawing.Point(161, 176);
             this.Bt_Fibonacci.Name = "Bt_Fibonacci";
-            this.Bt_Fibonacci.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Fibonacci.Size = new System.Drawing.Size(75, 25);
             this.Bt_Fibonacci.TabIndex = 16;
             this.Bt_Fibonacci.Text = "Go";
             this.Bt_Fibonacci.UseVisualStyleBackColor = true;
@@ -478,19 +557,19 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 140);
+            this.label7.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 179);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.Size = new System.Drawing.Size(64, 18);
             this.label7.TabIndex = 15;
             this.label7.Text = "Fibonacci";
             // 
             // Bt_Linear
             // 
-            this.Bt_Linear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bt_Linear.Location = new System.Drawing.Point(161, 19);
+            this.Bt_Linear.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Linear.Location = new System.Drawing.Point(161, 28);
             this.Bt_Linear.Name = "Bt_Linear";
-            this.Bt_Linear.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Linear.Size = new System.Drawing.Size(75, 25);
             this.Bt_Linear.TabIndex = 14;
             this.Bt_Linear.Text = "Go";
             this.Bt_Linear.UseVisualStyleBackColor = true;
@@ -499,19 +578,19 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 24);
+            this.label6.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(45, 18);
             this.label6.TabIndex = 13;
             this.label6.Text = "Linear";
             // 
             // Bt_Binary
             // 
-            this.Bt_Binary.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bt_Binary.Location = new System.Drawing.Point(161, 48);
+            this.Bt_Binary.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Binary.Location = new System.Drawing.Point(161, 65);
             this.Bt_Binary.Name = "Bt_Binary";
-            this.Bt_Binary.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Binary.Size = new System.Drawing.Size(75, 25);
             this.Bt_Binary.TabIndex = 12;
             this.Bt_Binary.Text = "Go";
             this.Bt_Binary.UseVisualStyleBackColor = true;
@@ -520,19 +599,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 53);
+            this.label5.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.Size = new System.Drawing.Size(46, 18);
             this.label5.TabIndex = 11;
             this.label5.Text = "Binary";
             // 
             // Bt_Exponential
             // 
-            this.Bt_Exponential.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bt_Exponential.Location = new System.Drawing.Point(161, 77);
+            this.Bt_Exponential.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_Exponential.Location = new System.Drawing.Point(161, 102);
             this.Bt_Exponential.Name = "Bt_Exponential";
-            this.Bt_Exponential.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Exponential.Size = new System.Drawing.Size(75, 25);
             this.Bt_Exponential.TabIndex = 10;
             this.Bt_Exponential.Text = "Go";
             this.Bt_Exponential.UseVisualStyleBackColor = true;
@@ -541,19 +620,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 82);
+            this.label4.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 105);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.Size = new System.Drawing.Size(79, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Exponential";
             // 
             // bt_interpolation
             // 
-            this.bt_interpolation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_interpolation.Location = new System.Drawing.Point(161, 106);
+            this.bt_interpolation.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_interpolation.Location = new System.Drawing.Point(161, 139);
             this.bt_interpolation.Name = "bt_interpolation";
-            this.bt_interpolation.Size = new System.Drawing.Size(75, 23);
+            this.bt_interpolation.Size = new System.Drawing.Size(75, 25);
             this.bt_interpolation.TabIndex = 8;
             this.bt_interpolation.Text = "Go";
             this.bt_interpolation.UseVisualStyleBackColor = true;
@@ -562,71 +641,18 @@
             // lb_interpolation
             // 
             this.lb_interpolation.AutoSize = true;
-            this.lb_interpolation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_interpolation.Location = new System.Drawing.Point(7, 111);
+            this.lb_interpolation.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_interpolation.Location = new System.Drawing.Point(6, 142);
             this.lb_interpolation.Name = "lb_interpolation";
-            this.lb_interpolation.Size = new System.Drawing.Size(65, 13);
+            this.lb_interpolation.Size = new System.Drawing.Size(87, 18);
             this.lb_interpolation.TabIndex = 0;
             this.lb_interpolation.Text = "Interpolation";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tb_time);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(260, 349);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 49);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Other";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Delay Timer:";
-            // 
-            // tb_time
-            // 
-            this.tb_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_time.Location = new System.Drawing.Point(326, 22);
-            this.tb_time.Name = "tb_time";
-            this.tb_time.Size = new System.Drawing.Size(44, 20);
-            this.tb_time.TabIndex = 0;
-            this.tb_time.Text = "500";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 53);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Gnome";
-            // 
-            // Bt_Gnome
-            // 
-            this.Bt_Gnome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bt_Gnome.Location = new System.Drawing.Point(161, 48);
-            this.Bt_Gnome.Name = "Bt_Gnome";
-            this.Bt_Gnome.Size = new System.Drawing.Size(75, 23);
-            this.Bt_Gnome.TabIndex = 12;
-            this.Bt_Gnome.Text = "Go";
-            this.Bt_Gnome.UseVisualStyleBackColor = true;
-            this.Bt_Gnome.Click += new System.EventHandler(this.Bt_Gnome_Click);
             // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 407);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(654, 489);
             this.Controls.Add(this.grp_search);
             this.Controls.Add(this.grp_options);
             this.Controls.Add(this.grp_sort);
@@ -635,6 +661,9 @@
             this.grp_sort.ResumeLayout(false);
             this.grp_sort.PerformLayout();
             this.grp_options.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar_Speed)).EndInit();
             this.grp_searchopt.ResumeLayout(false);
             this.grp_searchopt.PerformLayout();
             this.grp_sortopt.ResumeLayout(false);
@@ -643,8 +672,6 @@
             this.grp_arrayopt.PerformLayout();
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -686,9 +713,6 @@
         private System.Windows.Forms.Button bt_quick;
         private System.Windows.Forms.Label lb_insertion;
         private System.Windows.Forms.Button bt_insertion_go;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tb_time;
         private System.Windows.Forms.Button Bt_Binary;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Bt_Exponential;
@@ -699,6 +723,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button Bt_Gnome;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TrackBar Bar_Speed;
+        private System.Windows.Forms.Label label9;
     }
 }
 

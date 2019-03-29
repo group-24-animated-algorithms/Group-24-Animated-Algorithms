@@ -6,10 +6,9 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
     class Quick: Algorithm
     {
         //Algorithm
-        public Quick(ref OutputScreen OutputWin, int time)
+        public Quick(ref OutputScreen OutputWin)
         {
             this.Output = OutputWin;
-            this.time = time;
             data = new Data() { time = "O(nLogn)", space = "O(n)" };
         }
 

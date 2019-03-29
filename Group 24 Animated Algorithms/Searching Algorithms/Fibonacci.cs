@@ -8,12 +8,65 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
 {
     class Fibonacci : Algorithm
     {
-        public Fibonacci(ref OutputScreen OutputWin, int time)
+        public Fibonacci(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            this.time = time;
             data = new Data() { time = "O(Logn)", space = "O(1)" };
-            Output.UpdateInfo(@"");
+            Output.UpdateInfo(@"private string FSearch(decimal[] input, decimal target, int length, ref int count)
+{
+	//get the fib numbers
+	int fib2 = 0;
+	int fib1 = 1;
+	int fib = fib2 + fib1;
+
+	//get the smallest fib1/2 >= fib
+	while (fib < length)
+	{
+		fib2 = fib1;
+		fib1 = fib;
+		fib = fib2 + fib1;
+	}
+	
+	int offset = -1;
+
+	while (fib > 1)
+	{
+		//check if fib2 is valid 
+		int i = Math.Min(offset + fib2, length - 1);
+
+		//if target is greater, split array before offset
+		if (input[i] < target)
+		{
+			fib = fib1;
+			fib1 = fib2;
+			fib2 = fib - fib1;
+			offset = i;
+		}
+
+		//if target is greater, split array after offset
+		else if (input[i] > target)
+		{
+			fib = fib2;
+			fib1 = fib1 - fib2;
+			fib2 = fib - fib1;
+		}
+
+		//found
+		else
+		{
+			return $""Location: {i + 1}"";
+		}
+	}
+
+	//if final element
+	if (fib1 == 1 && input[offset + 1] == target)
+	{
+		return $""Location: {offset + 2}"";
+	}
+
+	//doesnt exist
+	return ""Not Found"";
+}");
         }
 
         public override string Search(decimal[] input, decimal target)
@@ -24,64 +77,77 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
 
         private string FSearch(decimal[] input, decimal target, int length, ref int count)
         {
-            /* Initialize fibonacci numbers */
-            int fib2 = 0; // (n-2)'th Fibonacci No. 
-            int fib1 = 1; // (n-1)'th Fibonacci No. 
-            int fib = fib2 + fib1; // n'th Fibonacci 
+            Update(3,6);
+            //get the smallest fib1/2 >= fib
+            int fib2 = 0;
+            int fib1 = 1;
+            int fib = fib2 + fib1;
 
-            /* fibM is going to store the smallest  
-            Fibonacci Number greater than or equal to n */
+            Update(8,10);
+            //get the smallest fib1/2 >= fib
             while (fib < length)
             {
+                Update(10,13);
                 fib2 = fib1;
                 fib1 = fib;
                 fib = fib2 + fib1;
             }
 
-            // Marks the eliminated range from front 
+            Update(16,17);
             int offset = -1;
 
-            /* while there are elements to be inspected.  
-            Note that we compare arr[fibMm2] with x.  
-            When fibM becomes 1, fibMm2 becomes 0 */
+            Update(18,19);
             while (fib > 1)
             {
-                // Check if fibMm2 is a valid location 
+                Update(20,21);
+                //check if fib2 is valid 
                 int i = Math.Min(offset + fib2, length - 1);
 
-                Highlight(i);
+                Update(23,25);
                 count++;
                 Output.UpdateOperations(count);
-
-                /* If x is greater than the value at  
-                index fibMm2, cut the subarray array  
-                from offset to i */
+                
+		        //if target is greater, split array before offset
                 if (input[i] < target)
                 {
+                    Update(26,29);
+                    Highlight(i);
                     fib = fib1;
                     fib1 = fib2;
                     fib2 = fib - fib1;
                     offset = i;
                 }
 
-                /* If x is greater than the value at index  
-                fibMm2, cut the subarray after i+1 */
+                //if target is greater, split array after offset
                 else if (input[i] > target)
                 {
+                    Update(35,37);
+                    Highlight(i);
                     fib = fib2;
                     fib1 = fib1 - fib2;
                     fib2 = fib - fib1;
                 }
 
-                /* element found. return index */
-                else return $"Location: {i+1}";
+                //found
+                else
+                {
+                    Update(43,44);
+                    HighlightFound(i);
+                    return $"Location: {i + 1}";
+                }
             }
 
-            /* comparing the last element with x */
+            Update(47, 49);
+            //if final element
             if (fib1 == 1 && input[offset + 1] == target)
+            {
+                Update(50,51);
+                HighlightFound(offset + 1);
                 return $"Location: {offset + 2}";
+            }
 
-            /*element not found. return -1 */
+            Update(53,54);
+            //doesnt exist
             return "Not Found";
         }
     }

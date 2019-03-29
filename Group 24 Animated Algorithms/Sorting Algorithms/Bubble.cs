@@ -6,10 +6,9 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
     class Bubble : Algorithm
     {        
         //Algorithm
-        public Bubble(ref OutputScreen OutputWin, int time)
+        public Bubble(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            this.time = time;
             data = new Data() { time = "O(n^2)", space = "O(1)" };
         }
 

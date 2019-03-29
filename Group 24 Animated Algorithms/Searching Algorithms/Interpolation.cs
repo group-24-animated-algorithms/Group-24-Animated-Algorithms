@@ -11,94 +11,53 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
     class Interpolation : Algorithm
     {
         //Algorithm
-        public Interpolation(ref OutputScreen OutputWin, int time)
+        public Interpolation(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            this.time = time;
             data = new Data() { time = "O(LogLogn)", space = "O(1)" };
-            Output.UpdateInfo(@"//midpoint container
-int mid;
-int count = 0;
-
-while (min <= max)
+            Output.UpdateInfo(@"public string ISearch(decimal[] input, int min, int max, decimal key)
 {
-    //add counter
-    count++;
+	//midpoint container
+	int mid;
+	int count = 0;
 
-    //get midpoint
-    mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
+	while (min <= max)
+	{
+		//get midpoint
+		mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
 
-    //keep it in bounds of array
-    if (mid < 0)
-    {
-        mid = 0;
-    }
+		//keep it in bounds of array
+		if (mid < 0)
+		{
+			mid = 0;
+		}
 
-    else if (mid > max)
-    {
-        mid = max;
-    }
+		else if (mid > max)
+		{
+			mid = max;
+		}
 
-    //if found
-    if (key == input[mid])
-    {
-        //add location to string
-        string tmp = $""Location: {mid}"";
+		//if found
+		if (key == input[mid])
+		{
+			//return string
+			return $"" Location: {mid + 1}"";
+		}
 
-        //check for duiplicates
-        int countLeft = 0;
-        SearchChecking.LookForDupesLeft(ref input, mid, ref key, ref countLeft);
-        int countRight = 0;
-        SearchChecking.LookForDupesRight(ref input, mid, ref key, ref countRight, ref max);
+		//where to look next
+		else if (key < input[mid])
+		{
+			max = mid - 1;
+		}
+		else
+		{
+			min = mid + 1;
+		}
+	}
+	//return error
+	return ""Item not found"";
 
-        //add duplicate locations
-        for (int i = 1; i <= countLeft; i++)
-        {
-            tmp = $""{tmp}\nLocation: {mid - i}"";
-        }
-
-        for (int i = 1; i <= countRight; i++)
-        {
-            tmp = $""{tmp}\nLocation: {mid + i}"";
-        }
-
-        //return string
-        return tmp;
-    }
-
-    //check if it belongs above the array
-    else if (SearchChecking.AboveBounds(mid, ref key, ref max))
-    {
-        //return location and closest value
-        return $""Location: {mid} Value: {input[mid]}"";
-    }
-    //check if it belongs below the array
-    else if (SearchChecking.BelowBounds(mid, ref key))
-    {
-        //return location and closest value
-        return $""Location: {mid} Value: {input[mid]}"";
-    }
-
-    //check if it fits between two items in array
-    else if (SearchChecking.ShouldGoHere(input[mid], input[mid + 1], ref key, ref max)) //if it fits here and not here, find closest
-    {
-        //return closest value and location
-        return SearchChecking.ClosestValue(ref input, mid, mid + 1, ref key);
-    }
-
-    //where to look next
-    else if (key<input[mid])
-    {
-        max = mid - 1;
-    }
-    else
-    {
-        min = mid + 1;
-    }
-}
-
-//return error
-return ""Item not found"";");
+}");
         }
 
         public override string Search(decimal[] input, decimal target)
@@ -108,70 +67,64 @@ return ""Item not found"";");
 
         public string ISearch(decimal[] input, int min, int max, decimal key)
         {
-            var me = this as Algorithm;
-            Update(1, 3); //Line number
+            Update(3, 5); //Line number
             //midpoint container
             int mid;
             int count = 0;
 
-            Update(5, 6);
+            Update(7, 8);
             while (min <= max)
             {
-                Update(7, 9);
                 //add counter
                 count++;
                 Output.UpdateOperations(count);
 
-                Update(10, 11);
+                Update(9, 10);
                 //get midpoint
                 mid = (int)(min + (max - min) * ((key - input[min]) / (input[max] - input[min])));
 
-                Update(13, 22);
+                Update(12, 13);
                 //keep it in bounds of array
                 if (mid < 0)
                 {
+                    Update(14, 15);
                     mid = 0;
                 }
 
                 else if (mid > max)
                 {
+                    Update(19, 20);
                     mid = max;
                 }
 
-                Update(24, 26);
+                Update(23, 24);
                 //if found
                 if (key == input[mid])
                 {
-                    Update(27, 28);
-                    //add location to string
-                    string tmp = $" Location: {mid + 1}";
+                    Update(26, 27);
 
                     //highlight
-                    Highlight(mid);
-
-                    Update(30, 34);
-                    Update(36, 40);
-                    Update(42, 45);
-                    Update(47, 48);
+                    HighlightFound(mid);
 
                     //return string
-                    return tmp;
+                    return $" Location: {mid + 1}";
                 }
 
                 //where to look next
                 else if (key < input[mid])
                 {
-                    Update(71, 75);
+                    Update(32, 33);
                     max = mid - 1;
                 }
                 else
                 {
-                    Update(76, 79);
+                    Update(36, 37);
                     min = mid + 1;
+                    Highlight(mid);
                 }
             }
 
-            Update(82, 83);
+            Update(40, 43);
             //return error
             return "Item not found";
 

@@ -9,13 +9,13 @@ namespace Group_24_Animated_Algorithms
     {
         //Variables
         protected OutputScreen Output;
-        protected int time = 0;
         protected ManualResetEvent pauseEvent = new ManualResetEvent(true);
         protected bool stepping = false;
         protected bool step = true;
         protected bool close = false;
         protected List<int> searched = new List<int>();
         public Data data;
+        private int searchFound = 0;
 
         //Functions
         public void TogglePause(bool paused)
@@ -90,7 +90,7 @@ namespace Group_24_Animated_Algorithms
             //if not stepping wait
             if (!stepping)
             {
-                System.Threading.Thread.Sleep(time);
+                System.Threading.Thread.Sleep(Output.time);
             }
         }
 
@@ -116,7 +116,7 @@ namespace Group_24_Animated_Algorithms
             //if not stepping, wait
             if (!stepping)
             {
-                System.Threading.Thread.Sleep(time);
+                System.Threading.Thread.Sleep(Output.time);
             }
             //remove the previous bars and redraw in new positions
             Output.ClearBar(i);
@@ -134,7 +134,7 @@ namespace Group_24_Animated_Algorithms
             //if not stepping, wait
             if (!stepping)
             {
-                System.Threading.Thread.Sleep(time);
+                System.Threading.Thread.Sleep(Output.time);
             }
             //remove the previous bar and redraw in new positions
             Output.EditBarPos(v, k);
@@ -145,11 +145,24 @@ namespace Group_24_Animated_Algorithms
             //add found location to list
             searched.Add(i);
             //colour the bar just searched for
+            Output.DrawBar(i, 50);
+            //if not stepping, wait
+            if (!stepping)
+            {
+                System.Threading.Thread.Sleep(Output.time);
+            }
+        }
+        public void HighlightFound(int i)
+        {
+            searchFound = i;
+            //add found location to list
+            searched.Add(i);
+            //colour the bar just searched for
             Output.DrawBar(i);
             //if not stepping, wait
             if (!stepping)
             {
-                System.Threading.Thread.Sleep(time);
+                System.Threading.Thread.Sleep(Output.time);
             }
         }
 
@@ -158,7 +171,14 @@ namespace Group_24_Animated_Algorithms
             //fixes bug and redraws all searched bars onto the screen when required
             foreach (var item in searched)
             {
-                Output.DrawBar(item);
+                if (searchFound == item)
+                {
+                    Output.DrawBar(item);
+                }
+                else
+                {
+                    Output.DrawBar(item, 50);
+                }
             }
         }
 

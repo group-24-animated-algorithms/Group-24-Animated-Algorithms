@@ -6,10 +6,9 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
     class Heap : Algorithm
     {
         //Algorithm
-        public Heap(ref OutputScreen OutputWin, int time)
+        public Heap(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            this.time = time;
             data = new Data() { time = "O(nLogn)", space = "O(1)" };
         }
 

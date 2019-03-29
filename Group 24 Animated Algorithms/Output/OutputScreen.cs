@@ -37,7 +37,7 @@ namespace Group_24_Animated_Algorithms
         bool ascending;
         bool issorting = false;
         decimal target;
-        int time;
+        public int time;
 
         //Variable holds the base width of the bars
         private int barWidth;
@@ -55,8 +55,8 @@ namespace Group_24_Animated_Algorithms
         const int newMax = 650;
 
         //Side margin
-        const int marginRight = 500;
-        const int minScreenWidth = 1000;
+        const int marginRight = 750;
+        const int minScreenWidth = 500;
 
         //Variable holds min bar width
         const int minWidth = 25;
@@ -90,6 +90,10 @@ namespace Group_24_Animated_Algorithms
             ascending = Ascending;
             InitializeComponent(); //Build in, for GUI
             Init();
+            Bar_Speed.Value = time;
+            Bar_Zoom.Value = 100;
+            label6.Text = Bar_Zoom.Value.ToString() + "%";
+            label5.Text = ((decimal)Bar_Speed.Value / (decimal)1000).ToString() + "s";
             DrawBars();
 
             //setup and start background thread
@@ -109,6 +113,10 @@ namespace Group_24_Animated_Algorithms
             target = Target;
             InitializeComponent(); //Build in, for GUI
             Init();
+            Bar_Speed.Value = time;
+            Bar_Zoom.Value = 100;
+            label6.Text = Bar_Zoom.Value.ToString() + "%";
+            label5.Text = ((decimal)Bar_Speed.Value / (decimal)1000).ToString() + "s";
             grp_result.Enabled = true;
 
             //setup and start background thread
@@ -202,6 +210,14 @@ namespace Group_24_Animated_Algorithms
         //gets the colour of the list of bars
         private List<Bar> Getnewrgb(List<Bar> bars)
         {
+            if (!issorting)
+            {
+                foreach (var item in bars)
+                {
+                    item.Colour = new int[] { 255, 255, 255 };
+                }
+                return bars;
+            }
             //duplicate the bars list
             var tmpbars = new List<Bar>();
             //sort the bars list by value (get to the end state)
@@ -393,6 +409,14 @@ namespace Group_24_Animated_Algorithms
         {
             var bar = bars.Single(y => y.Pos == pos);
             var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+            DrawOutline(bar);
+        }
+        //Draw specific bar from position
+        public void DrawBar(int pos, int col)
+        {
+            var bar = bars.Single(y => y.Pos == pos);
+            var x = new SolidBrush(Color.FromArgb(75, 75, 75));
             Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
             DrawOutline(bar);
         }
@@ -600,32 +624,32 @@ namespace Group_24_Animated_Algorithms
             {
                 //Bubble
                 case Sorting.Bubble:
-                    algorithm = new Bubble(ref me, time);
+                    algorithm = new Bubble(ref me);
                     break;
 
                 //Quick
                 case Sorting.Quick:
-                    algorithm = new Quick(ref me, time);
+                    algorithm = new Quick(ref me);
                     break;
 
                 //Heap
                 case Sorting.Heap:
-                    algorithm = new Heap(ref me, time);
+                    algorithm = new Heap(ref me);
                     break;
 
                 //Merge
                 case Sorting.Merge:
-                    algorithm = new Merge(ref me, time);
+                    algorithm = new Merge(ref me);
                     break;
 
                 //Insertion
                 case Sorting.Insertion:
-                    algorithm = new Insertion(ref me, time);
+                    algorithm = new Insertion(ref me);
                     break;
 
                 //Gnome
                 case Sorting.Gnome:
-                    algorithm = new Gnome(ref me, time);
+                    algorithm = new Gnome(ref me);
                     break;
 
                 default:
@@ -678,19 +702,19 @@ namespace Group_24_Animated_Algorithms
             switch (searching)
             {
                 case Searching.Interpolation:
-                    algorithm = new Interpolation(ref me, time);
+                    algorithm = new Interpolation(ref me);
                     break;
                 case Searching.Exponential:
-                    algorithm = new Exponential(ref me, time);
+                    algorithm = new Exponential(ref me);
                     break;
                 case Searching.Binary:
-                    algorithm = new Binary(ref me, time);
+                    algorithm = new Binary(ref me);
                     break;
                 case Searching.Linear:
-                    algorithm = new Linear(ref me, time);
+                    algorithm = new Linear(ref me);
                     break;
                 case Searching.Fibonacci:
-                    algorithm = new Fibonacci(ref me, time);
+                    algorithm = new Fibonacci(ref me);
                     break;
                 default:
                     break;
@@ -720,6 +744,16 @@ namespace Group_24_Animated_Algorithms
 
         }
 
+        private void Bar_Speed_Scroll(object sender, EventArgs e)
+        {
+            label5.Text = ((decimal)Bar_Speed.Value/(decimal)1000).ToString()+"s";
+            time = Bar_Speed.Value;
+        }
 
+        private void Bar_Zoom_Scroll(object sender, EventArgs e)
+        {
+            label6.Text = Bar_Zoom.Value.ToString() + "%";
+            TB_Info.ZoomFactor = ((float)Bar_Zoom.Value/(float)100);
+        }
     }
 }

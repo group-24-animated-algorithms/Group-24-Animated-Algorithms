@@ -44,6 +44,7 @@ namespace Group_24_Animated_Algorithms
             rb_ascending.Checked = true;
             //generate a new array
             GenerateArray();
+            Bar_Speed.Value = 500;
         }
 
         ///////////////
@@ -156,7 +157,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Bubble, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Bubble, true, Bar_Speed.Value)
                     {
                         Text = "Output Bubble Sort Ascending"
                     };
@@ -168,7 +169,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Bubble, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Bubble, false, Bar_Speed.Value)
                     {
                         Text = "Output Bubble Sort Descending"
                     };
@@ -193,7 +194,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Heap, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Heap, true, Bar_Speed.Value)
                     {
                         Text = "Output Heap Sort Ascending"
                     };
@@ -205,7 +206,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Heap, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Heap, false, Bar_Speed.Value)
                     {
                         Text = "Output Heap Sort Descending"
                     };
@@ -230,7 +231,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Quick, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Quick, true, Bar_Speed.Value)
                     {
                         Text = "Output Quick Sort Ascending"
                     };
@@ -242,7 +243,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Quick, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Quick, false, Bar_Speed.Value)
                     {
                         Text = "Output Quick Sort Descending"
                     };
@@ -266,7 +267,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Merge, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Merge, true, Bar_Speed.Value)
                     {
                         Text = "Output Merge Sort Ascending"
                     };
@@ -278,7 +279,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Merge, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Merge, false, Bar_Speed.Value)
                     {
                         Text = "Output Merge Sort Descending"
                     };
@@ -302,7 +303,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Gnome, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Gnome, true, Bar_Speed.Value)
                     {
                         Text = "Output Gnome Sort Ascending"
                     };
@@ -314,7 +315,7 @@ namespace Group_24_Animated_Algorithms
                 //Create new output window descending
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Gnome, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Gnome, false, Bar_Speed.Value)
                     {
                         Text = "Output Gnome Sort Descending"
                     };
@@ -338,7 +339,7 @@ namespace Group_24_Animated_Algorithms
             {
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Insertion, true, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Insertion, true, Bar_Speed.Value)
                     {
                         Text = "Output Insertion Sort Ascending"
                     };
@@ -350,7 +351,7 @@ namespace Group_24_Animated_Algorithms
                 //Create new output window descending
                 FormThread = delegate
                 {
-                    Form = new OutputScreen(array, Sorting.Insertion, false, int.Parse(tb_time.Text))
+                    Form = new OutputScreen(array, Sorting.Insertion, false, Bar_Speed.Value)
                     {
                         Text = "Output Insertion Sort Descending"
                     };
@@ -393,7 +394,7 @@ namespace Group_24_Animated_Algorithms
                 }
 
                 //Create new output window
-                Form = new OutputScreen(array, Searching.Interpolation, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                Form = new OutputScreen(array, Searching.Interpolation, decimal.Parse(tb_searchfor.Text), Bar_Speed.Value)
                 {
                     Text = "Output Interpolation Search"
                 };
@@ -434,7 +435,7 @@ namespace Group_24_Animated_Algorithms
                 }
 
                 //Create new output window
-                Form = new OutputScreen(array, Searching.Exponential, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                Form = new OutputScreen(array, Searching.Exponential, decimal.Parse(tb_searchfor.Text), Bar_Speed.Value)
                 {
                     Text = "Output Exponential Search"
                 };
@@ -475,7 +476,7 @@ namespace Group_24_Animated_Algorithms
                 }
 
                 //Create new output window
-                Form = new OutputScreen(array, Searching.Binary, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                Form = new OutputScreen(array, Searching.Binary, decimal.Parse(tb_searchfor.Text), Bar_Speed.Value)
                 {
                     Text = "Output Binary Search"
                 };
@@ -515,7 +516,7 @@ namespace Group_24_Animated_Algorithms
                 }
 
                 //Create new output window
-                Form = new OutputScreen(array, Searching.Linear, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                Form = new OutputScreen(array, Searching.Linear, decimal.Parse(tb_searchfor.Text), Bar_Speed.Value)
                 {
                     Text = "Output Linear Search"
                 };
@@ -556,13 +557,18 @@ namespace Group_24_Animated_Algorithms
                 }
 
                 //Create new output window
-                Form = new OutputScreen(array, Searching.Fibonacci, decimal.Parse(tb_searchfor.Text), int.Parse(tb_time.Text))
+                Form = new OutputScreen(array, Searching.Fibonacci, decimal.Parse(tb_searchfor.Text), Bar_Speed.Value)
                 {
                     Text = "Output Binary Search"
                 };
             };
             BeginInvoke(FormThread);
             GenerateArray();
+        }
+
+        private void Bar_Speed_Scroll(object sender, EventArgs e)
+        {
+            label9.Text = ((float)Bar_Speed.Value/(float)100).ToString()+"s";
         }
     }
     //Enum for sorting
