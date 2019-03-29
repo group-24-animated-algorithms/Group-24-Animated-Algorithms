@@ -109,6 +109,7 @@
     <Content Include="button21.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="logo.png" />
     <Content Include="Switch.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

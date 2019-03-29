@@ -570,6 +570,16 @@ namespace Group_24_Animated_Algorithms
         {
             label9.Text = ((float)Bar_Speed.Value/(float)100).ToString()+"s";
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     //Enum for sorting
     public enum Sorting

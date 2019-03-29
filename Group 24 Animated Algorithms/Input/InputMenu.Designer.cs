@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Input));
             this.grp_sort = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Bt_Gnome = new System.Windows.Forms.Button();
@@ -77,6 +78,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.bt_interpolation = new System.Windows.Forms.Button();
             this.lb_interpolation = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.grp_sort.SuspendLayout();
             this.grp_options.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -85,6 +91,7 @@
             this.grp_sortopt.SuspendLayout();
             this.grp_arrayopt.SuspendLayout();
             this.grp_search.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grp_sort
@@ -238,23 +245,24 @@
             // tb_array
             // 
             this.tb_array.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_array.Location = new System.Drawing.Point(55, 16);
+            this.tb_array.Location = new System.Drawing.Point(6, 44);
             this.tb_array.Multiline = true;
             this.tb_array.Name = "tb_array";
             this.tb_array.ReadOnly = true;
-            this.tb_array.Size = new System.Drawing.Size(315, 40);
+            this.tb_array.Size = new System.Drawing.Size(364, 29);
             this.tb_array.TabIndex = 1;
             // 
             // grp_options
             // 
+            this.grp_options.Controls.Add(this.pictureBox1);
             this.grp_options.Controls.Add(this.groupBox1);
-            this.grp_options.Controls.Add(this.grp_searchopt);
-            this.grp_options.Controls.Add(this.grp_sortopt);
             this.grp_options.Controls.Add(this.grp_arrayopt);
+            this.grp_options.Controls.Add(this.grp_sortopt);
+            this.grp_options.Controls.Add(this.grp_searchopt);
             this.grp_options.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_options.Location = new System.Drawing.Point(260, 12);
             this.grp_options.Name = "grp_options";
-            this.grp_options.Size = new System.Drawing.Size(388, 471);
+            this.grp_options.Size = new System.Drawing.Size(630, 471);
             this.grp_options.TabIndex = 2;
             this.grp_options.TabStop = false;
             this.grp_options.Text = "Options";
@@ -265,7 +273,7 @@
             this.groupBox1.Controls.Add(this.Bar_Speed);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 385);
+            this.groupBox1.Location = new System.Drawing.Point(6, 384);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(376, 80);
             this.groupBox1.TabIndex = 21;
@@ -310,9 +318,9 @@
             this.grp_searchopt.Controls.Add(this.lb_searchfor);
             this.grp_searchopt.Controls.Add(this.tb_searchfor);
             this.grp_searchopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_searchopt.Location = new System.Drawing.Point(6, 321);
+            this.grp_searchopt.Location = new System.Drawing.Point(388, 355);
             this.grp_searchopt.Name = "grp_searchopt";
-            this.grp_searchopt.Size = new System.Drawing.Size(376, 58);
+            this.grp_searchopt.Size = new System.Drawing.Size(229, 58);
             this.grp_searchopt.TabIndex = 20;
             this.grp_searchopt.TabStop = false;
             this.grp_searchopt.Text = "Search";
@@ -330,7 +338,7 @@
             // tb_searchfor
             // 
             this.tb_searchfor.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchfor.Location = new System.Drawing.Point(276, 24);
+            this.tb_searchfor.Location = new System.Drawing.Point(129, 24);
             this.tb_searchfor.Name = "tb_searchfor";
             this.tb_searchfor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tb_searchfor.Size = new System.Drawing.Size(94, 28);
@@ -342,9 +350,9 @@
             this.grp_sortopt.Controls.Add(this.rb_ascending);
             this.grp_sortopt.Controls.Add(this.rb_descending);
             this.grp_sortopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_sortopt.Location = new System.Drawing.Point(6, 259);
+            this.grp_sortopt.Location = new System.Drawing.Point(388, 259);
             this.grp_sortopt.Name = "grp_sortopt";
-            this.grp_sortopt.Size = new System.Drawing.Size(376, 56);
+            this.grp_sortopt.Size = new System.Drawing.Size(229, 90);
             this.grp_sortopt.TabIndex = 19;
             this.grp_sortopt.TabStop = false;
             this.grp_sortopt.Text = "Sort";
@@ -363,7 +371,7 @@
             // 
             this.rb_ascending.AutoSize = true;
             this.rb_ascending.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_ascending.Location = new System.Drawing.Point(182, 24);
+            this.rb_ascending.Location = new System.Drawing.Point(136, 24);
             this.rb_ascending.Name = "rb_ascending";
             this.rb_ascending.Size = new System.Drawing.Size(87, 22);
             this.rb_ascending.TabIndex = 4;
@@ -375,7 +383,7 @@
             // 
             this.rb_descending.AutoSize = true;
             this.rb_descending.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_descending.Location = new System.Drawing.Point(275, 24);
+            this.rb_descending.Location = new System.Drawing.Point(128, 52);
             this.rb_descending.Name = "rb_descending";
             this.rb_descending.Size = new System.Drawing.Size(95, 22);
             this.rb_descending.TabIndex = 5;
@@ -385,6 +393,10 @@
             // 
             // grp_arrayopt
             // 
+            this.grp_arrayopt.Controls.Add(this.label13);
+            this.grp_arrayopt.Controls.Add(this.label12);
+            this.grp_arrayopt.Controls.Add(this.label11);
+            this.grp_arrayopt.Controls.Add(this.label10);
             this.grp_arrayopt.Controls.Add(this.bt_generatearray);
             this.grp_arrayopt.Controls.Add(this.tb_array);
             this.grp_arrayopt.Controls.Add(this.tb_arraysize);
@@ -400,7 +412,7 @@
             this.grp_arrayopt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_arrayopt.Location = new System.Drawing.Point(6, 24);
             this.grp_arrayopt.Name = "grp_arrayopt";
-            this.grp_arrayopt.Size = new System.Drawing.Size(376, 229);
+            this.grp_arrayopt.Size = new System.Drawing.Size(376, 358);
             this.grp_arrayopt.TabIndex = 18;
             this.grp_arrayopt.TabStop = false;
             this.grp_arrayopt.Text = "Array";
@@ -408,7 +420,7 @@
             // bt_generatearray
             // 
             this.bt_generatearray.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_generatearray.Location = new System.Drawing.Point(6, 192);
+            this.bt_generatearray.Location = new System.Drawing.Point(6, 327);
             this.bt_generatearray.Name = "bt_generatearray";
             this.bt_generatearray.Size = new System.Drawing.Size(364, 25);
             this.bt_generatearray.TabIndex = 2;
@@ -419,10 +431,10 @@
             // tb_arraysize
             // 
             this.tb_arraysize.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_arraysize.Location = new System.Drawing.Point(326, 62);
+            this.tb_arraysize.Location = new System.Drawing.Point(274, 113);
             this.tb_arraysize.Name = "tb_arraysize";
             this.tb_arraysize.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tb_arraysize.Size = new System.Drawing.Size(44, 28);
+            this.tb_arraysize.Size = new System.Drawing.Size(96, 28);
             this.tb_arraysize.TabIndex = 6;
             this.tb_arraysize.Text = "10";
             this.tb_arraysize.TextChanged += new System.EventHandler(this.BT_GenerateArray_Click);
@@ -432,19 +444,19 @@
             this.tb_realmin.BackColor = System.Drawing.SystemColors.Control;
             this.tb_realmin.Enabled = false;
             this.tb_realmin.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_realmin.Location = new System.Drawing.Point(326, 130);
+            this.tb_realmin.Location = new System.Drawing.Point(314, 216);
             this.tb_realmin.Name = "tb_realmin";
             this.tb_realmin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tb_realmin.Size = new System.Drawing.Size(44, 28);
+            this.tb_realmin.Size = new System.Drawing.Size(56, 28);
             this.tb_realmin.TabIndex = 16;
             // 
             // tb_max
             // 
             this.tb_max.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_max.Location = new System.Drawing.Point(275, 96);
+            this.tb_max.Location = new System.Drawing.Point(98, 184);
             this.tb_max.Name = "tb_max";
             this.tb_max.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tb_max.Size = new System.Drawing.Size(44, 28);
+            this.tb_max.Size = new System.Drawing.Size(56, 28);
             this.tb_max.TabIndex = 7;
             this.tb_max.Text = "100";
             this.tb_max.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
@@ -454,19 +466,19 @@
             this.tb_realmax.BackColor = System.Drawing.SystemColors.Control;
             this.tb_realmax.Enabled = false;
             this.tb_realmax.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_realmax.Location = new System.Drawing.Point(326, 96);
+            this.tb_realmax.Location = new System.Drawing.Point(98, 216);
             this.tb_realmax.Name = "tb_realmax";
             this.tb_realmax.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tb_realmax.Size = new System.Drawing.Size(44, 28);
+            this.tb_realmax.Size = new System.Drawing.Size(56, 28);
             this.tb_realmax.TabIndex = 15;
             // 
             // tb_min
             // 
             this.tb_min.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_min.Location = new System.Drawing.Point(276, 130);
+            this.tb_min.Location = new System.Drawing.Point(314, 182);
             this.tb_min.Name = "tb_min";
             this.tb_min.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tb_min.Size = new System.Drawing.Size(44, 28);
+            this.tb_min.Size = new System.Drawing.Size(56, 28);
             this.tb_min.TabIndex = 8;
             this.tb_min.Text = "1";
             this.tb_min.TextChanged += new System.EventHandler(this.Tb_Max_TextChanged);
@@ -475,7 +487,7 @@
             // 
             this.cb_decimals.AutoSize = true;
             this.cb_decimals.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_decimals.Location = new System.Drawing.Point(256, 164);
+            this.cb_decimals.Location = new System.Drawing.Point(262, 287);
             this.cb_decimals.Name = "cb_decimals";
             this.cb_decimals.Size = new System.Drawing.Size(114, 22);
             this.cb_decimals.TabIndex = 14;
@@ -486,28 +498,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 101);
+            this.label1.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 156);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 18);
+            this.label1.Size = new System.Drawing.Size(187, 17);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Max:";
+            this.label1.Text = "Maximum and Minimum Values:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 135);
+            this.label2.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(218, 223);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 18);
+            this.label2.Size = new System.Drawing.Size(73, 15);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Min:";
+            this.label2.Text = "Min of array:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lb_array
             // 
             this.lb_array.AutoSize = true;
             this.lb_array.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_array.Location = new System.Drawing.Point(6, 21);
+            this.lb_array.Location = new System.Drawing.Point(3, 23);
             this.lb_array.Name = "lb_array";
             this.lb_array.Size = new System.Drawing.Size(43, 18);
             this.lb_array.TabIndex = 12;
@@ -516,10 +529,10 @@
             // lb_arraysize
             // 
             this.lb_arraysize.AutoSize = true;
-            this.lb_arraysize.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_arraysize.Location = new System.Drawing.Point(9, 67);
+            this.lb_arraysize.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_arraysize.Location = new System.Drawing.Point(195, 120);
             this.lb_arraysize.Name = "lb_arraysize";
-            this.lb_arraysize.Size = new System.Drawing.Size(83, 18);
+            this.lb_arraysize.Size = new System.Drawing.Size(73, 15);
             this.lb_arraysize.TabIndex = 11;
             this.lb_arraysize.Text = "Size of array:";
             // 
@@ -648,14 +661,67 @@
             this.lb_interpolation.TabIndex = 0;
             this.lb_interpolation.Text = "Interpolation";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(388, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 229);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 189);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 15);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Max limit:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 221);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 15);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Max of array:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(218, 189);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 15);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Min limit:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 18);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Array properties:";
+            // 
             // Input
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 489);
+            this.ClientSize = new System.Drawing.Size(897, 489);
             this.Controls.Add(this.grp_search);
             this.Controls.Add(this.grp_options);
             this.Controls.Add(this.grp_sort);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Input";
             this.Text = "Group24 Animated Algorithms";
             this.grp_sort.ResumeLayout(false);
@@ -672,6 +738,7 @@
             this.grp_arrayopt.PerformLayout();
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -727,6 +794,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TrackBar Bar_Speed;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
     }
 }
 
