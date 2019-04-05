@@ -84,10 +84,15 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
 
             if (end >= start)
             {
+
                 int mid = start + (end - start) / 2;
 
-                if (target == input[mid]){HighlightFound(mid);string tmp = $"Location: {mid + 1}";return tmp;}
-                else{Highlight(mid);}
+                try
+                {
+                    if (target == input[mid]) { HighlightFound(mid); string tmp = $"Location: {mid + 1}"; return tmp; }
+                    else { Highlight(mid); }
+                }
+                catch { return "Not Found"; }
 
                 if (input[mid] > target) { return BSearch(ref input, start, mid - 1, target, ref count); }
                 else { return BSearch(ref input, mid + 1, end, target, ref count); }

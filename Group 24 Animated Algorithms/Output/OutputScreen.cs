@@ -55,7 +55,7 @@ namespace Group_24_Animated_Algorithms
         const int newMax = 650;
 
         //Side margin
-        const int marginRight = 750;
+        const int marginRight = 525;
         const int minScreenWidth = 500;
 
         //Variable holds min bar width
@@ -90,6 +90,10 @@ namespace Group_24_Animated_Algorithms
             ascending = Ascending;
             InitializeComponent(); //Build in, for GUI
             Init();
+            TB_SearchFor.Enabled = false;
+            TB_Result.Enabled = false;
+            TB_SearchFor.BackColor = this.BackColor;
+            TB_Result.BackColor = this.BackColor;
             Bar_Speed.Value = time;
             Bar_Zoom.Value = 100;
             label6.Text = Bar_Zoom.Value.ToString() + "%";
@@ -393,7 +397,7 @@ namespace Group_24_Animated_Algorithms
         private void DrawBar(Bar bar)
         {
             var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
-            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos + marginRight, 40, bar.Width, bar.Height));
             DrawOutline(bar);
         }
 
@@ -401,7 +405,7 @@ namespace Group_24_Animated_Algorithms
         private void DrawOutline(Bar bar)
         {
             var x = new Pen(Color.Black, bar.Width / 8);
-            Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos) + ((bar.Width / 8) / 2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
+            Graphics.DrawRectangle(x, new Rectangle((bar.Width * bar.Pos + marginRight) + ((bar.Width / 8) / 2), 40, bar.Width - ((bar.Width / 8)), bar.Height));
         }
 
         //Draw specific bar from position
@@ -409,7 +413,7 @@ namespace Group_24_Animated_Algorithms
         {
             var bar = bars.Single(y => y.Pos == pos);
             var x = new SolidBrush(Color.FromArgb(bar.Colour[0], bar.Colour[1], bar.Colour[2]));
-            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos + marginRight, 40, bar.Width, bar.Height));
             DrawOutline(bar);
         }
         //Draw specific bar from position
@@ -417,14 +421,14 @@ namespace Group_24_Animated_Algorithms
         {
             var bar = bars.Single(y => y.Pos == pos);
             var x = new SolidBrush(Color.FromArgb(75, 75, 75));
-            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos, 40, bar.Width, bar.Height));
+            Graphics.FillRectangle(x, new Rectangle(bar.Width * bar.Pos + marginRight, 40, bar.Width, bar.Height));
             DrawOutline(bar);
         }
 
         //Remove bar at position
         public void ClearBar(int pos)
         {
-            Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos, 40, minWidth, Height));
+            Graphics.FillRectangle(Backbrush, new Rectangle(minWidth * pos + marginRight, 40, minWidth, Height));
         }
 
         //highlights a bar at position
@@ -435,7 +439,7 @@ namespace Group_24_Animated_Algorithms
             {
                 p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
+                Graphics.DrawLine(p, (bar.Width * bar.Pos + marginRight) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos + marginRight) + (bar.Width / 2), bar.Height + 45);
             }
         }
 
@@ -446,7 +450,7 @@ namespace Group_24_Animated_Algorithms
             {
                 p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-                Graphics.DrawLine(p, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos) + (bar.Width / 2), bar.Height + 45);
+                Graphics.DrawLine(p, (bar.Width * bar.Pos + marginRight) + (bar.Width / 2), bar.Height + 100, (bar.Width * bar.Pos + marginRight) + (bar.Width / 2), bar.Height + 45);
             }
         }
 
@@ -755,5 +759,12 @@ namespace Group_24_Animated_Algorithms
             label6.Text = Bar_Zoom.Value.ToString() + "%";
             TB_Info.ZoomFactor = ((float)Bar_Zoom.Value/(float)100);
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

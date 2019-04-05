@@ -51,45 +51,52 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
 
         private string BSearch(decimal[] input, int start, int stop, decimal key, int length, ref int count)
         {
-            Update(3,5);
+
+
+            Update(3, 5);
             //add counter
             count++;
             Output.UpdateOperations(count);
 
+            if (!input.Contains(key))
+            {
+                return "Item not found";
+            }
+
             //ran out of array
             if (start > stop)
             {
-                Update(6,7);
+                Update(6, 7);
                 return null;
             }
 
-            Update(9,10);
+            Update(9, 10);
             //get midpoint
             int mid = (start + stop) / 2;
 
-            Update(12,14);
+            Update(12, 14);
             //if found
             if (key == input[mid])
             {
-                Update(15,16);
+                Update(15, 16);
                 HighlightFound(mid);
 
                 //add location to string
                 return $"Location: {mid + 1}";
             }
-            
+
             //where to look next
             else if (key < input[mid])
             {
-                Update(21,22);
+                Update(21, 22);
                 Update(1, 2);
                 return BSearch(input, start, mid - 1, key, length, ref count);
             }
 
             else
             {
-                Update(26,27);
-                Update(1,2);
+                Update(26, 27);
+                Update(1, 2);
                 return BSearch(input, mid + 1, stop, key, length, ref count);
             }
         }

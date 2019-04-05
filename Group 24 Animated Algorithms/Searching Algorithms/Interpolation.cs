@@ -72,6 +72,11 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
             int mid;
             int count = 0;
 
+            if (input[min] > key || input[max] < key)
+            {
+                return "Item not found";
+            }
+
             Update(7, 8);
             while (min <= max)
             {
@@ -90,7 +95,6 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
                     Update(14, 15);
                     mid = 0;
                 }
-
                 else if (mid > max)
                 {
                     Update(19, 20);

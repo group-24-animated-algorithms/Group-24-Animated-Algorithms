@@ -111,7 +111,7 @@ namespace Group_24_Animated_Algorithms
         ////////////
         // Events //
         ////////////
-        
+
         private void Tb_Max_TextChanged(object sender, EventArgs e)
         {
             //if min is greater than max, swap
@@ -121,12 +121,9 @@ namespace Group_24_Animated_Algorithms
                 tb_max.Text = tb_min.Text;
                 tb_min.Text = tmp;
             }
-            
+
             //swap if needed
             Changeminmax();
-
-            //generate new array
-            GenerateArray();
         }
         ///////////////////
         // Button Events //
@@ -400,7 +397,6 @@ namespace Group_24_Animated_Algorithms
                 };
             };
             BeginInvoke(FormThread);
-            GenerateArray();
         }
 
         private void Bt_Exponential_Click(object sender, EventArgs e)
@@ -441,7 +437,6 @@ namespace Group_24_Animated_Algorithms
                 };
             };
             BeginInvoke(FormThread);
-            GenerateArray();
         }
 
         private void Bt_Binary_Click(object sender, EventArgs e)
@@ -482,7 +477,6 @@ namespace Group_24_Animated_Algorithms
                 };
             };
             BeginInvoke(FormThread);
-            GenerateArray();
         }
 
         private void Bt_Linear_Click(object sender, EventArgs e)
@@ -522,7 +516,6 @@ namespace Group_24_Animated_Algorithms
                 };
             };
             BeginInvoke(FormThread);
-            GenerateArray();
         }
 
         private void Bt_Fibonacci_Click(object sender, EventArgs e)
@@ -563,23 +556,57 @@ namespace Group_24_Animated_Algorithms
                 };
             };
             BeginInvoke(FormThread);
-            GenerateArray();
         }
 
         private void Bar_Speed_Scroll(object sender, EventArgs e)
         {
-            label9.Text = ((float)Bar_Speed.Value/(float)100).ToString()+"s";
+            label9.Text = ((float)Bar_Speed.Value / (float)100).ToString() + "s";
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Tb_array_Leave(object sender, EventArgs e)
         {
+            try
+            {
+                var tmp = tb_array.Text.Split(',');
+                decimal[] tmp0 = new decimal[tmp.Length];
+                for (int i = 0; i < tmp.Length; i++)
+                {
+                    tmp0[i] = decimal.Parse(tmp[i].Trim());
+                }
 
+                bool isUnique = tmp0.Distinct().Count() == tmp0.Count();
+
+                if (!isUnique)
+                {
+                    MessageBox.Show("Array is not distinct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                tmp0 = tmp0.Distinct().ToArray();
+                array = tmp0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was an error changing the array", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            tb_array.Text = string.Join(", ", array);
+            tb_arraysize.Text = array.Length.ToString();
+            tb_realmax.Text = array.Max().ToString();
+            tb_realmin.Text = array.Min().ToString();
+
+            if (decimal.Parse(tb_max.Text.Trim()) < array.Max())
+            {
+                tb_max.Text = array.Max().ToString();
+            }
+
+            if (decimal.Parse(tb_min.Text.Trim()) > array.Min())
+            {
+                tb_min.Text = array.Min().ToString();
+            }
+
+            tb_searchfor.Text = array[r.Next(array.Count())].ToString();
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
     }
     //Enum for sorting
     public enum Sorting
