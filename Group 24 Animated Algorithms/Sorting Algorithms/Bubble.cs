@@ -9,7 +9,7 @@ namespace Group_24_Animated_Algorithms.Sorting_Algorithms
         public Bubble(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            data = new Data() { time = "O(n^2)", space = "O(1)" };
+            data = new Data { time = "O(n^2)", space = "O(1)" };
         }
 
         public override void Ascending(Decimal[] input)
