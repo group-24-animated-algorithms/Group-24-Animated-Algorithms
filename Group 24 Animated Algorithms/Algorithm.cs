@@ -11,11 +11,9 @@ namespace Group_24_Animated_Algorithms
         protected OutputScreen Output;
         protected ManualResetEvent pauseEvent = new ManualResetEvent(true);
         protected bool stepping = false;
-        protected bool step = true;
-        protected bool close = false;
         protected List<int> searched = new List<int>();
         public Data data;
-        private int searchFound = 0;
+
 
         //Functions
         public void TogglePause(bool paused)

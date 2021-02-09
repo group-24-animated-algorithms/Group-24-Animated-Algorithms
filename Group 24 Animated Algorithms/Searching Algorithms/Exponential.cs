@@ -11,7 +11,7 @@ namespace Group_24_Animated_Algorithms.Searching_Algorithms
         public Exponential(ref OutputScreen OutputWin)
         {
             Output = OutputWin;
-            data = new Data() { time = "O(Logn)", space = "O(1)" };
+            data = new Data { time = "O(Logn)", space = "O(1)" };
             Output.UpdateInfo(@"private string ExSearch(ref decimal[] input, int length, decimal target, ref int count)
 {
 	//look in the first position
